@@ -83,13 +83,13 @@
   .rotor.dragging{ cursor:grabbing; }
   .rotor.snap{ transition:transform .5s cubic-bezier(.22,1,.36,1); }
   .rotor svg{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
-  .node{ position:absolute; width:78px; height:78px; margin:-39px 0 0 -39px; border-radius:50%; background:var(--surface); border:2px solid var(--ink); display:flex; align-items:center; justify-content:center; color:var(--ink); box-shadow:0 6px 18px rgba(25,42,63,.14); transition:transform .25s, background .25s, color .25s, border-color .25s; }
-  .node svg{ position:static; width:34px; height:34px; }
-  .node.active{ background:var(--accent); color:#fff; border-color:var(--accent); transform:scale(1.28); box-shadow:0 12px 30px rgba(223,86,62,.45); }
-  .node .lbl{ position:absolute; right:96px; top:50%; transform:translateY(-50%); white-space:nowrap; font-family:var(--serif); font-weight:600; font-size:1.25rem; color:var(--ink); opacity:0; transition:opacity .25s; pointer-events:none; }
+  .node{ position:absolute; width:74px; height:74px; margin:-37px 0 0 -37px; border-radius:50%; background:radial-gradient(circle at 40% 34%, #24374e, #101d2c); border:3px solid #c9a24a; display:flex; align-items:center; justify-content:center; color:#cfe6f2; box-shadow:0 6px 16px rgba(0,0,0,.4), inset 0 1px 2px rgba(255,255,255,.18); transition:transform .3s cubic-bezier(.22,1,.36,1), border-color .3s, box-shadow .3s; }
+  .node svg{ position:static; width:32px; height:32px; }
+  .node.active{ border-color:#f6df9a; color:#ffffff; transform:scale(1.24); box-shadow:0 0 0 4px rgba(246,223,154,.4), 0 12px 30px rgba(0,0,0,.45); }
+  .node .lbl{ position:absolute; right:94px; top:50%; transform:translateY(-50%); white-space:nowrap; font-family:var(--serif); font-weight:600; font-size:1.3rem; color:#452a18; opacity:0; transition:opacity .3s; pointer-events:none; text-shadow:0 1px 0 rgba(255,255,255,.5); }
   .node.active .lbl{ opacity:1; }
   /* selector marker at 9 o'clock */
-  .selector{ position:absolute; top:50%; left:8px; transform:translateY(-50%); width:0; height:0; border-top:13px solid transparent; border-bottom:13px solid transparent; border-left:16px solid var(--accent); z-index:11; filter:drop-shadow(0 2px 4px rgba(0,0,0,.15)); }
+  .selector{ position:absolute; top:50%; left:6px; transform:translateY(-50%); width:0; height:0; border-top:13px solid transparent; border-bottom:13px solid transparent; border-left:18px solid #c9a24a; z-index:11; filter:drop-shadow(0 2px 4px rgba(0,0,0,.25)); }
 
   @media(max-width:900px){
     body{ overflow:auto; }
@@ -214,7 +214,7 @@
 <script>
   /* ---------- section data (icons + which panel they open) ---------- */
   const ICONS = {
-    research:'<path d="M9 3h6"/><path d="M10 3v6l-5 8a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-8V3"/><path d="M7.5 15h9"/>',
+    research:'<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>',
     projects:'<path d="M8 6 2 12l6 6"/><path d="m16 6 6 6-6 6"/>',
     experience:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/>',
     credentials:'<circle cx="12" cy="8" r="5"/><path d="M8.5 12 7 21l5-3 5 3-1.5-9"/>',
@@ -233,28 +233,48 @@
   const rotor=document.getElementById('rotor');
   const rad=d=>d*Math.PI/180;
 
-  /* ---- build the ship's wheel SVG ---- */
+  /* ---- build the wooden ship's wheel SVG ---- */
   (function buildWheel(){
-    const ns='http://www.w3.org/2000/svg';
-    const svg=document.createElementNS(ns,'svg'); svg.setAttribute('viewBox',`0 0 ${SIZE} ${SIZE}`);
-    const mk=(t,a)=>{ const e=document.createElementNS(ns,t); for(const k in a) e.setAttribute(k,a[k]); return e; };
-    // rim
-    svg.appendChild(mk('circle',{cx:C,cy:C,r:RIM,fill:'none',stroke:'#192a3f','stroke-width':16}));
-    svg.appendChild(mk('circle',{cx:C,cy:C,r:RIM-26,fill:'none',stroke:'#192a3f','stroke-width':6,opacity:.5}));
-    // spokes + handles (8)
+    const cos=a=>Math.cos(rad(a)), sin=a=>Math.sin(rad(a));
+    let spokes='';
     for(let a=0;a<360;a+=45){
-      const x1=C+Math.cos(rad(a))*54, y1=C+Math.sin(rad(a))*54;
-      const x2=C+Math.cos(rad(a))*RIM, y2=C+Math.sin(rad(a))*RIM;
-      svg.appendChild(mk('line',{x1,y1,x2,y2,stroke:'#192a3f','stroke-width':11,'stroke-linecap':'round'}));
-      const hx=C+Math.cos(rad(a))*HANDLE, hy=C+Math.sin(rad(a))*HANDLE;
-      svg.appendChild(mk('circle',{cx:hx,cy:hy,r:20,fill:'#df563e',stroke:'#192a3f','stroke-width':4}));
-      // small connector from rim to handle knob
-      svg.appendChild(mk('line',{x1:C+Math.cos(rad(a))*RIM,y1:C+Math.sin(rad(a))*RIM,x2:hx,y2:hy,stroke:'#192a3f','stroke-width':9,'stroke-linecap':'round'}));
+      const sx=C+cos(a)*62, sy=C+sin(a)*62, ex=C+cos(a)*234, ey=C+sin(a)*234;
+      spokes+=`<line x1="${sx}" y1="${sy}" x2="${ex}" y2="${ey}" stroke="url(#wood)" stroke-width="22" stroke-linecap="round"/>`;
+      [112,166].forEach(r=>{ spokes+=`<circle cx="${(C+cos(a)*r).toFixed(1)}" cy="${(C+sin(a)*r).toFixed(1)}" r="13" fill="url(#woodK)" stroke="#2e1c10" stroke-width="2"/>`; });
+      const hx1=C+cos(a)*250, hy1=C+sin(a)*250, hx2=C+cos(a)*302, hy2=C+sin(a)*302;
+      spokes+=`<line x1="${hx1.toFixed(1)}" y1="${hy1.toFixed(1)}" x2="${hx2.toFixed(1)}" y2="${hy2.toFixed(1)}" stroke="url(#wood)" stroke-width="27" stroke-linecap="round"/>`;
+      spokes+=`<circle cx="${(C+cos(a)*243).toFixed(1)}" cy="${(C+sin(a)*243).toFixed(1)}" r="11" fill="url(#woodK)" stroke="#2e1c10" stroke-width="2"/>`;
+      spokes+=`<circle cx="${hx2.toFixed(1)}" cy="${hy2.toFixed(1)}" r="17" fill="url(#woodK)" stroke="#2e1c10" stroke-width="2"/>`;
     }
-    // hub
-    svg.appendChild(mk('circle',{cx:C,cy:C,r:54,fill:'#192a3f'}));
-    svg.appendChild(mk('circle',{cx:C,cy:C,r:24,fill:'#df563e'}));
-    rotor.appendChild(svg);
+    let bolts=''; for(let a=0;a<360;a+=45){ bolts+=`<circle cx="${(C+cos(a)*58).toFixed(1)}" cy="${(C+sin(a)*58).toFixed(1)}" r="5" fill="#6e4f10"/>`; }
+    rotor.innerHTML = `
+    <svg viewBox="0 0 ${SIZE} ${SIZE}">
+      <defs>
+        <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#9a6638"/><stop offset=".5" stop-color="#6e4527"/><stop offset="1" stop-color="#452a18"/></linearGradient>
+        <radialGradient id="woodK" cx=".4" cy=".35" r=".8">
+          <stop offset="0" stop-color="#a97142"/><stop offset="1" stop-color="#4a2e1a"/></radialGradient>
+        <radialGradient id="brass" cx=".4" cy=".33" r=".8">
+          <stop offset="0" stop-color="#f6e09a"/><stop offset=".5" stop-color="#cc9d3b"/><stop offset="1" stop-color="#7d5a12"/></radialGradient>
+        <filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#000" flood-opacity=".4"/></filter>
+      </defs>
+      <g filter="url(#sh)">
+        ${spokes}
+        <circle cx="${C}" cy="${C}" r="250" fill="none" stroke="url(#wood)" stroke-width="40"/>
+        <circle cx="${C}" cy="${C}" r="270" fill="none" stroke="#2e1c10" stroke-width="3"/>
+        <circle cx="${C}" cy="${C}" r="230" fill="none" stroke="#2e1c10" stroke-width="3"/>
+        <circle cx="${C}" cy="${C}" r="250" fill="none" stroke="rgba(255,231,183,.16)" stroke-width="8"/>
+      </g>
+      <g filter="url(#sh)">
+        <circle cx="${C}" cy="${C}" r="74" fill="url(#brass)" stroke="#5e440f" stroke-width="2"/>
+        ${bolts}
+        <circle cx="${C}" cy="${C}" r="44" fill="#152232" stroke="url(#brass)" stroke-width="4"/>
+        <g stroke="#cfe6f0" stroke-width="3" fill="none" stroke-linecap="round">
+          <circle cx="${C}" cy="${C-20}" r="6"/><line x1="${C}" y1="${C-14}" x2="${C}" y2="${C+24}"/>
+          <line x1="${C-14}" y1="${C-4}" x2="${C+14}" y2="${C-4}"/><path d="M${C-16} ${C+12} a16 16 0 0 0 32 0"/>
+        </g>
+      </g>
+    </svg>`;
   })();
 
   /* ---- place icon nodes on the rim ---- */
@@ -272,6 +292,7 @@
   /* ---- rotation state ---- */
   let angle=0;                                  // current rotor rotation (deg)
   let userInteracted=false;                     // keep intro until the viewer steers
+  let hintIv=null;                              // idle-hint timer
   function norm(a){ a%=360; if(a<0)a+=360; return a; }
   function apply(){
     rotor.style.transform = `rotate(${angle}deg)`;
@@ -294,7 +315,7 @@
   }
   // programmatic select (click icon / CTA): rotate so that section reaches 180
   function selectSection(id){
-    userInteracted=true;
+    userInteracted=true; clearInterval(hintIv);
     const s=SECTIONS.find(x=>x.id===id); if(!s) return;
     let target = 180 - s.home;                   // rotor angle that puts it at selector
     // choose nearest equivalent to current angle
@@ -311,19 +332,25 @@
 
   /* ---- drag to steer ---- */
   const helm=document.getElementById('helm');
-  let dragging=false, startA=0, startRot=0, moved=false;
+  let dragging=false, startA=0, startRot=0, moved=false, vel=0, prevA=0, prevT=0;
   function centerPt(){ const r=helm.getBoundingClientRect(); return {x:r.left+r.width/2, y:r.top+r.height/2}; }
   function ptAngle(e){ const c=centerPt(); return Math.atan2((e.clientY)-c.y,(e.clientX)-c.x)*180/Math.PI; }
-  rotor.addEventListener('pointerdown',e=>{ dragging=true; moved=false; userInteracted=true; startA=ptAngle(e); startRot=angle; rotor.classList.add('dragging'); rotor.classList.remove('snap'); rotor.setPointerCapture(e.pointerId); });
-  rotor.addEventListener('pointermove',e=>{ if(!dragging)return; const d=ptAngle(e)-startA; if(Math.abs(d)>2)moved=true; angle=startRot+d; apply(); });
+  function snapTo(fromAngle){                    // glide to the nearest section from a given angle
+    let best=null,bd=999; SECTIONS.forEach(s=>{ const sc=norm(s.home+fromAngle); let d=Math.abs(sc-180); d=Math.min(d,360-d); if(d<bd){bd=d;best=s;} });
+    if(!best) return; let t=180-best.home; while(t-fromAngle>180)t-=360; while(t-fromAngle<-180)t+=360;
+    rotor.classList.add('snap'); angle=t; apply(); setTimeout(()=>rotor.classList.remove('snap'),580); showPanel(best.id);
+  }
+  rotor.addEventListener('pointerdown',e=>{ dragging=true; moved=false; userInteracted=true; clearInterval(hintIv); vel=0; prevA=angle; prevT=performance.now(); startA=ptAngle(e); startRot=angle; rotor.classList.add('dragging'); rotor.classList.remove('snap'); rotor.setPointerCapture(e.pointerId); });
+  rotor.addEventListener('pointermove',e=>{ if(!dragging)return; const d=ptAngle(e)-startA; if(Math.abs(d)>2)moved=true; angle=startRot+d; apply(); const now=performance.now(), dt=now-prevT; if(dt>0){ vel=(angle-prevA)/dt; } prevA=angle; prevT=now; });
   function endDrag(){ if(!dragging)return; dragging=false; rotor.classList.remove('dragging');
-    // snap to nearest section
-    let best=null,bd=999; SECTIONS.forEach(s=>{ const screen=norm(s.home+angle); let d=Math.abs(screen-180); d=Math.min(d,360-d); if(d<bd){bd=d;best=s;} });
-    if(best){ let t=180-best.home; while(t-angle>180)t-=360; while(t-angle<-180)t+=360; rotor.classList.add('snap'); angle=t; apply(); setTimeout(()=>rotor.classList.remove('snap'),520); showPanel(best.id); }
+    const flick=Math.max(-120,Math.min(120, vel*95));   // momentum from the release velocity
+    snapTo(angle+flick);
   }
   rotor.addEventListener('pointerup',endDrag); rotor.addEventListener('pointercancel',endDrag);
 
   apply();  // initial (highlights the slot; content stays on intro until you steer/click)
+  // gentle idle hint: a decaying wobble so viewers notice the wheel steers
+  (function(){ let t=0; hintIv=setInterval(()=>{ t++; angle=Math.sin(t/2.4)*8*Math.max(0,(16-t)/16); apply(); if(t>=16){ clearInterval(hintIv); angle=0; apply(); } },55); })();
 
   /* ---- live repositories (Projects) ---- */
   const EXCLUDE=['adeliusa486.github.io','adeliusa486'];
