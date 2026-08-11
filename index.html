@@ -283,7 +283,7 @@
       s.node.classList.toggle('active', false);
       if(d<bd){ bd=d; best=s; }
     });
-    if(best){ best.node.classList.add('active'); if(userInteracted && bd<40) showPanel(best.id); }
+    if(best){ best.node.classList.add('active'); }
   }
 
   function showPanel(id){
@@ -322,11 +322,8 @@
     if(best){ let t=180-best.home; while(t-angle>180)t-=360; while(t-angle<-180)t+=360; rotor.classList.add('snap'); angle=t; apply(); setTimeout(()=>rotor.classList.remove('snap'),520); showPanel(best.id); }
   }
   rotor.addEventListener('pointerup',endDrag); rotor.addEventListener('pointercancel',endDrag);
-  // wheel scroll to steer
-  helm.addEventListener('wheel',e=>{ e.preventDefault(); userInteracted=true; angle+=e.deltaY>0?12:-12; rotor.classList.remove('snap'); apply(); clearTimeout(helm._t); helm._t=setTimeout(endDrag2,180); },{passive:false});
-  function endDrag2(){ let best=null,bd=999; SECTIONS.forEach(s=>{ const screen=norm(s.home+angle); let d=Math.abs(screen-180); d=Math.min(d,360-d); if(d<bd){bd=d;best=s;} }); if(best){ let t=180-best.home; while(t-angle>180)t-=360; while(t-angle<-180)t+=360; rotor.classList.add('snap'); angle=t; apply(); setTimeout(()=>rotor.classList.remove('snap'),520); showPanel(best.id);} }
 
-  apply();  // initial
+  apply();  // initial (highlights the slot; content stays on intro until you steer/click)
 
   /* ---- live repositories (Projects) ---- */
   const EXCLUDE=['adeliusa486.github.io','adeliusa486'];
