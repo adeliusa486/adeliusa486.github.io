@@ -2,8 +2,8 @@
   ADEEL AHMAD  |  PORTFOLIO
   ===========================================================================
   HOW TO EDIT (no coding needed):
-    1. Open this file on GitHub and click the pencil icon, OR click the
-       "Edit this page" link at the very bottom of the site.
+    1. Click "Edit this page" at the bottom of the site (or open this file on
+       GitHub and click the pencil icon).
     2. Every screen (Home, Research, Publications, etc.) is a block below,
        written in plain words. Find the words and type over them.
     3. Each editable block is marked with the word  EDIT  in a note above it.
@@ -20,74 +20,82 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --bg:#fcf5e6;         /* Emma's warm cream */
-    --surface:#fffdf7;
-    --ink:#192a3f;        /* slate navy text */
-    --soft:#5d6a7a;       /* muted */
-    --line:#e3decf;       /* soft divider */
-    --accent:#df563e;     /* terracotta */
+    --bg:#fcf5e6; --surface:#fffdf7; --ink:#192a3f; --soft:#5d6a7a; --line:#e3decf;
+    --accent:#df563e;            /* terracotta */
     --accent-soft:#f8e2d8;
-    --st-submit:#8a8594;  --st-submit-bg:#efeae2;
-    --st-review:#c07d1a;  --st-review-bg:#f7ead0;
-    --st-accept:#2e9e63;  --st-accept-bg:#dcf1e6;
-    --st-pub:#2a8f96;     --st-pub-bg:#d7eef0;
+    --mustard:#f4be47;           /* nav pill + active */
+    --mark:#f7d774;              /* headline highlighter */
+    --green:#accfb2;             /* location pill */
+    --st-submit:#8a8594; --st-submit-bg:#efeae2;
+    --st-review:#c07d1a; --st-review-bg:#f7ead0;
+    --st-accept:#2e9e63; --st-accept-bg:#dcf1e6;
+    --st-pub:#2a8f96;    --st-pub-bg:#d7eef0;
     --serif:'Fraunces','Iowan Old Style',Georgia,serif;
     --sans:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
     --mono:'SFMono-Regular',ui-monospace,'Cascadia Code',Consolas,monospace;
   }
   *{ box-sizing:border-box; }
   body{ margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); line-height:1.7; -webkit-font-smoothing:antialiased; }
-  .wrap{ max-width:900px; margin:0 auto; padding:0 26px; }
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 30px; }
   a{ color:var(--accent); }
 
   /* Nav */
   nav{ position:sticky; top:0; z-index:20; background:color-mix(in srgb,var(--bg) 92%,transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
-  nav .row{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 0 14px; }
-  .brand{ font-family:var(--serif); font-weight:600; font-size:1.35rem; text-decoration:none; color:var(--ink); cursor:pointer; white-space:nowrap; }
+  nav .row{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0 16px; }
+  .brand{ font-family:var(--serif); font-weight:600; font-size:1.5rem; text-decoration:none; color:var(--ink); cursor:pointer; white-space:nowrap; }
   .brand span{ color:var(--accent); }
-  nav ul{ display:flex; flex-wrap:wrap; gap:2px 4px; list-style:none; margin:0; padding:0; align-items:center; justify-content:flex-end; }
-  .navlink{ text-decoration:none; color:var(--soft); font-size:.94rem; font-weight:500; padding:7px 12px; border-radius:8px; transition:color .15s, background .15s; cursor:pointer; white-space:nowrap; }
-  .navlink:hover{ color:var(--accent); }
-  .navlink.active{ color:var(--accent); background:var(--accent-soft); font-weight:700; }
-  .ext{ color:var(--soft); text-decoration:none; font-size:.94rem; font-weight:500; padding:7px 10px; white-space:nowrap; }
+  nav ul{ display:flex; flex-wrap:wrap; gap:4px; list-style:none; margin:0; padding:0; align-items:center; justify-content:flex-end; }
+  .navlink{ text-decoration:none; color:var(--ink); font-size:.96rem; font-weight:500; padding:8px 15px; border-radius:999px; transition:background .15s, color .15s; cursor:pointer; white-space:nowrap; }
+  .navlink:hover{ background:var(--accent-soft); color:var(--accent); }
+  .navlink.active{ background:var(--mustard); color:var(--ink); font-weight:700; }
+  .ext{ color:var(--soft); text-decoration:none; font-size:.96rem; font-weight:500; padding:8px 12px; white-space:nowrap; }
   .ext:hover{ color:var(--accent); }
-  .menu-btn{ display:none; background:none; border:0; color:var(--ink); font-size:1.6rem; cursor:pointer; }
-  @media(max-width:900px){
+  .menu-btn{ display:none; background:none; border:0; color:var(--ink); font-size:1.7rem; cursor:pointer; }
+  @media(max-width:960px){
     nav ul{ display:none; }
     nav ul.open{ display:flex; flex-direction:column; align-items:stretch; justify-content:flex-start; width:100%; padding:6px 0 12px; }
-    nav ul.open .navlink, nav ul.open .ext{ padding:11px 6px; border-radius:8px; }
+    nav ul.open .navlink, nav ul.open .ext{ padding:12px 8px; }
     .menu-btn{ display:block; }
     nav .row{ flex-wrap:wrap; }
   }
 
-  /* Page system */
   main{ min-height:60vh; }
-  .page{ display:none; padding:58px 0 40px; animation:fade .3s ease; }
+  .page{ display:none; padding:56px 0 44px; animation:fade .3s ease; }
   .page.active{ display:block; }
   @keyframes fade{ from{ opacity:0; transform:translateY(8px);} to{ opacity:1; transform:none;} }
   @media(prefers-reduced-motion:reduce){ .page{ animation:none; } }
 
   .eyebrow{ font-family:var(--mono); font-size:.78rem; text-transform:uppercase; letter-spacing:.16em; color:var(--accent); margin:0 0 12px; }
-  .page h2{ font-family:var(--serif); font-weight:600; font-size:2.3rem; letter-spacing:-.01em; margin:0 0 12px; }
-  .sub{ color:var(--soft); max-width:44em; margin:0 0 32px; font-size:1.08rem; }
+  .page h2{ font-family:var(--serif); font-weight:600; font-size:2.4rem; letter-spacing:-.01em; margin:0 0 12px; }
+  .sub{ color:var(--soft); max-width:46em; margin:0 0 32px; font-size:1.08rem; }
 
-  /* HOME */
-  .home-top{ display:flex; align-items:center; gap:40px; flex-wrap:wrap; }
-  .avatar{ width:190px; height:190px; border-radius:50%; object-fit:cover; border:6px solid var(--surface); box-shadow:0 14px 44px rgba(223,86,62,.24); flex:none; }
-  .hi{ font-family:var(--mono); font-size:.9rem; color:var(--accent); margin:0 0 10px; letter-spacing:.02em; }
-  .home-top h1{ font-family:var(--serif); font-weight:600; font-size:clamp(2.8rem,8vw,4.6rem); line-height:1; margin:0 0 12px; letter-spacing:-.02em; }
-  .role{ font-size:1.22rem; color:var(--soft); font-weight:500; margin:0; }
-  p.bio{ font-size:1.16rem; color:var(--ink); max-width:42em; margin:36px 0 30px; }
+  /* HOME — two-column hero like Emma */
+  .hero{ display:grid; grid-template-columns:1.15fr .85fr; gap:48px; align-items:center; }
+  @media(max-width:860px){ .hero{ grid-template-columns:1fr; gap:34px; } }
+  .pill{ display:inline-block; background:var(--green); color:var(--ink); font-family:var(--mono); font-size:.74rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; padding:7px 15px; border-radius:999px; margin-bottom:22px; }
+  .hero h1{ font-family:var(--serif); font-weight:600; font-size:clamp(2.7rem,5.5vw,4rem); line-height:1.02; margin:0 0 26px; letter-spacing:-.02em; }
+  .hero h1 .mark{ background:linear-gradient(180deg, transparent 58%, var(--mark) 58%, var(--mark) 94%, transparent 94%); padding:0 2px; }
+  .hero .bio{ font-size:1.1rem; color:var(--soft); margin:0 0 30px; }
+  .hero .bio b{ color:var(--ink); font-weight:700; }
   .cta{ display:flex; gap:13px; flex-wrap:wrap; }
   .btn{ display:inline-flex; align-items:center; gap:8px; padding:13px 26px; border-radius:999px; font-weight:700; font-size:.97rem; text-decoration:none; transition:transform .15s, box-shadow .15s; cursor:pointer; border:0; font-family:var(--sans); }
   .btn:hover{ transform:translateY(-2px); }
   .btn.primary{ background:var(--accent); color:#fff; box-shadow:0 8px 20px rgba(223,86,62,.32); }
-  .btn.ghost{ border:1.5px solid var(--line); color:var(--ink); background:var(--surface); }
-  .btn.ghost:hover{ border-color:var(--accent); }
+  .btn.ghost{ border:1.5px solid var(--ink); color:var(--ink); background:transparent; }
+  .btn.ghost:hover{ border-color:var(--accent); color:var(--accent); }
+  .hero-photo{ justify-self:center; }
+  .hero-photo img{ width:100%; max-width:360px; aspect-ratio:1/1.05; object-fit:cover; border-radius:26px; border:1px solid var(--line); box-shadow:0 22px 60px rgba(25,42,63,.16); background:var(--surface); }
+
+  /* Stat tiles */
+  .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:52px; }
+  @media(max-width:720px){ .stats{ grid-template-columns:1fr 1fr; } }
+  .stat{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:22px 20px; text-align:center; }
+  .stat .n{ font-family:var(--serif); font-weight:600; font-size:2.4rem; color:var(--accent); line-height:1; }
+  .stat .l{ font-size:.9rem; color:var(--soft); margin-top:8px; }
 
   /* Research */
   .research{ display:grid; gap:12px; }
@@ -105,7 +113,7 @@
   .badge.review{ color:var(--st-review); background:var(--st-review-bg); }
   .badge.accepted{ color:var(--st-accept); background:var(--st-accept-bg); }
   .badge.published{ color:var(--st-pub); background:var(--st-pub-bg); }
-  .pub h3{ font-family:var(--serif); font-weight:600; font-size:1.28rem; margin:0 0 8px; line-height:1.32; }
+  .pub h3{ font-family:var(--serif); font-weight:600; font-size:1.26rem; margin:0 0 8px; line-height:1.32; }
   .pub .venue{ color:var(--accent); font-weight:700; font-size:.97rem; margin:0 0 6px; }
   .pub .meta{ color:var(--soft); font-size:.94rem; margin:0; }
 
@@ -126,9 +134,9 @@
   .tl .when{ font-family:var(--mono); font-size:.85rem; color:var(--accent); padding-top:3px; }
   .tl h3{ margin:0; font-size:1.2rem; font-family:var(--serif); font-weight:600; }
   .tl .place{ color:var(--ink); font-weight:700; font-size:.98rem; margin:3px 0 8px; }
-  .tl .note{ color:var(--soft); font-size:.97rem; }
   .tl ul{ margin:6px 0 0; padding-left:18px; color:var(--soft); font-size:.97rem; }
   .tl li{ margin-bottom:5px; }
+  .tl .note{ color:var(--soft); font-size:.97rem; }
   @media(max-width:560px){ .tl{ grid-template-columns:1fr; gap:6px; } }
 
   /* Skills */
@@ -159,10 +167,23 @@
   .repo-meta .lang::before{ content:""; width:9px; height:9px; border-radius:50%; background:var(--accent); }
   .loading,.err{ color:var(--soft); font-family:var(--mono); font-size:.9rem; padding:18px 0; }
 
-  /* CV viewer */
-  .cv-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:22px; }
-  .cv-frame{ width:100%; height:1000px; border:1px solid var(--line); border-radius:14px; background:var(--surface); }
-  @media(max-width:640px){ .cv-frame{ height:620px; } }
+  /* CV document (rendered inline, same style) */
+  .cv-bar{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:24px; }
+  .cv-doc{ background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:40px 44px; }
+  @media(max-width:600px){ .cv-doc{ padding:26px 22px; } }
+  .cv-doc .cvhead{ text-align:center; border-bottom:1px solid var(--line); padding-bottom:18px; margin-bottom:6px; }
+  .cv-doc .cvhead h3{ font-family:var(--serif); font-weight:700; font-size:2rem; margin:0; }
+  .cv-doc .cvhead .t{ color:var(--soft); margin:4px 0 8px; }
+  .cv-doc .cvhead .c{ font-size:.9rem; color:var(--soft); }
+  .cv-doc .cvhead .c a{ color:var(--accent); text-decoration:none; }
+  .cv-sec{ margin-top:24px; }
+  .cv-sec h4{ font-family:var(--mono); font-size:.8rem; text-transform:uppercase; letter-spacing:.12em; color:var(--accent); margin:0 0 10px; padding-bottom:6px; border-bottom:1px solid var(--line); }
+  .cv-sec p{ margin:0 0 8px; }
+  .cv-sec .row2{ display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .cv-sec .row2 .yr{ color:var(--soft); font-family:var(--mono); font-size:.85rem; white-space:nowrap; }
+  .cv-sec ul{ margin:6px 0 0; padding-left:20px; color:var(--soft); }
+  .cv-sec li{ margin-bottom:4px; }
+  .cv-sec b{ color:var(--ink); }
 
   /* Contact */
   .links{ display:flex; gap:12px; flex-wrap:wrap; margin-top:6px; }
@@ -198,20 +219,28 @@
 
 <main class="wrap">
 
-  <!-- ===== HOME (EDIT the name, role and intro below) ===== -->
+  <!-- ===== HOME (EDIT the headline and intro below) ===== -->
   <section class="page active" id="home">
-    <div class="home-top">
-      <img class="avatar" src="profile.jpg" alt="Adeel Ahmad">
+    <div class="hero">
       <div>
-        <p class="hi">Hi, my name is</p>
-        <h1>Adeel Ahmad</h1>
-        <p class="role">IT Researcher — Cybersecurity, Networking, Cloud &amp; AI</p>
+        <span class="pill">Madinah, Saudi Arabia</span>
+        <h1>Hi, I'm Adeel — I build AI that <span class="mark">critical networks can trust.</span></h1>
+        <p class="bio">I'm a final-year Information Technology student at the <b>Islamic University of Madinah</b>, studying on a <b>fully-funded Saudi Government scholarship</b> awarded for academic excellence. My journey into computing began in Gujranwala, Pakistan, with a simple curiosity — taking apart small programs and networks to understand how they really work — and has grown into a focused mission: making artificial intelligence <b>secure, private, and explainable</b> enough to protect the networks the world depends on. Over the past two years I've co-authored peer-reviewed research on privacy in federated learning, designed interpretable intrusion-detection systems for software-defined networks, and built complete systems from Raspberry Pi hardware to cloud dashboards. I'm currently sharpening my practical security skills through hands-on <b>TryHackMe cybersecurity labs</b>, alongside my CCNA and AWS cloud training. I care deeply about research that is rigorous, reproducible, and genuinely useful — and I'm ready to bring that curiosity and drive to a team advancing <b>trustworthy AI for critical networks</b>.</p>
+        <div class="cta">
+          <a class="btn primary" data-page="research">Explore my research →</a>
+          <a class="btn ghost" href="https://linkedin.com/in/adeel-ahmad-5a041b237" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="profile.jpg" alt="Adeel Ahmad">
       </div>
     </div>
-    <p class="bio">Final-year Information Technology undergraduate at the Islamic University of Madinah (CGPA 3.99/5.00), with hands-on work in networking, AWS cloud, and applied machine learning. My research focuses on secure, privacy-preserving, and explainable AI for vehicular and next-generation networks. I am seeking a fully-funded PhD position to advance trustworthy AI for critical networks.</p>
-    <div class="cta">
-      <a class="btn primary" data-page="research">Explore my research →</a>
-      <a class="btn ghost" data-page="cv">View my CV</a>
+
+    <div class="stats">
+      <div class="stat"><div class="n">4</div><div class="l">Research papers</div></div>
+      <div class="stat"><div class="n">1</div><div class="l">IEEE acceptance</div></div>
+      <div class="stat"><div class="n">8+</div><div class="l">Open-source repos</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">Certifications</div></div>
     </div>
   </section>
 
@@ -229,11 +258,11 @@
     </div>
   </section>
 
-  <!-- ===== PUBLICATIONS (EDIT: copy a div.pub block; status word = submitted/review/accepted/published) ===== -->
+  <!-- ===== PUBLICATIONS (EDIT: copy a div.pub; status word = submitted/review/accepted/published) ===== -->
   <section class="page" id="publications">
     <p class="eyebrow">Publications</p>
     <h2>Papers &amp; research output</h2>
-    <p class="sub">Peer-reviewed and in-progress work. Each paper shows its current stage.</p>
+    <p class="sub">Peer-reviewed, in-review, and submitted work. Each paper shows its current stage.</p>
     <div class="pubs">
 
       <div class="pub">
@@ -244,10 +273,24 @@
       </div>
 
       <div class="pub">
-        <span class="badge review">Under Review</span>
+        <span class="badge review">Peer Review</span>
         <h3>Balancing Spatial Urgency and Content Popularity for Edge Caching in Vehicular Networks</h3>
         <p class="venue">Springer Nature — Discover Telecommunications</p>
-        <p class="meta">Under peer review · 2026</p>
+        <p class="meta">In peer review · 2026</p>
+      </div>
+
+      <div class="pub">
+        <span class="badge submitted">Submitted</span>
+        <h3>XAI-SDN: A Lightweight, Interpretable DDoS Detection System for Software-Defined Networks Using Entropy Feature Augmentation and SHAP Explanations</h3>
+        <p class="venue">Submitted to a peer-reviewed journal</p>
+        <p class="meta">Under submission · awaiting decision · 2026</p>
+      </div>
+
+      <div class="pub">
+        <span class="badge submitted">Submitted</span>
+        <h3>Adaptive Multi-Factor Trust Aggregation for Byzantine-Robust Federated Learning in IoT Networks</h3>
+        <p class="venue">Submitted to a peer-reviewed journal</p>
+        <p class="meta">Under submission · awaiting decision · 2026</p>
       </div>
 
     </div>
@@ -392,16 +435,82 @@
     </div>
   </section>
 
-  <!-- ===== CURRICULUM VITAE (viewable in-page) ===== -->
+  <!-- ===== CURRICULUM VITAE (rendered inline, same page & style) ===== -->
   <section class="page" id="cv">
     <p class="eyebrow">Curriculum Vitae</p>
     <h2>My CV</h2>
-    <p class="sub">Read it right here — no download needed. You can also open it full-screen or save a copy.</p>
-    <div class="cv-actions">
-      <a class="btn primary" href="Adeel-Ahmad-CV.pdf" target="_blank" rel="noopener">Open full screen ↗</a>
+    <p class="sub">Read the full CV right here on the page. You can also save a PDF copy.</p>
+    <div class="cv-bar">
       <a class="btn ghost" href="Adeel-Ahmad-CV.pdf" download>Download PDF ↓</a>
     </div>
-    <iframe class="cv-frame" src="Adeel-Ahmad-CV.pdf#view=FitH" title="Adeel Ahmad CV"></iframe>
+    <div class="cv-doc">
+      <div class="cvhead">
+        <h3>Adeel Ahmad</h3>
+        <div class="t">Information Technology Student — Networking, Cloud &amp; AI</div>
+        <div class="c">Madinah, Saudi Arabia · <a href="mailto:443057803@stu.iu.edu.sa">443057803@stu.iu.edu.sa</a><br>
+        <a href="https://github.com/adeliusa486" target="_blank" rel="noopener">github.com/adeliusa486</a> · <a href="https://linkedin.com/in/adeel-ahmad-5a041b237" target="_blank" rel="noopener">linkedin.com/in/adeel-ahmad-5a041b237</a></div>
+      </div>
+
+      <div class="cv-sec">
+        <h4>Summary</h4>
+        <p>Final-year Information Technology undergraduate at the Islamic University of Madinah with hands-on experience in networking, AWS cloud computing, and applied machine learning. Co-author of an IEEE conference paper and builder of full systems from hardware to dashboard.</p>
+      </div>
+
+      <div class="cv-sec">
+        <h4>Education</h4>
+        <div class="row2"><span><b>Bachelor of Information Technology</b>, Islamic University of Madinah</span><span class="yr">2023 – Present</span></div>
+        <p>CGPA: 3.99 / 5.00 (equivalent to 3.2 / 4.00)</p>
+        <div class="row2"><span><b>Higher Secondary Education</b>, Punjab College of Commerce</span><span class="yr">2020 (92%)</span></div>
+        <div class="row2"><span><b>Secondary Education</b>, Govt. High School, Qila Didar Singh, Gujranwala</span><span class="yr">2017 (90%)</span></div>
+      </div>
+
+      <div class="cv-sec">
+        <h4>Technical Skills</h4>
+        <p><b>Programming:</b> Python, Java, SQL, Bash, MATLAB</p>
+        <p><b>AI &amp; Machine Learning:</b> Machine Learning, PyTorch, scikit-learn, NumPy, OpenCV, SHAP</p>
+        <p><b>Networking:</b> CCNA, Routing &amp; Switching, OSPF, RIP, EIGRP, VLANs, ACLs, Wireshark, Packet Tracer</p>
+        <p><b>Network Simulation:</b> GNS3, Cisco Packet Tracer, SUMO, SimPy</p>
+        <p><b>Cloud &amp; DevOps:</b> AWS, AWS CloudFormation, Terraform, Ansible, Docker, Linux</p>
+        <p><b>Tools:</b> Git, Raspberry Pi, Flutter, WordPress</p>
+      </div>
+
+      <div class="cv-sec">
+        <h4>Experience</h4>
+        <div class="row2"><span><b>Intern</b>, Asaqefah Business Development — Madinah</span><span class="yr">Jun 2026 – Present</span></div>
+        <ul>
+          <li>Built an MVP of a smart crowd-management system for Al-Masjid an-Nabawi: an AWS-powered, multilingual visitor app with an operations dashboard.</li>
+          <li>Owned the full stack across real-time navigation, crowd analysis, and cloud architecture.</li>
+        </ul>
+        <div class="row2"><span><b>Developer, Team VisionBridge AI</b> — King Salman Center AI Hackathon</span><span class="yr">2026</span></div>
+        <ul>
+          <li>Built an offline Raspberry Pi smart cane using AI object detection and a laser sensor for visually impaired users; selected into the hackathon acceleration phase.</li>
+        </ul>
+      </div>
+
+      <div class="cv-sec">
+        <h4>Publications</h4>
+        <ul>
+          <li><b>Accepted:</b> Co-author, "Privacy Leakage in Federated Learning: Gradient-Based Client Identity Inference and Defense Analysis for Secure Vehicular Networks," IEEE 104th Vehicular Technology Conference (VTC2026-Fall).</li>
+          <li><b>In peer review:</b> "Balancing Spatial Urgency and Content Popularity for Edge Caching in Vehicular Networks," Springer Nature, Discover Telecommunications.</li>
+          <li><b>Submitted:</b> "XAI-SDN: A Lightweight, Interpretable DDoS Detection System for Software-Defined Networks Using Entropy Feature Augmentation and SHAP Explanations."</li>
+          <li><b>Submitted:</b> "Adaptive Multi-Factor Trust Aggregation for Byzantine-Robust Federated Learning in IoT Networks."</li>
+        </ul>
+      </div>
+
+      <div class="cv-sec">
+        <h4>Activities &amp; Honours</h4>
+        <ul>
+          <li>Saudi Government-funded scholarship recipient, Islamic University of Madinah (Mar 2023), for academic excellence.</li>
+          <li>AWS Certified Solutions Architect – Associate; CCNA, Cisco Networking Academy.</li>
+          <li>Currently completing hands-on cybersecurity labs on TryHackMe.</li>
+        </ul>
+      </div>
+
+      <div class="cv-sec">
+        <h4>Languages</h4>
+        <p>Urdu (Native), Punjabi (Native), English (B2), Arabic (Beginner)</p>
+      </div>
+    </div>
   </section>
 
   <!-- ===== CONTACT (EDIT your links) ===== -->
@@ -410,10 +519,10 @@
     <h2>Let's work together</h2>
     <p class="sub">I'm actively seeking a fully-funded PhD position and open to research collaborations. Feel free to reach out.</p>
     <div class="links">
-      <a href="mailto:adeelahmada485@gmail.com">✉ Email</a>
+      <a href="mailto:443057803@stu.iu.edu.sa">✉ Email</a>
       <a href="https://github.com/adeliusa486" target="_blank" rel="noopener">GitHub ↗</a>
       <a href="https://linkedin.com/in/adeel-ahmad-5a041b237" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a href="Adeel-Ahmad-CV.pdf" target="_blank" rel="noopener">View CV ↗</a>
+      <a data-page="cv">View CV</a>
     </div>
   </section>
 
