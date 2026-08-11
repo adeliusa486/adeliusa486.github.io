@@ -4,32 +4,37 @@
   ═══════════════════════════════════════════════════════════════════════════
 
    HOW TO EDIT (no coding needed):
-   • Every piece of text on this site is written PLAINLY below, inside the HTML.
-   • To change something, just find the words on the page (e.g. your bio, a
-     project, your education) and type over them.
-   • Look for comments like   <!-- 👈 EDIT ... -->   they tell you what to change.
+   • Every piece of text is written PLAINLY below inside the HTML.
+   • To change something, find the words on the page and type over them.
+   • Look for comments like   <!-- 👈 EDIT ... -->   they show what to change.
    • To edit on GitHub: open this file, click the pencil ✏️, edit, then
      "Commit changes". Your live site updates in about 1 minute.
 
-   The "Repositories" section fills in AUTOMATICALLY from your GitHub — you
-   never edit it. Make a new repo and it shows up here on its own.
-   (To change WHICH GitHub account it reads, edit the username in the
-    <script> at the very bottom — it's the only line you'd touch there.)
+   ── HOW TO ADD A NEW PAPER (with a status badge) ────────────────────────────
+   In the PUBLICATIONS section, copy one whole  <div class="pub"> ... </div>
+   block and change the text. For the status, use ONE of these words inside
+   class="badge XXX"  and as the label:
+        submitted     → grey     (just sent to a venue)
+        review        → amber    ("Under Review")
+        accepted      → green    ("Accepted")
+        published     → teal     ("Published")
+   Example:  <span class="badge accepted">Accepted</span>
+   ────────────────────────────────────────────────────────────────────────────
+
+   The "Repositories" section fills in AUTOMATICALLY from GitHub — never edit it.
   ═══════════════════════════════════════════════════════════════════════════
 -->
 <title>Adeel Ahmad</title>
 
 <style>
-  /* ---- Emma-Bostian-inspired: warm, light, friendly. Single light theme. ---- */
   :root{
-    --bg:#fdf9f3;            /* warm cream background */
-    --surface:#ffffff;
-    --ink:#2b2233;           /* deep plum-ink text */
-    --soft:#6f6577;          /* muted text */
-    --line:#efe7db;          /* soft divider */
-    --accent:#f97362;        /* coral (like Emma's) */
-    --accent-2:#3aa99f;      /* teal secondary */
-    --accent-soft:#fde9e6;   /* coral tint for chips */
+    --bg:#fdf9f3; --surface:#ffffff; --ink:#2b2233; --soft:#6f6577; --line:#efe7db;
+    --accent:#f97362; --accent-2:#3aa99f; --accent-soft:#fde9e6;
+    /* status colors */
+    --st-submit:#8a8594; --st-submit-bg:#efeceb;
+    --st-review:#c98a1e; --st-review-bg:#fcf1dc;
+    --st-accept:#2e9e63; --st-accept-bg:#e0f4e9;
+    --st-pub:#2a938a;    --st-pub-bg:#dcf1ef;
     --sans:'Segoe UI',system-ui,-apple-system,'Helvetica Neue',sans-serif;
     --serif:'Iowan Old Style','Palatino Linotype','Georgia',serif;
     --mono:'SFMono-Regular',ui-monospace,'Cascadia Code',Consolas,monospace;
@@ -41,24 +46,22 @@
   .wrap{ max-width:820px; margin:0 auto; padding:0 24px; }
   a{ color:var(--accent); }
 
-  /* Nav */
   nav{ position:sticky; top:0; z-index:20; background:color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
   nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:64px; }
-  .brand{ font-family:var(--serif); font-weight:700; font-size:1.15rem; text-decoration:none; color:var(--ink); letter-spacing:-.01em; }
-  nav ul{ display:flex; gap:24px; list-style:none; margin:0; padding:0; align-items:center; }
-  nav ul a{ text-decoration:none; color:var(--soft); font-size:.94rem; font-weight:500; transition:color .15s; }
+  .brand{ font-family:var(--serif); font-weight:700; font-size:1.15rem; text-decoration:none; color:var(--ink); }
+  nav ul{ display:flex; gap:20px; list-style:none; margin:0; padding:0; align-items:center; }
+  nav ul a{ text-decoration:none; color:var(--soft); font-size:.92rem; font-weight:500; transition:color .15s; }
   nav ul a:hover{ color:var(--accent); }
   .menu-btn{ display:none; background:none; border:0; color:var(--ink); font-size:1.5rem; cursor:pointer; }
-  @media(max-width:720px){ nav ul{ display:none; } nav ul.open{ display:flex; position:absolute; top:64px; left:0; right:0; flex-direction:column; background:var(--surface); border-bottom:1px solid var(--line); padding:16px 24px; gap:16px; } .menu-btn{ display:block; } }
+  @media(max-width:820px){ nav ul{ display:none; } nav ul.open{ display:flex; position:absolute; top:64px; left:0; right:0; flex-direction:column; background:var(--surface); border-bottom:1px solid var(--line); padding:16px 24px; gap:15px; } .menu-btn{ display:block; } }
 
-  /* Hero */
   header.hero{ padding:76px 0 48px; }
   .hero-top{ display:flex; align-items:center; gap:30px; flex-wrap:wrap; }
   .avatar{ width:132px; height:132px; border-radius:50%; object-fit:cover; border:4px solid var(--surface); box-shadow:0 8px 30px rgba(249,115,98,.22); flex:none; }
   .hi{ font-family:var(--mono); font-size:.9rem; color:var(--accent-2); margin:0 0 8px; }
-  header.hero h1{ font-family:var(--serif); font-weight:700; font-size:clamp(2.3rem,6.5vw,3.6rem); line-height:1.05; margin:0 0 6px; letter-spacing:-.01em; }
-  .role{ font-size:1.15rem; color:var(--accent); font-weight:600; margin:0; }
-  header.hero p.bio{ font-size:1.14rem; color:var(--soft); max-width:40em; margin:28px 0 26px; }
+  header.hero h1{ font-family:var(--serif); font-weight:700; font-size:clamp(2.3rem,6.5vw,3.6rem); line-height:1.05; margin:0 0 6px; }
+  .role{ font-size:1.14rem; color:var(--accent); font-weight:600; margin:0; }
+  header.hero p.bio{ font-size:1.12rem; color:var(--soft); max-width:40em; margin:26px 0 26px; }
   .cta{ display:flex; gap:12px; flex-wrap:wrap; }
   .btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:999px; font-weight:600; font-size:.95rem; text-decoration:none; transition:transform .15s, box-shadow .15s; }
   .btn:hover{ transform:translateY(-2px); }
@@ -66,39 +69,56 @@
   .btn.ghost{ border:1.5px solid var(--line); color:var(--ink); background:var(--surface); }
   .btn.ghost:hover{ border-color:var(--accent); }
 
-  /* Sections */
   section{ padding:48px 0; border-top:1px solid var(--line); }
   .eyebrow{ font-family:var(--mono); font-size:.8rem; text-transform:uppercase; letter-spacing:.13em; color:var(--accent-2); margin:0 0 8px; }
-  h2{ font-family:var(--serif); font-size:1.8rem; margin:0 0 8px; letter-spacing:-.01em; }
+  h2{ font-family:var(--serif); font-size:1.8rem; margin:0 0 8px; }
   .sub{ color:var(--soft); max-width:42em; margin:0 0 26px; font-size:1.05rem; }
 
-  /* Research */
   .research{ display:grid; gap:12px; }
   .r-item{ display:flex; gap:14px; align-items:flex-start; padding:16px 18px; background:var(--surface); border:1px solid var(--line); border-radius:14px; }
   .r-item::before{ content:""; margin-top:9px; width:9px; height:9px; border-radius:50%; background:var(--accent); flex:none; }
   .r-item span{ font-size:1.03rem; }
 
-  /* Cards */
+  /* Publications */
+  .pubs{ display:grid; gap:16px; }
+  .pub{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:22px 24px; }
+  .pub .badge{ display:inline-block; font-family:var(--mono); font-size:.72rem; font-weight:600; letter-spacing:.03em; text-transform:uppercase; padding:4px 11px; border-radius:999px; margin-bottom:12px; }
+  .badge.submitted{ color:var(--st-submit); background:var(--st-submit-bg); }
+  .badge.review{ color:var(--st-review); background:var(--st-review-bg); }
+  .badge.accepted{ color:var(--st-accept); background:var(--st-accept-bg); }
+  .badge.published{ color:var(--st-pub); background:var(--st-pub-bg); }
+  .pub h3{ font-family:var(--serif); font-size:1.18rem; margin:0 0 6px; line-height:1.35; }
+  .pub .venue{ color:var(--accent); font-weight:600; font-size:.96rem; margin:0 0 6px; }
+  .pub .meta{ color:var(--soft); font-size:.94rem; margin:0; }
+
   .grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
   @media(max-width:620px){ .grid{ grid-template-columns:1fr; } }
   .card{ background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:24px; display:flex; flex-direction:column; text-decoration:none; color:inherit; transition:transform .2s, box-shadow .2s, border-color .2s; }
   .card:hover{ transform:translateY(-4px); box-shadow:0 12px 34px rgba(43,34,51,.09); border-color:var(--accent); }
-  .card h3{ font-family:var(--serif); font-size:1.22rem; margin:0 0 10px; }
+  .card h3{ font-family:var(--serif); font-size:1.2rem; margin:0 0 10px; }
   .card p{ color:var(--soft); font-size:.96rem; margin:0 0 16px; flex:1; }
   .tags{ display:flex; gap:7px; flex-wrap:wrap; }
   .tag{ font-family:var(--mono); font-size:.72rem; padding:4px 10px; border-radius:999px; background:var(--accent-soft); color:#d1493b; }
 
-  /* Timeline */
+  .skills-wrap{ display:grid; gap:14px; }
+  .skill-row{ display:grid; grid-template-columns:150px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--line); }
+  .skill-row:last-child{ border-bottom:0; }
+  .skill-row .k{ font-family:var(--mono); font-size:.85rem; color:var(--accent-2); }
+  .chips{ display:flex; gap:8px; flex-wrap:wrap; }
+  .chip{ font-size:.86rem; padding:4px 12px; border-radius:999px; background:var(--surface); border:1px solid var(--line); }
+  @media(max-width:560px){ .skill-row{ grid-template-columns:1fr; gap:8px; } }
+
   .timeline{ display:grid; }
-  .tl{ display:grid; grid-template-columns:160px 1fr; gap:22px; padding:22px 0; border-bottom:1px solid var(--line); }
+  .tl{ display:grid; grid-template-columns:170px 1fr; gap:22px; padding:22px 0; border-bottom:1px solid var(--line); }
   .tl:last-child{ border-bottom:0; }
-  .tl .when{ font-family:var(--mono); font-size:.86rem; color:var(--accent-2); padding-top:2px; }
+  .tl .when{ font-family:var(--mono); font-size:.85rem; color:var(--accent-2); padding-top:2px; }
   .tl h3{ margin:0; font-size:1.12rem; font-family:var(--serif); }
   .tl .place{ color:var(--accent); font-weight:600; font-size:.96rem; margin:2px 0 8px; }
   .tl .note{ color:var(--soft); font-size:.97rem; }
+  .tl ul{ margin:6px 0 0; padding-left:18px; color:var(--soft); font-size:.97rem; }
+  .tl li{ margin-bottom:4px; }
   @media(max-width:560px){ .tl{ grid-template-columns:1fr; gap:6px; } }
 
-  /* Repos */
   .repo-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
   .live{ display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:.76rem; color:var(--accent-2); }
   .live .pulse{ width:9px; height:9px; border-radius:50%; background:var(--accent-2); animation:pulse 1.9s infinite; }
@@ -109,7 +129,6 @@
   .repo-meta .lang::before{ content:""; width:9px; height:9px; border-radius:50%; background:var(--accent); }
   .loading,.err{ color:var(--soft); font-family:var(--mono); font-size:.9rem; padding:18px 0; }
 
-  /* Contact */
   .contact{ text-align:center; padding-bottom:64px; }
   .contact h2{ font-size:2rem; }
   .contact .sub{ margin:0 auto 26px; }
@@ -122,17 +141,16 @@
 
 <nav>
   <div class="wrap">
-    <!-- 👈 EDIT: the name shown top-left -->
     <a class="brand" href="#top">Adeel Ahmad</a>
     <ul id="menu">
       <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#repos">Repositories</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#work">Work</a></li>
-      <!-- 👈 EDIT: paste your GitHub + LinkedIn links in the two href="" below -->
       <li><a href="https://github.com/adeliusa486" target="_blank" rel="noopener">GitHub&nbsp;↗</a></li>
-      <li><a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noopener">LinkedIn&nbsp;↗</a></li>
+      <li><a href="https://linkedin.com/in/adeel-ahmad-5a041b237" target="_blank" rel="noopener">LinkedIn&nbsp;↗</a></li>
     </ul>
     <button class="menu-btn" id="mb">☰</button>
   </div>
@@ -142,22 +160,21 @@
 <header class="hero">
   <div class="wrap">
     <div class="hero-top">
-      <!-- 👈 EDIT: your photo. This shows your GitHub profile picture. To use a
-           different photo, replace the src="" link with a link to your image. -->
+      <!-- 👈 EDIT: your photo (currently your GitHub picture). Replace src to change. -->
       <img class="avatar" src="https://avatars.githubusercontent.com/u/273715735?v=4" alt="Adeel Ahmad">
       <div>
         <p class="hi">Hi, my name is</p>
-        <!-- 👈 EDIT -->
         <h1>Adeel Ahmad</h1>
-        <p class="role">Researcher in AI Security &amp; Trustworthy Machine Learning</p>
+        <!-- 👈 EDIT -->
+        <p class="role">IT Researcher — Networking, Cloud &amp; AI · Madinah, Saudi Arabia</p>
       </div>
     </div>
     <!-- 👈 EDIT: your short bio -->
-    <p class="bio">I'm a computer-science researcher focused on making machine-learning systems secure, interpretable, and robust — from explainable intrusion detection to Byzantine-robust federated learning. I'm seeking a fully-funded PhD position where I can advance trustworthy AI for critical networks.</p>
+    <p class="bio">Final-year Information Technology undergraduate at the Islamic University of Madinah (GPA 3.99/5.00), with hands-on work in networking, AWS cloud, and applied machine learning. I build full systems from hardware to dashboard, and my research focuses on secure, explainable AI for vehicular and next-generation networks. I'm seeking a fully-funded PhD position to advance trustworthy AI for critical networks.</p>
     <div class="cta">
       <a class="btn primary" href="#research">Explore my research →</a>
-      <!-- 👈 EDIT: link to your CV/resume PDF (upload it to your repo, then put its link here) -->
-      <a class="btn ghost" href="#" target="_blank" rel="noopener">Download CV</a>
+      <!-- 👇 CV download (the file Adeel-Ahmad-CV.pdf lives in this repo) -->
+      <a class="btn ghost" href="Adeel-Ahmad-CV.pdf" target="_blank" rel="noopener">Download CV ↓</a>
     </div>
   </div>
 </header>
@@ -167,13 +184,56 @@
   <div class="wrap">
     <p class="eyebrow">Research Interests</p>
     <h2>What I work on</h2>
-    <p class="sub">My research sits at the intersection of machine learning, security, and distributed systems — building AI that people can trust, explain, and deploy in critical infrastructure.</p>
-    <!-- 👈 EDIT: add / remove research interests by copying a whole <div class="r-item">...</div> line -->
+    <p class="sub">My research sits at the intersection of machine learning, security, and networks — building AI that people can trust, explain, and deploy in critical systems.</p>
+    <!-- 👈 EDIT: copy a <div class="r-item"> line to add another interest -->
     <div class="research">
-      <div class="r-item"><span>Explainable AI (XAI) for cybersecurity &amp; intrusion detection</span></div>
-      <div class="r-item"><span>Robust &amp; trustworthy federated learning under adversarial / non-IID conditions</span></div>
-      <div class="r-item"><span>Causal inference for root-cause analysis in cloud-native systems</span></div>
-      <div class="r-item"><span>AI for next-generation networks (SDN, O-RAN, vehicular / named-data networking)</span></div>
+      <div class="r-item"><span>Explainable AI (XAI) for network security &amp; intrusion / DDoS detection</span></div>
+      <div class="r-item"><span>Privacy &amp; robustness in federated learning for vehicular networks</span></div>
+      <div class="r-item"><span>Edge caching &amp; content delivery for vehicular / next-generation networks</span></div>
+      <div class="r-item"><span>Applied machine learning for networking, cloud, and IoT systems</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PUBLICATIONS ══════════════ -->
+<section id="publications">
+  <div class="wrap">
+    <p class="eyebrow">Publications</p>
+    <h2>Papers &amp; research output</h2>
+    <p class="sub">Peer-reviewed and in-progress work. Each paper shows its current stage.</p>
+
+    <!--
+       👇👇 TO ADD A NEW PAPER: copy one whole  <div class="pub"> ... </div>  block below,
+       paste it above the others, and edit the text. Set the status by choosing ONE word
+       for BOTH the class and the label:
+         submitted | review | accepted | published
+       (see the note at the very top of this file for the color of each)
+    -->
+    <div class="pubs">
+
+      <div class="pub">
+        <span class="badge accepted">Accepted</span>
+        <h3>Privacy Leakage in Federated Learning: Gradient-Based Client Identity Inference and Defense Analysis for Secure Vehicular Networks</h3>
+        <p class="venue">IEEE 104th Vehicular Technology Conference (VTC2026-Fall)</p>
+        <p class="meta">Co-author · Accepted 2026</p>
+      </div>
+
+      <div class="pub">
+        <span class="badge review">Under Review</span>
+        <h3>Balancing Spatial Urgency and Content Popularity for Edge Caching in Vehicular Networks</h3>
+        <p class="venue">Springer Nature — Discover Telecommunications</p>
+        <p class="meta">Under peer review · 2026</p>
+      </div>
+
+      <!-- ── COPY FROM HERE to add a new one (change the badge word + text) ──
+      <div class="pub">
+        <span class="badge submitted">Submitted</span>
+        <h3>Your new paper title goes here</h3>
+        <p class="venue">Conference or Journal name</p>
+        <p class="meta">Author role · Year</p>
+      </div>
+      ── COPY TO HERE ── -->
+
     </div>
   </div>
 </section>
@@ -181,41 +241,41 @@
 <!-- ══════════════ PROJECTS ══════════════ -->
 <section id="projects">
   <div class="wrap">
-    <p class="eyebrow">Selected Projects &amp; Papers</p>
+    <p class="eyebrow">Selected Projects</p>
     <h2>Featured work</h2>
-    <p class="sub">A curated selection of my strongest work. My complete, always-current code is in the Repositories section below.</p>
-    <!-- 👈 EDIT: each project is one <a class="card">...</a>. Copy a whole block to add another. -->
+    <p class="sub">A curated selection. My complete, always-current code is in the Repositories section below.</p>
+    <!-- 👈 EDIT: each project is one <a class="card">. Copy a whole block to add another. -->
     <div class="grid">
+
+      <a class="card" href="https://github.com/adeliusa486/XAI-SDN" target="_blank" rel="noopener">
+        <h3>XAI-SDN — Explainable DDoS Detection</h3>
+        <p>Random Forest classifier with SHAP explanations on the CIC-DDoS2019 dataset (3.59M flows) — 99.99% accuracy at sub-millisecond inference, served via a FastAPI API and Streamlit dashboard.</p>
+        <div class="tags"><span class="tag">SDN</span><span class="tag">SHAP</span><span class="tag">FastAPI</span><span class="tag">Python</span></div>
+      </a>
+
+      <a class="card" href="https://github.com/adeliusa486/smart-obstacle-cane" target="_blank" rel="noopener">
+        <h3>Smart Cane for the Visually Impaired</h3>
+        <p>Real-time object detection (SSD MobileNet V1, OpenCV) on a Raspberry Pi with spoken English alerts and vibration feedback. Selected into the King Salman Center AI Hackathon acceleration phase.</p>
+        <div class="tags"><span class="tag">Edge AI</span><span class="tag">Raspberry Pi</span><span class="tag">OpenCV</span></div>
+      </a>
 
       <a class="card" href="https://github.com/adeliusa486/cxai-rca" target="_blank" rel="noopener">
         <h3>Causal &amp; Explainable AI for Cyber-Attack Root-Cause Analysis</h3>
         <p>A framework combining causal inference and XAI to trace the root cause of cyber attacks in cloud-native microservice architectures.</p>
-        <div class="tags"><span class="tag">Causal AI</span><span class="tag">XAI</span><span class="tag">Microservices</span><span class="tag">Python</span></div>
-      </a>
-
-      <a class="card" href="https://github.com/adeliusa486/XAI-SDN" target="_blank" rel="noopener">
-        <h3>XAI-SDN — Interpretable DDoS Detection</h3>
-        <p>A lightweight, interpretable DDoS detection system for Software-Defined Networks using entropy feature augmentation, Random Forest, and SHAP explanations.</p>
-        <div class="tags"><span class="tag">SDN</span><span class="tag">DDoS</span><span class="tag">SHAP</span><span class="tag">Random Forest</span></div>
+        <div class="tags"><span class="tag">Causal AI</span><span class="tag">XAI</span><span class="tag">Microservices</span></div>
       </a>
 
       <a class="card" href="https://github.com/adeliusa486/oran-fed-robust" target="_blank" rel="noopener">
         <h3>Byzantine-Robust Federated Learning for O-RAN</h3>
         <p>Heterogeneity-aware robust aggregation defending Open-RAN intelligence against poisoning attacks (vs. Krum / median / trimmed-mean / FLTrust under non-IID).</p>
-        <div class="tags"><span class="tag">Federated Learning</span><span class="tag">Robustness</span><span class="tag">O-RAN</span><span class="tag">IoT</span></div>
-      </a>
-
-      <a class="card" href="https://github.com/adeliusa486/smart-obstacle-cane" target="_blank" rel="noopener">
-        <h3>Smart Obstacle-Detecting Cane</h3>
-        <p>An AI-powered assistive cane for the visually impaired, running real-time obstacle detection on a Raspberry Pi Zero 2W.</p>
-        <div class="tags"><span class="tag">Edge AI</span><span class="tag">Raspberry Pi</span><span class="tag">Assistive Tech</span></div>
+        <div class="tags"><span class="tag">Federated Learning</span><span class="tag">Robustness</span><span class="tag">O-RAN</span></div>
       </a>
 
     </div>
   </div>
 </section>
 
-<!-- ══════════════ REPOSITORIES (auto-synced, do not edit) ══════════════ -->
+<!-- ══════════════ REPOSITORIES (auto-synced) ══════════════ -->
 <section id="repos">
   <div class="wrap">
     <div class="repo-head">
@@ -230,29 +290,54 @@
   </div>
 </section>
 
+<!-- ══════════════ SKILLS ══════════════ -->
+<section id="skills">
+  <div class="wrap">
+    <p class="eyebrow">Technical Skills</p>
+    <h2>Tools &amp; technologies</h2>
+    <!-- 👈 EDIT: add/remove <span class="chip"> items in each row -->
+    <div class="skills-wrap" style="margin-top:16px;">
+      <div class="skill-row"><div class="k">programming</div><div class="chips"><span class="chip">Python</span><span class="chip">Java</span><span class="chip">SQL</span></div></div>
+      <div class="skill-row"><div class="k">AI / ML</div><div class="chips"><span class="chip">Machine Learning</span><span class="chip">PyTorch</span><span class="chip">NumPy</span><span class="chip">OpenCV</span></div></div>
+      <div class="skill-row"><div class="k">networking</div><div class="chips"><span class="chip">CCNA (in progress)</span><span class="chip">OSPF</span><span class="chip">EIGRP</span><span class="chip">VLANs</span><span class="chip">ACLs</span><span class="chip">Wireshark</span><span class="chip">Packet Tracer</span></div></div>
+      <div class="skill-row"><div class="k">cloud / systems</div><div class="chips"><span class="chip">AWS</span><span class="chip">Linux</span></div></div>
+      <div class="skill-row"><div class="k">tools</div><div class="chips"><span class="chip">Git</span><span class="chip">Raspberry Pi</span><span class="chip">Flutter</span><span class="chip">WordPress</span></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════════ EDUCATION ══════════════ -->
 <section id="education">
   <div class="wrap">
     <p class="eyebrow">Education</p>
     <h2>Academic background</h2>
-    <!-- 👈 EDIT: fill in your real universities, degrees and years -->
+    <!-- 👈 EDIT your education -->
     <div class="timeline" style="margin-top:16px;">
 
       <div class="tl">
-        <div class="when">20XX – 20XX</div>
+        <div class="when">2023 – Present</div>
         <div>
-          <h3>M.S. in Computer Science</h3>
-          <div class="place">Your University Name</div>
-          <div class="note">Thesis / focus: add your research focus here.</div>
+          <h3>Bachelor of Information Technology</h3>
+          <div class="place">Islamic University of Madinah</div>
+          <div class="note">GPA: 3.99 / 5.00 · Saudi Government-funded scholarship recipient (academic excellence).</div>
         </div>
       </div>
 
       <div class="tl">
-        <div class="when">20XX – 20XX</div>
+        <div class="when">2020</div>
         <div>
-          <h3>B.S. in Computer Science</h3>
-          <div class="place">Your University Name</div>
-          <div class="note">Relevant coursework: machine learning, networks, security.</div>
+          <h3>Higher Secondary Education</h3>
+          <div class="place">Punjab College of Commerce</div>
+          <div class="note">92%</div>
+        </div>
+      </div>
+
+      <div class="tl">
+        <div class="when">2017</div>
+        <div>
+          <h3>Secondary Education</h3>
+          <div class="place">Govt. High School, Qila Didar Singh, Gujranwala</div>
+          <div class="note">90%</div>
         </div>
       </div>
 
@@ -265,24 +350,29 @@
   <div class="wrap">
     <p class="eyebrow">Experience</p>
     <h2>Work &amp; research roles</h2>
-    <!-- 👈 EDIT: fill in your real roles -->
+    <!-- 👈 EDIT your experience -->
     <div class="timeline" style="margin-top:16px;">
 
       <div class="tl">
-        <div class="when">20XX – Present</div>
+        <div class="when">Jun 2026 – Present</div>
         <div>
-          <h3>Research Assistant</h3>
-          <div class="place">Your Lab / University</div>
-          <div class="note">Describe what you worked on — one or two lines.</div>
+          <h3>Intern</h3>
+          <div class="place">Asaqefah Business Development — Madinah</div>
+          <ul>
+            <li>Built an MVP of a smart crowd-management system for Al-Masjid an-Nabawi: an AWS-powered, multilingual visitor app with an operations dashboard.</li>
+            <li>Owned the full stack across real-time navigation, crowd analysis, and cloud architecture.</li>
+          </ul>
         </div>
       </div>
 
       <div class="tl">
-        <div class="when">20XX – 20XX</div>
+        <div class="when">2026</div>
         <div>
-          <h3>Add another role</h3>
-          <div class="place">Company / Institution</div>
-          <div class="note">What you did and what you achieved.</div>
+          <h3>Developer — Team VisionBridge AI</h3>
+          <div class="place">King Salman Center AI Hackathon</div>
+          <ul>
+            <li>Built an offline Raspberry Pi smart cane using AI object detection and a laser sensor for visually impaired users; selected into the hackathon acceleration phase.</li>
+          </ul>
         </div>
       </div>
 
@@ -296,11 +386,12 @@
     <p class="eyebrow">Contact</p>
     <h2>Let's work together</h2>
     <p class="sub">I'm actively seeking a fully-funded PhD position and open to research collaborations. Feel free to reach out.</p>
-    <!-- 👈 EDIT: your email + links -->
+    <!-- 👈 EDIT your links -->
     <div class="links">
       <a href="mailto:adeelahmada485@gmail.com">✉ Email</a>
       <a href="https://github.com/adeliusa486" target="_blank" rel="noopener">GitHub ↗</a>
-      <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://linkedin.com/in/adeel-ahmad-5a041b237" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="Adeel-Ahmad-CV.pdf" target="_blank" rel="noopener">CV ↓</a>
     </div>
   </div>
 </section>
@@ -311,16 +402,11 @@
 
 <script>
   document.getElementById("yr").textContent = new Date().getFullYear();
-
-  // mobile menu
   const menu = document.getElementById("menu");
   document.getElementById("mb").addEventListener("click", () => menu.classList.toggle("open"));
   menu.addEventListener("click", e => { if (e.target.tagName === "A") menu.classList.remove("open"); });
 
-  /* ───────────────────────────────────────────────────────────────
-     LIVE REPOSITORIES — the ONE line to change here is the username.
-     👈 EDIT: put your GitHub username between the quotes.
-     ─────────────────────────────────────────────────────────────── */
+  /* 👈 EDIT (only if your GitHub username ever changes): */
   const GITHUB_USERNAME = "adeliusa486";
 
   const out = document.getElementById("repos-out");
