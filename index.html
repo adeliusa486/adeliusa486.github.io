@@ -53,6 +53,10 @@
   .btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border-radius:999px; font-weight:700; font-size:.95rem; text-decoration:none; cursor:pointer; border:0; font-family:var(--sans); transition:transform .15s; }
   .btn:hover{ transform:translateY(-2px); } .btn.primary{ background:var(--accent); color:#fff; box-shadow:0 8px 20px rgba(223,86,62,.32); }
   .cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; }
+  #p-intro h1{ font-size:clamp(2rem,3.4vw,2.85rem); line-height:1.05; margin-bottom:12px; }
+  #p-intro .pill{ margin-bottom:12px; }
+  #p-intro .lead{ font-size:1rem; line-height:1.62; margin-bottom:18px; }
+  #p-intro .lead b{ color:var(--ink); font-weight:700; }
 
   .list{ display:grid; gap:12px; }
   .item{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 18px; }
@@ -100,7 +104,19 @@
   .cert .ci svg{ width:24px; height:24px; }
   .cert h4{ margin:0 0 3px; font-family:var(--serif); font-weight:600; font-size:1.06rem; } .cert p{ margin:0; color:var(--soft); font-size:.9rem; }
 
-  .links{ display:flex; gap:12px; flex-wrap:wrap; } .links a{ display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border:1.5px solid var(--line); border-radius:999px; text-decoration:none; color:var(--ink); font-weight:600; font-size:.92rem; background:var(--surface); transition:border-color .18s,transform .18s; } .links a:hover{ border-color:var(--accent); transform:translateY(-2px); }
+  .links{ display:flex; gap:12px; flex-wrap:wrap; } .links a{ display:inline-flex; align-items:center; gap:9px; padding:12px 22px; border:1.5px solid var(--line); border-radius:999px; text-decoration:none; color:var(--ink); font-weight:600; font-size:.92rem; background:var(--surface); cursor:pointer; transition:border-color .18s,transform .18s,color .18s; } .links a:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
+  .links a svg{ width:18px; height:18px; }
+  /* CV document */
+  .cv-bar{ margin-bottom:20px; }
+  .cv-doc{ background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:36px 40px; }
+  @media(max-width:600px){ .cv-doc{ padding:24px 20px; } }
+  .cv-doc .cvhead{ text-align:center; border-bottom:1px solid var(--line); padding-bottom:16px; }
+  .cv-doc .cvhead h3{ font-family:var(--serif); font-weight:700; font-size:1.9rem; margin:0; }
+  .cv-doc .cvhead .t{ color:var(--soft); margin:4px 0 8px; } .cv-doc .cvhead .c{ font-size:.88rem; color:var(--soft); } .cv-doc .cvhead .c a{ color:var(--accent); text-decoration:none; }
+  .cv-sec{ margin-top:22px; } .cv-sec h4{ font-family:var(--mono); font-size:.78rem; text-transform:uppercase; letter-spacing:.12em; color:var(--accent); margin:0 0 10px; padding-bottom:6px; border-bottom:1px solid var(--line); }
+  .cv-sec p{ margin:0 0 7px; } .cv-sec b{ color:var(--ink); }
+  .cv-sec .row2{ display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; } .cv-sec .row2 .yr{ color:var(--soft); font-family:var(--mono); font-size:.84rem; white-space:nowrap; }
+  .cv-sec ul{ margin:6px 0 0; padding-left:20px; color:var(--soft); } .cv-sec li{ margin-bottom:4px; }
 
   /* ---------- HELM ---------- */
   .helm{ position:absolute; top:50%; right:0; width:880px; height:880px; transform:translate(40%,-50%); z-index:10; touch-action:none; }
@@ -144,10 +160,10 @@
     <section class="panel active" id="p-intro">
       <span class="pill">Madinah, Saudi Arabia</span>
       <h1>Hi, I'm Adeel — working at the intersection of <span class="mark">cybersecurity, AI, and networks.</span></h1>
-      <p class="lead">Final-year IT student at IUM on a fully-funded Saudi Government scholarship, researching secure, private, and explainable AI for critical networks. Steer the wheel to explore my work — the wooden hub at the centre always brings you home.</p>
+      <p class="lead">I'm a final-year Information Technology student at <b>IUM</b>, studying on a fully-funded <b>Saudi Government scholarship</b> awarded for academic excellence. My journey into computing began in Gujranwala, Pakistan, with a simple curiosity — taking apart small programs and networks to understand how they really work — and has grown into a focused mission: making artificial intelligence <b>secure, private, and explainable</b> enough to protect the networks the world depends on. Over the past two years I've co-authored peer-reviewed research on privacy in federated learning, designed interpretable intrusion-detection systems for software-defined networks, and built complete systems from Raspberry Pi hardware to cloud dashboards. I'm currently sharpening my practical security skills through hands-on <b>TryHackMe</b> cybersecurity labs, alongside my AWS and networking training.</p>
       <div class="cta">
         <a class="btn primary" data-go="research">Explore research →</a>
-        <a class="btn primary" href="Adeel-Ahmad-CV.pdf" target="_blank" rel="noopener" style="background:var(--teal);box-shadow:0 8px 20px rgba(42,143,150,.3)">View CV</a>
+        <a class="btn primary" data-go="cv" style="background:var(--teal);box-shadow:0 8px 20px rgba(42,143,150,.3)">View CV</a>
       </div>
     </section>
 
@@ -259,10 +275,58 @@
       <h2>Let's work together</h2>
       <p class="lead">Actively seeking a fully-funded PhD position and open to research collaborations.</p>
       <div class="links">
-        <a href="mailto:443057803@stu.iu.edu.sa">✉ Email</a>
-        <a href="https://github.com/adeliusa486" target="_blank" rel="noopener">GitHub ↗</a>
-        <a href="https://linkedin.com/in/adeel-ahmad-5a041b237" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a href="Adeel-Ahmad-CV.pdf" target="_blank" rel="noopener">CV ↓</a>
+        <a href="mailto:443057803@stu.iu.edu.sa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg> Email</a>
+        <a href="https://github.com/adeliusa486" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.8c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.1-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C16.9 5 17.9 5.3 17.9 5.3c.6 1.6.2 2.8.1 3.1.7.8 1.1 1.8 1.1 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg> GitHub</a>
+        <a href="https://linkedin.com/in/adeel-ahmad-5a041b237" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.3a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5zM19 19h-3v-4.7c0-1.1 0-2.5-1.5-2.5S13 13 13 14.2V19h-3v-9h2.9v1.3a3.1 3.1 0 0 1 2.8-1.5c3 0 3.6 2 3.6 4.5z"/></svg> LinkedIn</a>
+        <a data-go="cv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg> View CV</a>
+      </div>
+    </section>
+
+    <!-- CV — themed, viewable in-page + separate download -->
+    <section class="panel" id="p-cv">
+      <p class="eyebrow">Curriculum Vitae</p>
+      <div class="cv-bar"><a class="btn primary" href="Adeel-Ahmad-CV.pdf" download style="background:var(--teal);box-shadow:0 8px 20px rgba(42,143,150,.3)">Download PDF ↓</a></div>
+      <div class="cv-doc">
+        <div class="cvhead">
+          <h3>Adeel Ahmad</h3>
+          <div class="t">Information Technology Student — Networking, Cloud &amp; AI</div>
+          <div class="c">Madinah, Saudi Arabia · <a href="mailto:443057803@stu.iu.edu.sa">443057803@stu.iu.edu.sa</a><br>
+          <a href="https://github.com/adeliusa486" target="_blank" rel="noopener">github.com/adeliusa486</a> · <a href="https://linkedin.com/in/adeel-ahmad-5a041b237" target="_blank" rel="noopener">linkedin.com/in/adeel-ahmad-5a041b237</a></div>
+        </div>
+        <div class="cv-sec"><h4>Summary</h4><p>Final-year Information Technology undergraduate at the Islamic University of Madinah with hands-on experience in networking, AWS cloud computing, and applied machine learning. Co-author of an IEEE conference paper and builder of full systems from hardware to dashboard.</p></div>
+        <div class="cv-sec"><h4>Education</h4>
+          <div class="row2"><span><b>Bachelor of Information Technology</b>, Islamic University of Madinah</span><span class="yr">2023 – Present</span></div>
+          <p>CGPA: 3.99 / 5.00 (equivalent to 3.2 / 4.00)</p>
+          <div class="row2"><span><b>Higher Secondary Education</b>, Punjab College of Commerce</span><span class="yr">2020 (92%)</span></div>
+          <div class="row2"><span><b>Secondary Education</b>, Govt. High School, Qila Didar Singh, Gujranwala</span><span class="yr">2017 (90%)</span></div>
+        </div>
+        <div class="cv-sec"><h4>Technical Skills</h4>
+          <p><b>Programming:</b> Python, Java, SQL, Bash, MATLAB</p>
+          <p><b>AI &amp; Machine Learning:</b> PyTorch, scikit-learn, NumPy, OpenCV, SHAP</p>
+          <p><b>Networking:</b> CCNA, OSPF, RIP, EIGRP, VLANs, ACLs, Wireshark, Packet Tracer</p>
+          <p><b>Cloud &amp; DevOps:</b> AWS, CloudFormation, Terraform, Ansible, Docker, Linux</p>
+          <p><b>Simulation &amp; Tools:</b> GNS3, SUMO, Git, Raspberry Pi, Flutter</p>
+        </div>
+        <div class="cv-sec"><h4>Experience</h4>
+          <div class="row2"><span><b>Intern</b>, Asaqefah Business Development — Madinah</span><span class="yr">Jun 2026 – Present</span></div>
+          <ul><li>Built an AWS-powered, multilingual crowd-management MVP for Al-Masjid an-Nabawi with an operations dashboard.</li><li>Owned the full stack across real-time navigation, crowd analysis, and cloud architecture.</li></ul>
+          <div class="row2"><span><b>Developer, Team VisionBridge AI</b> — King Salman Center AI Hackathon</span><span class="yr">2026</span></div>
+          <ul><li>Built an offline Raspberry Pi smart cane; selected into the hackathon acceleration phase.</li></ul>
+        </div>
+        <div class="cv-sec"><h4>Publications</h4>
+          <ul>
+            <li><b>Accepted:</b> "Privacy Leakage in Federated Learning…", IEEE VTC2026-Fall.</li>
+            <li><b>In peer review:</b> "Balancing Spatial Urgency and Content Popularity for Edge Caching in Vehicular Networks", Springer Nature, Discover Telecommunications.</li>
+            <li><b>Submitted:</b> "XAI-SDN: A Lightweight, Interpretable DDoS Detection System for SDN…".</li>
+            <li><b>Submitted:</b> "Adaptive Multi-Factor Trust Aggregation for Byzantine-Robust Federated Learning in IoT Networks".</li>
+          </ul>
+        </div>
+        <div class="cv-sec"><h4>Activities &amp; Honours</h4>
+          <ul><li>Saudi Government-funded scholarship recipient, Islamic University of Madinah (Mar 2023).</li>
+          <li>Cisco NetAcad Network Security badge (completed); preparing for AWS SAA (completed Adrian Cantrill's course) and CCNA.</li>
+          <li>Currently completing hands-on cybersecurity labs on TryHackMe.</li></ul>
+        </div>
+        <div class="cv-sec"><h4>Languages</h4><p>Urdu (Native), Punjabi (Native), English (B2), Arabic (Beginner)</p></div>
       </div>
     </section>
 
@@ -270,7 +334,6 @@
 
   <!-- HELM -->
   <div class="helm" id="helm">
-    <div class="selector"></div>
     <div class="rotor" id="rotor"></div>
     <div class="home-btn" data-go="intro" title="Home">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
@@ -278,8 +341,6 @@
     </div>
   </div>
 </div>
-
-<div class="hint">Drag the wheel <b>↕</b> to steer · click an icon · centre = home</div>
 
 <script>
   const ICONS = {
@@ -294,38 +355,53 @@
     {id:'experience',label:'Experience'},{id:'credentials',label:'Credentials'},{id:'contact',label:'Contact'}
   ];
 
-  const SIZE=880, C=SIZE/2, RIM=290, ICON_R=290, HANDLE=356;
+  const SIZE=880, C=SIZE/2, RIM=286, ICON_R=340;
   const rotor=document.getElementById('rotor');
   const rad=d=>d*Math.PI/180;
+  const PRIM=[36,108,180,252,324], SEC=[0,72,144,216,288];
 
   (function buildWheel(){
     const cos=a=>Math.cos(rad(a)), sin=a=>Math.sin(rad(a));
-    let spokes='';
-    for(let a=0;a<360;a+=45){
-      const sx=C+cos(a)*70, sy=C+sin(a)*70, ex=C+cos(a)*272, ey=C+sin(a)*272;
-      spokes+=`<line x1="${sx.toFixed(1)}" y1="${sy.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}" stroke="url(#wood)" stroke-width="30" stroke-linecap="round"/>`;
-      [135,200].forEach(r=>{ spokes+=`<circle cx="${(C+cos(a)*r).toFixed(1)}" cy="${(C+sin(a)*r).toFixed(1)}" r="18" fill="url(#woodK)" stroke="#2e1c10" stroke-width="2"/>`; });
-      const hx1=C+cos(a)*288, hy1=C+sin(a)*288, hx2=C+cos(a)*HANDLE, hy2=C+sin(a)*HANDLE;
-      spokes+=`<line x1="${hx1.toFixed(1)}" y1="${hy1.toFixed(1)}" x2="${hx2.toFixed(1)}" y2="${hy2.toFixed(1)}" stroke="url(#wood)" stroke-width="36" stroke-linecap="round"/>`;
-      spokes+=`<circle cx="${(C+cos(a)*282).toFixed(1)}" cy="${(C+sin(a)*282).toFixed(1)}" r="14" fill="url(#woodK)" stroke="#2e1c10" stroke-width="2"/>`;
-      spokes+=`<circle cx="${hx2.toFixed(1)}" cy="${hy2.toFixed(1)}" r="23" fill="url(#woodK)" stroke="#2e1c10" stroke-width="3"/>`;
-    }
+    const P=(r,a)=>[(C+cos(a)*r).toFixed(1),(C+sin(a)*r).toFixed(1)];
+    let g='';
+    // 10 spokes from hub to rim
+    [...PRIM,...SEC].forEach(a=>{ const s=P(64,a),e=P(268,a);
+      g+=`<line x1="${s[0]}" y1="${s[1]}" x2="${e[0]}" y2="${e[1]}" stroke="url(#wood)" stroke-width="26" stroke-linecap="round"/>`;
+      g+=`<circle cx="${P(150,a)[0]}" cy="${P(150,a)[1]}" r="15" fill="url(#woodK)" stroke="#3a2414" stroke-width="2"/>`; });
+    // secondary handles (short, wood knob)
+    SEC.forEach(a=>{ const b=P(286,a),t=P(346,a);
+      g+=`<line x1="${b[0]}" y1="${b[1]}" x2="${t[0]}" y2="${t[1]}" stroke="url(#wood)" stroke-width="32" stroke-linecap="round"/>`;
+      g+=`<circle cx="${P(298,a)[0]}" cy="${P(298,a)[1]}" r="13" fill="url(#brass)" stroke="#5e440f" stroke-width="1.5"/>`;
+      g+=`<circle cx="${t[0]}" cy="${t[1]}" r="20" fill="url(#woodK)" stroke="#3a2414" stroke-width="2.5"/>`; });
+    // primary handles (reach the icon grip; brass collar at base)
+    PRIM.forEach(a=>{ const b=P(286,a),t=P(332,a);
+      g+=`<line x1="${b[0]}" y1="${b[1]}" x2="${t[0]}" y2="${t[1]}" stroke="url(#wood)" stroke-width="34" stroke-linecap="round"/>`;
+      g+=`<circle cx="${P(300,a)[0]}" cy="${P(300,a)[1]}" r="14" fill="url(#brass)" stroke="#5e440f" stroke-width="1.5"/>`; });
     rotor.innerHTML=`
     <svg viewBox="0 0 ${SIZE} ${SIZE}">
       <defs>
         <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#9a6638"/><stop offset=".5" stop-color="#6e4527"/><stop offset="1" stop-color="#452a18"/></linearGradient>
-        <radialGradient id="woodK" cx=".4" cy=".35" r=".8">
-          <stop offset="0" stop-color="#a97142"/><stop offset="1" stop-color="#4a2e1a"/></radialGradient>
-        <filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity=".42"/></filter>
+          <stop offset="0" stop-color="#a86e3c"/><stop offset=".5" stop-color="#7a4e2b"/><stop offset="1" stop-color="#4d3018"/></linearGradient>
+        <radialGradient id="woodK" cx=".4" cy=".33" r=".85">
+          <stop offset="0" stop-color="#b87f4a"/><stop offset="1" stop-color="#4d3018"/></radialGradient>
+        <radialGradient id="brass" cx=".38" cy=".32" r=".85">
+          <stop offset="0" stop-color="#f8e39c"/><stop offset=".55" stop-color="#cc9d3b"/><stop offset="1" stop-color="#7d5a12"/></radialGradient>
+        <radialGradient id="rimG" cx=".5" cy=".5" r=".5">
+          <stop offset=".86" stop-color="#7a4e2b"/><stop offset=".9" stop-color="#a86e3c"/><stop offset="1" stop-color="#4d3018"/></radialGradient>
+        <filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="9" stdDeviation="13" flood-color="#000" flood-opacity=".45"/></filter>
       </defs>
       <g filter="url(#sh)">
-        ${spokes}
-        <circle cx="${C}" cy="${C}" r="290" fill="none" stroke="url(#wood)" stroke-width="48"/>
-        <circle cx="${C}" cy="${C}" r="314" fill="none" stroke="#2e1c10" stroke-width="3"/>
-        <circle cx="${C}" cy="${C}" r="266" fill="none" stroke="#2e1c10" stroke-width="3"/>
-        <circle cx="${C}" cy="${C}" r="290" fill="none" stroke="rgba(255,231,183,.16)" stroke-width="9"/>
-        <circle cx="${C}" cy="${C}" r="58" fill="url(#woodK)" stroke="#2e1c10" stroke-width="3"/>
+        ${g}
+        <circle cx="${C}" cy="${C}" r="${RIM}" fill="none" stroke="url(#wood)" stroke-width="46"/>
+        <circle cx="${C}" cy="${C}" r="${RIM+21}" fill="none" stroke="#3a2414" stroke-width="3"/>
+        <circle cx="${C}" cy="${C}" r="${RIM-21}" fill="none" stroke="#3a2414" stroke-width="3"/>
+        <circle cx="${C}" cy="${C}" r="${RIM-6}" fill="none" stroke="rgba(255,231,183,.20)" stroke-width="7"/>
+        <circle cx="${C}" cy="${C}" r="${RIM+9}" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="6"/>
+      </g>
+      <g filter="url(#sh)">
+        <circle cx="${C}" cy="${C}" r="70" fill="url(#brass)" stroke="#5e440f" stroke-width="2"/>
+        <circle cx="${C}" cy="${C}" r="52" fill="none" stroke="#8a6417" stroke-width="2"/>
+        <circle cx="${C}" cy="${C}" r="60" fill="url(#woodK)"/>
       </g>
     </svg>`;
   })();
@@ -365,7 +441,7 @@
   }
   document.querySelectorAll('[data-go]').forEach(el=>el.addEventListener('click',e=>{
     const g=el.dataset.go;
-    if(g==='intro'){ showPanel._cur=null; document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='p-intro')); document.getElementById('content').scrollTop=0; }
+    if(g==='intro'||g==='cv'){ e.preventDefault(); showPanel._cur=null; document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='p-'+g)); document.getElementById('content').scrollTop=0; }
     else { e.preventDefault(); selectSection(g); }
   }));
 
