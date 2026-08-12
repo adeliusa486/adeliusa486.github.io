@@ -133,6 +133,7 @@
 
   /* ---------- HELM ---------- */
   .helm{ position:absolute; top:50%; right:0; width:880px; height:880px; transform:translate(44%,-50%); z-index:10; touch-action:none; }
+  .helm-inner{ position:absolute; inset:0; transform:scale(.85); transform-origin:50% 50%; }
   .rotor{ position:absolute; inset:0; will-change:transform; cursor:grab; }
   .rotor.dragging{ cursor:grabbing; }
   .rotor.snap{ transition:transform .62s cubic-bezier(.16,1,.3,1); }
@@ -364,10 +365,12 @@
 
   <!-- HELM -->
   <div class="helm" id="helm">
-    <div class="rotor" id="rotor"></div>
-    <div class="home-btn" data-go="intro" title="Home">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
-      <span>Home</span>
+    <div class="helm-inner">
+      <div class="rotor" id="rotor"></div>
+      <div class="home-btn" data-go="intro" title="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
+        <span>Home</span>
+      </div>
     </div>
   </div>
 </div>
