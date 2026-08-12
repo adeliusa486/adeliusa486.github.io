@@ -38,7 +38,7 @@
 
   .stage{ position:relative; width:100%; height:100vh; overflow:hidden; }
 
-  .content{ position:absolute; top:0; left:0; width:54%; height:100%; padding:104px 40px 70px 34px; overflow-y:auto; overflow-x:hidden; }
+  .content{ position:absolute; top:0; left:0; width:54%; height:100%; padding:104px 40px 44px 34px; overflow-y:auto; overflow-x:hidden; }
   .content::-webkit-scrollbar{ width:8px; } .content::-webkit-scrollbar-thumb{ background:var(--line); border-radius:8px; }
   .panel{ display:none; animation:fade .45s ease; max-width:640px; }
   .panel.active{ display:block; }
@@ -55,11 +55,12 @@
   .pill{ display:inline-block; background:var(--green); color:var(--ink); font-family:var(--mono); font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; padding:7px 15px; border-radius:999px; margin-bottom:18px; }
   .btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border-radius:999px; font-weight:700; font-size:.95rem; text-decoration:none; cursor:pointer; border:0; font-family:var(--sans); transition:transform .15s; }
   .btn:hover{ transform:translateY(-2px); } .btn.primary{ background:var(--accent); color:#fff; box-shadow:0 8px 20px rgba(223,86,62,.32); }
-  #p-intro h1{ font-size:clamp(1.9rem,3.2vw,2.7rem); line-height:1.06; margin-bottom:11px; }
-  #p-intro .pill{ margin-bottom:11px; }
-  #p-intro .lead{ font-size:.97rem; line-height:1.58; margin-bottom:15px; }
+  #p-intro{ margin-top:-22px; }
+  #p-intro h1{ font-size:clamp(1.9rem,3.2vw,2.7rem); line-height:1.06; margin-bottom:10px; }
+  #p-intro .pill{ margin-bottom:10px; }
+  #p-intro .lead{ font-size:.97rem; line-height:1.56; margin-bottom:11px; }
   #p-intro .lead b{ color:var(--ink); font-weight:700; }
-  .glance{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 20px; }
+  .glance{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 13px; }
   .glance span{ display:inline-flex; align-items:center; gap:8px; font-size:.8rem; font-weight:600; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:4px 14px 4px 4px; }
   .glance span i{ display:inline-flex; width:25px; height:25px; border-radius:50%; align-items:center; justify-content:center; background:var(--gcb,#f8e2d8); color:var(--gc,var(--accent)); flex:none; }
   .glance span i svg{ width:15px; height:15px; }
