@@ -57,17 +57,19 @@
   #p-intro .pill{ margin-bottom:12px; }
   #p-intro .lead{ font-size:1rem; line-height:1.62; margin-bottom:16px; }
   #p-intro .lead b{ color:var(--ink); font-weight:700; }
-  .glance{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 18px; }
-  .glance span{ display:inline-flex; align-items:center; gap:7px; font-size:.82rem; font-weight:600; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:6px 13px; }
-  .glance svg{ width:15px; height:15px; color:var(--accent); flex:none; }
-  .quicknav{ display:flex; gap:10px; flex-wrap:wrap; margin-top:22px; }
-  .quicknav a{ width:46px; height:46px; border-radius:50%; border:1.5px solid var(--line); background:var(--surface); display:flex; align-items:center; justify-content:center; color:var(--ink); cursor:pointer; transition:transform .18s, border-color .18s, background .18s, color .18s; }
-  .quicknav a:hover{ transform:translateY(-3px); border-color:var(--accent); background:var(--accent); color:#fff; }
-  .quicknav a svg{ width:20px; height:20px; }
-  /* fading steer arrow */
-  .steer-hint{ position:fixed; right:340px; top:44%; z-index:12; opacity:.34; color:var(--accent); pointer-events:none; transition:opacity .7s ease; animation:steerWig 1.7s ease-in-out infinite; }
-  .steer-hint svg{ width:74px; height:74px; }
-  @keyframes steerWig{ 0%,100%{ transform:rotate(-14deg);} 50%{ transform:rotate(14deg);} }
+  .glance{ display:flex; flex-wrap:wrap; gap:9px; margin:0 0 18px; }
+  .glance span{ display:inline-flex; align-items:center; gap:9px; font-size:.83rem; font-weight:600; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:5px 15px 5px 5px; }
+  .glance span i{ display:inline-flex; width:27px; height:27px; border-radius:50%; align-items:center; justify-content:center; background:var(--gcb,#f8e2d8); color:var(--gc,var(--accent)); flex:none; }
+  .glance span i svg{ width:16px; height:16px; }
+  .quicknav{ display:flex; gap:16px; flex-wrap:wrap; margin-top:24px; }
+  .quicknav a{ display:flex; flex-direction:column; align-items:center; gap:7px; text-decoration:none; color:var(--soft); cursor:pointer; font-size:.72rem; font-weight:600; }
+  .quicknav a .ic{ width:50px; height:50px; border-radius:15px; border:1.5px solid var(--line); background:var(--surface); display:flex; align-items:center; justify-content:center; color:var(--ink); box-shadow:0 3px 8px rgba(25,42,63,.06); transition:transform .18s, border-color .18s, background .18s, color .18s, box-shadow .18s; }
+  .quicknav a:hover .ic{ transform:translateY(-4px); border-color:var(--accent); background:var(--accent); color:#fff; box-shadow:0 10px 22px rgba(223,86,62,.3); }
+  .quicknav a:hover{ color:var(--accent); }
+  .quicknav a svg{ width:22px; height:22px; }
+  /* fading pointing-hand steer hint */
+  .steer-hint{ position:fixed; right:372px; top:40%; z-index:12; font-size:56px; line-height:1; opacity:.92; pointer-events:none; transition:opacity .7s ease; animation:handDrag 1.5s ease-in-out infinite; filter:drop-shadow(0 5px 7px rgba(0,0,0,.28)); }
+  @keyframes handDrag{ 0%{ transform:translateX(-10px);} 50%{ transform:translateX(14px);} 100%{ transform:translateX(-10px);} }
   @media(prefers-reduced-motion:reduce){ .steer-hint{ animation:none; } }
   @media(max-width:960px){ .steer-hint{ display:none; } }
 
@@ -173,26 +175,26 @@
     <section class="panel active" id="p-intro">
       <span class="pill">Madinah, Saudi Arabia</span>
       <h1>Hi, I'm Adeel — working at the intersection of <span class="mark">cybersecurity, AI, and networks.</span></h1>
-      <p class="lead">I'm a final-year Information Technology student at <b>IUM</b>, on a fully-funded <b>Saudi Government scholarship</b>. My journey began in Gujranwala, Pakistan — tinkering with small programs and networks — and grew into research on making AI <b>secure, private, and explainable</b> for the networks the world depends on. I'm currently sharpening my skills through hands-on <b>TryHackMe</b> cybersecurity labs alongside my AWS and networking training.</p>
+      <p class="lead">I'm a final-year Information Technology student at <b>IUM</b>, studying on a fully-funded <b>Saudi Government scholarship</b> awarded for academic excellence. My journey into computing began in Gujranwala, Pakistan, with a simple curiosity — taking apart small programs and networks to understand how they really work — and has grown into a focused mission: making artificial intelligence <b>secure, private, and explainable</b> enough to protect the networks the world depends on. Over the past two years I've co-authored peer-reviewed research on privacy in federated learning, designed interpretable intrusion-detection systems for software-defined networks, and built complete systems from Raspberry Pi hardware to cloud dashboards. I'm currently sharpening my practical security skills through hands-on <b>TryHackMe</b> cybersecurity labs, alongside my AWS and networking training.</p>
       <div class="glance">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 2 6 2s6-1 6-2v-5"/></svg> 3.2/4 CGPA</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg> IEEE Author</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v6l-5 8a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-8V3"/></svg> 4 Research Projects</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0 0-9 6 6 0 0 0-11.6-1.5A4 4 0 1 0 5 19z"/></svg> AWS</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg> CCNA</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Cybersecurity</span>
+        <span><i style="--gc:#8a5cf6;--gcb:#efe8ff"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8z"/></svg></i> 3.2/4 CGPA</span>
+        <span><i style="--gc:#2a8f96;--gcb:#d7eef0"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 3 7v10l9 5 9-5V7zm0 2.3 5.5 3-5.5 3-5.5-3zM5 8.9l6 3.3v6.5l-6-3.3zm14 0v6.5l-6 3.3v-6.5z"/></svg></i> IEEE Author</span>
+        <span><i style="--gc:#df563e;--gcb:#f8e2d8"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 2v2h1v4.5L4.7 17A3 3 0 0 0 7.3 21.5h9.4A3 3 0 0 0 19.3 17L14 8.5V4h1V2zm3 2h0v5l1.6 2.6a5 5 0 0 1-3.2 0L12 9z"/></svg></i> 4 Research Projects</span>
+        <span><i style="--gc:#e8811a;--gcb:#fcecd6"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 20A4.5 4.5 0 0 1 5.6 11 6.5 6.5 0 0 1 18 9.2a4.4 4.4 0 0 1-.5 8.8z"/></svg></i> AWS</span>
+        <span><i style="--gc:#2563c9;--gcb:#dce7fb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20m0 2c1.3 0 2.8 2.2 3.4 5.5H8.6C9.2 6.2 10.7 4 12 4M4.3 11h3.1a19 19 0 0 0 0 2H4.3a8 8 0 0 1 0-2m3.3 4h8.8c-.6 3.3-2.1 5.5-3.4 5.5S9.2 18.3 8.6 15zm8.8-2H8.6a17 17 0 0 1 0-2h7.8a17 17 0 0 1 0 2m1.6 2h1.7a8 8 0 0 1-4 3.8c.6-1 1.1-2.3 1.4-3.8zM16.6 9c-.3-1.5-.8-2.8-1.4-3.8a8 8 0 0 1 4 3.8z"/></svg></i> CCNA</span>
+        <span><i style="--gc:#2e9e63;--gcb:#dcf4e9"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1 3 5v6c0 5.2 3.8 9.4 9 11 5.2-1.6 9-5.8 9-11V5zm-1 14-4-4 1.4-1.4L11 12.2l4.6-4.6L17 9z"/></svg></i> Cybersecurity</span>
       </div>
       <div class="cta">
         <a class="btn primary" data-go="research">Explore research →</a>
         <a class="btn primary" data-go="cv" style="background:var(--teal);box-shadow:0 8px 20px rgba(42,143,150,.3)">View CV</a>
       </div>
       <div class="quicknav">
-        <a data-go="research" title="Research"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></a>
-        <a data-go="projects" title="Projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6 2 12l6 6"/><path d="m16 6 6 6-6 6"/></svg></a>
-        <a data-go="experience" title="Experience &amp; Education"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg></a>
-        <a data-go="credentials" title="Skills &amp; Certifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12 7 21l5-3 5 3-1.5-9"/></svg></a>
-        <a data-go="contact" title="Contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></a>
-        <a data-go="cv" title="Curriculum Vitae"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg></a>
+        <a data-go="research"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><em>Research</em></a>
+        <a data-go="projects"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6 2 12l6 6"/><path d="m16 6 6 6-6 6"/></svg></span><em>Projects</em></a>
+        <a data-go="experience"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg></span><em>Experience</em></a>
+        <a data-go="credentials"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12 7 21l5-3 5 3-1.5-9"/></svg></span><em>Skills</em></a>
+        <a data-go="contact"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span><em>Contact</em></a>
+        <a data-go="cv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><em>CV</em></a>
       </div>
     </section>
 
@@ -369,9 +371,7 @@
       <span>Home</span>
     </div>
   </div>
-  <div class="steer-hint" id="steerHint" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/></svg>
-  </div>
+  <div class="steer-hint" id="steerHint" aria-hidden="true">👉</div>
 </div>
 
 <script>
