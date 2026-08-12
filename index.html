@@ -55,21 +55,21 @@
   .pill{ display:inline-block; background:var(--green); color:var(--ink); font-family:var(--mono); font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; padding:7px 15px; border-radius:999px; margin-bottom:18px; }
   .btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border-radius:999px; font-weight:700; font-size:.95rem; text-decoration:none; cursor:pointer; border:0; font-family:var(--sans); transition:transform .15s; }
   .btn:hover{ transform:translateY(-2px); } .btn.primary{ background:var(--accent); color:#fff; box-shadow:0 8px 20px rgba(223,86,62,.32); }
-  .cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; }
-  #p-intro h1{ font-size:clamp(2rem,3.4vw,2.85rem); line-height:1.05; margin-bottom:12px; }
-  #p-intro .pill{ margin-bottom:12px; }
-  #p-intro .lead{ font-size:1rem; line-height:1.62; margin-bottom:16px; }
+  #p-intro h1{ font-size:clamp(1.9rem,3.2vw,2.7rem); line-height:1.06; margin-bottom:11px; }
+  #p-intro .pill{ margin-bottom:11px; }
+  #p-intro .lead{ font-size:.97rem; line-height:1.58; margin-bottom:15px; }
   #p-intro .lead b{ color:var(--ink); font-weight:700; }
-  .glance{ display:flex; flex-wrap:wrap; gap:9px; margin:0 0 18px; }
-  .glance span{ display:inline-flex; align-items:center; gap:9px; font-size:.83rem; font-weight:600; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:5px 15px 5px 5px; }
-  .glance span i{ display:inline-flex; width:27px; height:27px; border-radius:50%; align-items:center; justify-content:center; background:var(--gcb,#f8e2d8); color:var(--gc,var(--accent)); flex:none; }
-  .glance span i svg{ width:16px; height:16px; }
-  .quicknav{ display:flex; gap:16px; flex-wrap:wrap; margin-top:24px; }
-  .quicknav a{ display:flex; flex-direction:column; align-items:center; gap:7px; text-decoration:none; color:var(--soft); cursor:pointer; font-size:.72rem; font-weight:600; }
-  .quicknav a .ic{ width:50px; height:50px; border-radius:15px; border:1.5px solid var(--line); background:var(--surface); display:flex; align-items:center; justify-content:center; color:var(--ink); box-shadow:0 3px 8px rgba(25,42,63,.06); transition:transform .18s, border-color .18s, background .18s, color .18s, box-shadow .18s; }
+  .glance{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 20px; }
+  .glance span{ display:inline-flex; align-items:center; gap:8px; font-size:.8rem; font-weight:600; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:4px 14px 4px 4px; }
+  .glance span i{ display:inline-flex; width:25px; height:25px; border-radius:50%; align-items:center; justify-content:center; background:var(--gcb,#f8e2d8); color:var(--gc,var(--accent)); flex:none; }
+  .glance span i svg{ width:15px; height:15px; }
+  .quicknav{ display:flex; flex-wrap:nowrap; gap:clamp(6px,1.4vw,14px); }
+  .quicknav a{ display:flex; flex-direction:column; align-items:center; gap:6px; text-decoration:none; color:var(--soft); cursor:pointer; font-size:.66rem; font-weight:600; flex:1 1 0; min-width:0; }
+  .quicknav a .ic{ width:100%; max-width:48px; aspect-ratio:1; border-radius:14px; border:1.5px solid var(--line); background:var(--surface); display:flex; align-items:center; justify-content:center; color:var(--ink); box-shadow:0 3px 8px rgba(25,42,63,.06); transition:transform .18s, border-color .18s, background .18s, color .18s, box-shadow .18s; }
   .quicknav a:hover .ic{ transform:translateY(-4px); border-color:var(--accent); background:var(--accent); color:#fff; box-shadow:0 10px 22px rgba(223,86,62,.3); }
   .quicknav a:hover{ color:var(--accent); }
-  .quicknav a svg{ width:22px; height:22px; }
+  .quicknav a svg{ width:19px; height:19px; }
+  .quicknav a em{ font-style:normal; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
 
   .list{ display:grid; gap:12px; }
   .item{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 18px; }
@@ -183,10 +183,6 @@
         <span><i style="--gc:#e8811a;--gcb:#fcecd6"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 20A4.5 4.5 0 0 1 5.6 11 6.5 6.5 0 0 1 18 9.2a4.4 4.4 0 0 1-.5 8.8z"/></svg></i> AWS</span>
         <span><i style="--gc:#2563c9;--gcb:#dce7fb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20m0 2c1.3 0 2.8 2.2 3.4 5.5H8.6C9.2 6.2 10.7 4 12 4M4.3 11h3.1a19 19 0 0 0 0 2H4.3a8 8 0 0 1 0-2m3.3 4h8.8c-.6 3.3-2.1 5.5-3.4 5.5S9.2 18.3 8.6 15zm8.8-2H8.6a17 17 0 0 1 0-2h7.8a17 17 0 0 1 0 2m1.6 2h1.7a8 8 0 0 1-4 3.8c.6-1 1.1-2.3 1.4-3.8zM16.6 9c-.3-1.5-.8-2.8-1.4-3.8a8 8 0 0 1 4 3.8z"/></svg></i> CCNA</span>
         <span><i style="--gc:#2e9e63;--gcb:#dcf4e9"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1 3 5v6c0 5.2 3.8 9.4 9 11 5.2-1.6 9-5.8 9-11V5zm-1 14-4-4 1.4-1.4L11 12.2l4.6-4.6L17 9z"/></svg></i> Cybersecurity</span>
-      </div>
-      <div class="cta">
-        <a class="btn primary" data-go="research">Explore research →</a>
-        <a class="btn primary" data-go="cv" style="background:var(--teal);box-shadow:0 8px 20px rgba(42,143,150,.3)">View CV</a>
       </div>
       <div class="quicknav">
         <a data-go="research"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><em>Research</em></a>
