@@ -119,7 +119,7 @@
   .cv-sec ul{ margin:6px 0 0; padding-left:20px; color:var(--soft); } .cv-sec li{ margin-bottom:4px; }
 
   /* ---------- HELM ---------- */
-  .helm{ position:absolute; top:50%; right:0; width:880px; height:880px; transform:translate(40%,-50%); z-index:10; touch-action:none; }
+  .helm{ position:absolute; top:50%; right:0; width:880px; height:880px; transform:translate(44%,-50%); z-index:10; touch-action:none; }
   .rotor{ position:absolute; inset:0; will-change:transform; cursor:grab; }
   .rotor.dragging{ cursor:grabbing; }
   .rotor.snap{ transition:transform .62s cubic-bezier(.16,1,.3,1); }
@@ -355,7 +355,7 @@
     {id:'experience',label:'Experience'},{id:'credentials',label:'Credentials'},{id:'contact',label:'Contact'}
   ];
 
-  const SIZE=880, C=SIZE/2, RIM=286, ICON_R=340;
+  const SIZE=880, C=SIZE/2, RIM=286, ICON_R=372;
   const rotor=document.getElementById('rotor');
   const rad=d=>d*Math.PI/180;
   const PRIM=[36,108,180,252,324], SEC=[0,72,144,216,288];
@@ -365,18 +365,18 @@
     const P=(r,a)=>[(C+cos(a)*r).toFixed(1),(C+sin(a)*r).toFixed(1)];
     let g='';
     // 10 spokes from hub to rim
-    [...PRIM,...SEC].forEach(a=>{ const s=P(64,a),e=P(268,a);
-      g+=`<line x1="${s[0]}" y1="${s[1]}" x2="${e[0]}" y2="${e[1]}" stroke="url(#wood)" stroke-width="26" stroke-linecap="round"/>`;
-      g+=`<circle cx="${P(150,a)[0]}" cy="${P(150,a)[1]}" r="15" fill="url(#woodK)" stroke="#3a2414" stroke-width="2"/>`; });
+    [...PRIM,...SEC].forEach(a=>{ const s=P(62,a),e=P(274,a);
+      g+=`<line x1="${s[0]}" y1="${s[1]}" x2="${e[0]}" y2="${e[1]}" stroke="url(#wood)" stroke-width="32" stroke-linecap="round"/>`;
+      g+=`<circle cx="${P(155,a)[0]}" cy="${P(155,a)[1]}" r="17" fill="url(#woodK)" stroke="#3a2414" stroke-width="2"/>`; });
     // secondary handles (short, wood knob)
-    SEC.forEach(a=>{ const b=P(286,a),t=P(346,a);
-      g+=`<line x1="${b[0]}" y1="${b[1]}" x2="${t[0]}" y2="${t[1]}" stroke="url(#wood)" stroke-width="32" stroke-linecap="round"/>`;
-      g+=`<circle cx="${P(298,a)[0]}" cy="${P(298,a)[1]}" r="13" fill="url(#brass)" stroke="#5e440f" stroke-width="1.5"/>`;
-      g+=`<circle cx="${t[0]}" cy="${t[1]}" r="20" fill="url(#woodK)" stroke="#3a2414" stroke-width="2.5"/>`; });
-    // primary handles (reach the icon grip; brass collar at base)
-    PRIM.forEach(a=>{ const b=P(286,a),t=P(332,a);
-      g+=`<line x1="${b[0]}" y1="${b[1]}" x2="${t[0]}" y2="${t[1]}" stroke="url(#wood)" stroke-width="34" stroke-linecap="round"/>`;
-      g+=`<circle cx="${P(300,a)[0]}" cy="${P(300,a)[1]}" r="14" fill="url(#brass)" stroke="#5e440f" stroke-width="1.5"/>`; });
+    SEC.forEach(a=>{ const b=P(286,a),t=P(360,a);
+      g+=`<line x1="${b[0]}" y1="${b[1]}" x2="${t[0]}" y2="${t[1]}" stroke="url(#wood)" stroke-width="38" stroke-linecap="round"/>`;
+      g+=`<circle cx="${P(302,a)[0]}" cy="${P(302,a)[1]}" r="15" fill="url(#brass)" stroke="#5e440f" stroke-width="1.5"/>`;
+      g+=`<circle cx="${t[0]}" cy="${t[1]}" r="24" fill="url(#woodK)" stroke="#3a2414" stroke-width="2.5"/>`; });
+    // primary handles (longer — icon sits at the top of the spoke; brass collar at base)
+    PRIM.forEach(a=>{ const b=P(286,a),t=P(366,a);
+      g+=`<line x1="${b[0]}" y1="${b[1]}" x2="${t[0]}" y2="${t[1]}" stroke="url(#wood)" stroke-width="44" stroke-linecap="round"/>`;
+      g+=`<circle cx="${P(304,a)[0]}" cy="${P(304,a)[1]}" r="16" fill="url(#brass)" stroke="#5e440f" stroke-width="1.5"/>`; });
     rotor.innerHTML=`
     <svg viewBox="0 0 ${SIZE} ${SIZE}">
       <defs>
