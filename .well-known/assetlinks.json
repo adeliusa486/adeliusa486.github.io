@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "io.github.adeliusa486.solver",
+    "sha256_cert_fingerprints": ["94:4A:3A:E4:60:13:C1:EA:FE:DF:D4:73:BE:62:16:F2:29:4D:33:19:C2:E7:78:9D:B0:7F:55:7E:08:77:E6:A5"]
+  }
+}]
