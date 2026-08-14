@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#0b0d12">
+<link rel="manifest" href="manifest.json">
+<title>AI Live Solver</title>
+<style>
+  :root { --bg:#0b0d12; --card:#151922; --fg:#f2f4f8; --muted:#8b93a7;
+          --accent:#3b82f6; --ok:#22c55e; --warn:#f59e0b; }
+  * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+  html,body { height:100%; background:var(--bg); color:var(--fg);
+    font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif; overflow:hidden; }
+  #app { position:fixed; inset:0; display:flex; flex-direction:column; }
+
+  video { width:100%; height:100%; object-fit:cover; background:#000; }
+  #stage { position:relative; flex:1; overflow:hidden; }
+
+  #status { position:absolute; top:12px; left:50%; transform:translateX(-50%);
+    background:rgba(0,0,0,.6); padding:8px 16px; border-radius:20px;
+    font-size:14px; display:flex; align-items:center; gap:8px; backdrop-filter:blur(6px); z-index:3; }
+  .dot { width:9px; height:9px; border-radius:50%; background:var(--muted); }
+  .dot.watch{ background:var(--accent); } .dot.busy{ background:var(--warn); animation:pulse .6s infinite; }
+  .dot.ok{ background:var(--ok); }
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+  /* framing guide */
+  #guide{ position:absolute; inset:12% 8% auto 8%; height:auto; aspect-ratio:16/9;
+    border:2px dashed rgba(255,255,255,.35); border-radius:14px; z-index:2; pointer-events:none; }
+
+  #answer { position:absolute; left:0; right:0; bottom:0; max-height:60%; overflow-y:auto;
+    background:linear-gradient(to top, rgba(10,12,18,.97) 72%, rgba(10,12,18,0));
+    padding:30px 20px 20px; transform:translateY(100%); transition:transform .25s ease; z-index:3; }
+  #answer.show { transform:translateY(0); }
+  #answer .lbl { font-size:12px; letter-spacing:1px; color:var(--accent); margin-bottom:8px; text-transform:uppercase; }
+  #answer .a { font-size:21px; font-weight:700; line-height:1.45; white-space:pre-wrap; }
+
+  #bar { display:flex; gap:10px; padding:12px; background:var(--card); }
+  button { flex:1; font-size:18px; font-weight:800; padding:18px; border:none;
+    border-radius:14px; background:var(--accent); color:#fff; }
+  button.ghost{ background:#222836; color:var(--fg); flex:0 0 auto; padding:18px 20px; font-size:16px; }
+  button:active{ transform:translateY(1px); } button:disabled{ opacity:.5; }
+  #scanBtn.next{ background:var(--ok); }
+
+  #setup { position:absolute; inset:0; background:var(--bg); z-index:10;
+    display:flex; flex-direction:column; justify-content:center; padding:28px; gap:16px; }
+  #setup h1{ font-size:24px; } #setup p{ color:var(--muted); font-size:14px; line-height:1.5; }
+  #setup input{ width:100%; padding:14px; border-radius:12px; border:1px solid #2a3140;
+    background:var(--card); color:var(--fg); font-size:15px; }
+  #setup a{ color:var(--accent); }
+  .hidden{ display:none !important; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="setup">
+    <h1>🧠 AI Live Solver</h1>
+    <p>Point the camera at a question — the answer appears on screen. Then tap <b>Scan Next Question</b> for the next one.</p>
+    <p>Paste your <b>Google Gemini API key</b> (stays only on this phone, never uploaded).<br>
+       Free key: <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a></p>
+    <input id="key" type="password" placeholder="Your Gemini key (AIza… or AQ…)" autocomplete="off">
+    <button id="start">Start Camera</button>
+    <p id="err" style="color:var(--warn)"></p>
+  </div>
+
+  <div id="stage" class="hidden">
+    <video id="video" playsinline autoplay muted></video>
+    <div id="guide"></div>
+    <div id="status"><span class="dot" id="dot"></span><span id="statusText">Ready</span></div>
+    <div id="answer"><div class="lbl">Answer</div><div class="a" id="ansText"></div></div>
+  </div>
+
+  <div id="bar" class="hidden">
+    <button id="scanBtn">📷 Scan Question</button>
+    <button id="reset" class="ghost">⚙︎</button>
+  </div>
+</div>
+
+<canvas id="canvas" class="hidden"></canvas>
+<script>
+const PROMPT =
+  "You are an exact problem solver. The image contains a problem or question "+
+  "(math, physics, networking/CCNA, code, or general knowledge). "+
+  "Read every number, word and option carefully. Solve and DOUBLE-CHECK. "+
+  "If multiple-choice, give the correct option (letter + text). "+
+  "Reply with the FINAL ANSWER on the first line, then at most 2 short lines of working. "+
+  "If the image is blurry or has no clear question, reply EXACTLY: NO_PROBLEM";
+
+const MODELS = ["gemini-flash-lite-latest","gemini-2.5-flash"];
+let KEY = localStorage.getItem("gemKey") || "";
+let busy = false;
+
+const $ = id => document.getElementById(id);
+const video=$("video"), canvas=$("canvas"), ctx=canvas.getContext("2d",{willReadFrequently:true});
+if (KEY) $("key").value = KEY;
+
+$("start").onclick = async () => {
+  KEY = $("key").value.trim();
+  if (!KEY){ $("err").textContent="Please paste your Gemini key."; return; }
+  localStorage.setItem("gemKey", KEY);
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video:{ facingMode:{ideal:"environment"}, width:{ideal:1920}, height:{ideal:1080} }, audio:false });
+    video.srcObject = stream; await video.play();
+    // keep focus on the screen (continuous autofocus if supported)
+    try{ const t=stream.getVideoTracks()[0];
+      if(t.getCapabilities && t.getCapabilities().focusMode)
+        await t.applyConstraints({advanced:[{focusMode:"continuous"}]}); }catch(e){}
+    $("setup").classList.add("hidden");
+    $("stage").classList.remove("hidden");
+    $("bar").classList.remove("hidden");
+    setStatus("watch","Aim at the question, then tap Scan");
+  } catch(e){ $("err").textContent = "Camera error: "+e.message; }
+};
+
+$("scanBtn").onclick = ()=> capture();
+$("reset").onclick = ()=>{ localStorage.removeItem("gemKey"); location.reload(); };
+
+function setStatus(cls,text){ $("dot").className="dot "+cls; $("statusText").textContent=text; }
+function frameJpeg(){
+  const w=1280, h=Math.round(w*video.videoHeight/video.videoWidth);
+  canvas.width=w; canvas.height=h; ctx.drawImage(video,0,0,w,h);
+  return canvas.toDataURL("image/jpeg",0.9).split(",")[1];
+}
+
+async function capture(){
+  if(busy) return; busy=true;
+  $("scanBtn").disabled=true;
+  $("answer").classList.remove("show");
+  setStatus("busy","Solving…");
+  const b64=frameJpeg();
+  const body={ contents:[{parts:[{text:PROMPT},{inline_data:{mime_type:"image/jpeg",data:b64}}]}],
+               generationConfig:{temperature:0} };
+  let answer=null, errMsg=null;
+  for(const model of MODELS){
+    try{
+      const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${KEY}`,
+        {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+      if([429,500,503].includes(r.status)) continue;
+      const j=await r.json();
+      if(j.error){ errMsg=j.error.message; continue; }
+      answer=j.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+      if(answer) break;
+    }catch(e){ errMsg=e.message; }
+  }
+  busy=false; $("scanBtn").disabled=false;
+  // after first scan, button becomes "Scan Next Question"
+  $("scanBtn").textContent="🔄 Scan Next Question"; $("scanBtn").classList.add("next");
+
+  if(!answer || answer==="NO_PROBLEM"){
+    setStatus("watch","No clear question — hold steady & tap again");
+    showAnswer(answer==="NO_PROBLEM" ? "No clear question detected.\nHold the phone steady, fill the box with the question, and tap Scan Next."
+                                     : ("⚠️ "+(errMsg||"Could not solve. Try again.")));
+    return;
+  }
+  setStatus("ok","Answered ✓ — tap for next");
+  showAnswer(answer);
+}
+function showAnswer(text){ $("ansText").textContent=text; $("answer").classList.add("show"); }
+
+if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
+</script>
+</body>
+</html>
