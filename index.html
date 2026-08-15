@@ -193,6 +193,44 @@
   footer{ border-top:1px solid var(--line); padding:24px 0; text-align:center; color:var(--soft); font-family:var(--mono); font-size:.78rem; }
   footer a{ color:var(--soft); text-decoration:none; border-bottom:1px dotted var(--soft); }
   footer a:hover{ color:var(--accent); border-color:var(--accent); }
+
+  /* ============ MOBILE POLISH (phones) ============ */
+  @media(max-width:640px){
+    .wrap{ padding:0 20px; }
+    nav .row{ padding:14px 0 12px; }
+    .brand{ font-size:1.25rem; }
+    .page{ padding:34px 0 34px; }
+    /* hero: photo on top, centred, text below */
+    .hero{ gap:24px; text-align:center; }
+    .hero-photo{ order:-1; }
+    .hero-photo img{ max-width:170px; border-width:5px; }
+    .hero .pill, .hero .cta{ justify-content:center; }
+    .hero .cta{ display:flex; }
+    .pill{ margin-bottom:16px; }
+    .hero h1{ font-size:2rem; line-height:1.08; margin:0 0 16px; }
+    .hero .bio{ font-size:1rem; margin:0 0 22px; text-align:left; }
+    .btn{ padding:12px 22px; font-size:.92rem; }
+    /* stats */
+    .stats{ margin-top:34px; gap:12px; }
+    .stat{ padding:18px 14px; } .stat .n{ font-size:2rem; }
+    /* section headings + body */
+    .page h2{ font-size:1.7rem; margin:0 0 10px; }
+    .sub{ font-size:1rem; margin:0 0 24px; }
+    .eyebrow{ font-size:.72rem; }
+    /* cards / items tighter */
+    .pub{ padding:18px 18px; } .pub h3{ font-size:1.1rem; }
+    .r-item{ padding:15px 16px; } .r-item span{ font-size:1rem; }
+    .card{ padding:20px; }
+    .cert{ padding:18px; }
+    .cv-doc{ padding:22px 18px; }
+    .cv-doc .cvhead h3{ font-size:1.6rem; }
+    .links a{ padding:12px 20px; font-size:.9rem; }
+    footer{ font-size:.72rem; }
+  }
+  @media(max-width:380px){
+    .hero h1{ font-size:1.75rem; }
+    .stats{ grid-template-columns:1fr 1fr; }
+  }
 </style>
 
 <nav>
