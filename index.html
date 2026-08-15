@@ -135,10 +135,13 @@
   .klabel{ font-family:var(--mono); font-size:.74rem; color:var(--teal); text-transform:uppercase; letter-spacing:.06em; margin:16px 0 8px; }
 
   /* Certifications — icon cards */
-  .certs{ display:grid; gap:12px; }
-  .cert{ display:flex; gap:15px; align-items:flex-start; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 18px; }
-  .cert .ci{ flex:none; width:46px; height:46px; border-radius:12px; background:var(--accent-soft); display:flex; align-items:center; justify-content:center; color:var(--accent); }
-  .cert .ci svg{ width:24px; height:24px; }
+  .certs{ display:grid; gap:14px; }
+  .cert{ display:flex; gap:18px; align-items:center; background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:18px 20px; transition:transform .15s, box-shadow .15s, border-color .15s; }
+  .cert:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(25,42,63,.08); border-color:#d9d2bf; }
+  .clogo{ flex:none; width:64px; height:64px; border-radius:14px; background:#fff; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; padding:10px; box-shadow:0 2px 6px rgba(25,42,63,.05); }
+  .clogo img{ max-width:100%; max-height:100%; object-fit:contain; display:block; }
+  .clogo.badgebox{ padding:0; overflow:hidden; border-color:#d7ecf5; }
+  .clogo.badgebox img{ width:100%; height:100%; border-radius:13px; }
   .cert h4{ margin:0 0 3px; font-family:var(--serif); font-weight:600; font-size:1.06rem; } .cert p{ margin:0; color:var(--soft); font-size:.9rem; }
 
   .links{ display:flex; gap:12px; flex-wrap:wrap; } .links a{ display:inline-flex; align-items:center; gap:9px; padding:12px 22px; border:1.5px solid var(--line); border-radius:999px; text-decoration:none; color:var(--ink); font-weight:600; font-size:.92rem; background:var(--surface); cursor:pointer; transition:border-color .18s,transform .18s,color .18s; } .links a:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
@@ -179,8 +182,8 @@
   .home-btn span{ font-family:var(--mono); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; opacity:.85; }
 
   /* certificate "View" link + lightbox */
-  .cert{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; flex-wrap:wrap; }
-  @media(max-width:480px){ .cert .viewcert{ margin-left:60px; } }
+  .cert{ flex-wrap:wrap; }
+  @media(max-width:480px){ .cert .viewcert{ margin-left:82px; } }
   .cert .certtext{ flex:1; min-width:0; }
   .viewcert{ display:inline-flex; align-items:center; gap:6px; flex:none; font-family:var(--sans); font-size:.78rem; font-weight:700; color:var(--teal); background:var(--st-pub-bg); border-radius:999px; padding:8px 14px; cursor:pointer; white-space:nowrap; transition:background .18s, transform .18s; margin-top:2px; }
   .viewcert svg{ width:14px; height:14px; }
@@ -345,18 +348,27 @@
       <h3 class="sub">Certifications</h3>
       <div class="certs">
         <div class="cert">
-          <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><circle cx="19" cy="6" r="2.4"/><circle cx="12" cy="18.5" r="2.4"/><path d="M6.9 7.4 10.6 16M17.1 7.4 13.4 16M7.4 6h9.2"/></svg></div>
+          <div class="clogo badgebox"><img src="assets/badge-ccnp-core.jpg" alt="CCNP Enterprise: Core Networking verified badge"></div>
           <div class="certtext"><span class="badge done">Completed</span><h4>CCNP Enterprise: Core Networking</h4><p>Cisco Networking Academy (Open University Cisco ITC) — L2 redundancy, EIGRP &amp; advanced OSPF, eBGP, multicast &amp; QoS, VPNs, secure infrastructure, and network automation.</p></div>
           <a class="viewcert" data-cert="ccnp-core"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>View</a>
         </div>
         <div class="cert">
-          <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><circle cx="19" cy="6" r="2.4"/><circle cx="12" cy="18.5" r="2.4"/><path d="M6.9 7.4 10.6 16M17.1 7.4 13.4 16M7.4 6h9.2"/></svg></div>
+          <div class="clogo badgebox"><img src="assets/badge-ccnp-adv.jpg" alt="CCNP Enterprise: Advanced Routing verified badge"></div>
           <div class="certtext"><span class="badge done">Completed</span><h4>CCNP Enterprise: Advanced Routing</h4><p>Cisco Networking Academy — advanced routing, route redistribution, path control, and enterprise VPN technologies.</p></div>
           <a class="viewcert" data-cert="ccnp-adv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>View</a>
         </div>
-        <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><div><span class="badge done">Completed</span><h4>Cisco NetAcad — Network Security</h4><p>Threat defense, secure network design, and monitoring.</p></div></div>
-        <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0 0-9 6 6 0 0 0-11.6-1.5A4 4 0 1 0 5 19z"/></svg></div><div><span class="badge review">Preparing</span><h4>AWS Certified Solutions Architect – Associate</h4><p>Completed Adrian Cantrill's SAA course; preparing for the exam.</p></div></div>
-        <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="14" width="8" height="8" rx="1"/><path d="M6 10v4a2 2 0 0 0 2 2h6M18 14v-4a2 2 0 0 0-2-2h-6"/></svg></div><div><span class="badge review">Preparing</span><h4>Cisco Certified Network Associate (CCNA)</h4><p>Routing &amp; switching, OSPF/EIGRP, VLANs, ACLs.</p></div></div>
+        <div class="cert">
+          <div class="clogo"><img src="assets/logo-cisco.svg" alt="Cisco"></div>
+          <div class="certtext"><span class="badge done">Completed</span><h4>Cisco NetAcad — Network Security</h4><p>Threat defense, secure network design, and monitoring.</p></div>
+        </div>
+        <div class="cert">
+          <div class="clogo"><img src="assets/logo-aws.svg" alt="Amazon Web Services"></div>
+          <div class="certtext"><span class="badge review">Preparing</span><h4>AWS Certified Solutions Architect – Associate</h4><p>Completed Adrian Cantrill's SAA course; preparing for the exam.</p></div>
+        </div>
+        <div class="cert">
+          <div class="clogo"><img src="assets/logo-cisco.svg" alt="Cisco"></div>
+          <div class="certtext"><span class="badge review">Preparing</span><h4>Cisco Certified Network Associate (CCNA)</h4><p>Routing &amp; switching, OSPF/EIGRP, VLANs, ACLs.</p></div>
+        </div>
       </div>
     </section>
 
