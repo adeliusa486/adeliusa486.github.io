@@ -1,0 +1,22 @@
+<svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="prv" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e5f2ea"/><stop offset="1" stop-color="#d7eee3"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="300" fill="url(#prv)"/>
+  <circle cx="240" cy="150" r="130" fill="#2e9e63" opacity=".07"/>
+  <g fill="none" stroke="#2a8f96" opacity=".32">
+    <circle cx="240" cy="150" r="74" stroke-width="2"/>
+    <circle cx="240" cy="150" r="104" stroke-width="2" stroke-dasharray="6 9"/>
+  </g>
+  <g fill="#2e9e63" opacity=".55">
+    <circle cx="240" cy="46" r="5"/><circle cx="344" cy="150" r="5"/><circle cx="240" cy="254" r="5"/><circle cx="136" cy="150" r="5"/>
+  </g>
+  <g transform="translate(240 150)">
+    <path d="M-22 -8 V-26 A22 22 0 0 1 22 -26 V-8" fill="none" stroke="#192a3f" stroke-width="8" stroke-linecap="round"/>
+    <rect x="-36" y="-8" width="72" height="56" rx="12" fill="#fffdf7" stroke="#2a8f96" stroke-width="4"/>
+    <circle cx="0" cy="15" r="7" fill="#c9a24a"/>
+    <rect x="-3.5" y="15" width="7" height="17" rx="3.5" fill="#c9a24a"/>
+  </g>
+</svg>

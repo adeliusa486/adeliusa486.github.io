@@ -109,9 +109,12 @@
   .gallery .item{ aspect-ratio:1/1; display:flex; flex-direction:column; padding:22px; border-radius:18px; background:linear-gradient(155deg,#fffefb,var(--surface)); box-shadow:0 3px 14px rgba(25,42,63,.05); transition:transform .18s, box-shadow .18s, border-color .18s; }
   .gallery .item:hover{ transform:translateY(-4px); box-shadow:0 16px 32px rgba(25,42,63,.11); border-color:#e7dcc2; }
   .gallery.pubs .item .venue{ margin-top:auto; }
-  .gallery.interests .item{ justify-content:center; }
-  .gallery.interests .item b{ font-family:var(--serif); font-size:1.22rem; font-weight:600; }
-  .gallery.interests .item .d{ font-size:.98rem; margin-top:8px; }
+  .gallery.interests .item{ padding:0; overflow:hidden; }
+  .gallery.interests .item .art{ flex:1 1 auto; min-height:120px; width:100%; overflow:hidden; border-bottom:1px solid var(--line); }
+  .gallery.interests .item .art img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .gallery.interests .item .txt{ flex:none; padding:16px 20px 20px; }
+  .gallery.interests .item b{ font-family:var(--serif); font-size:1.18rem; font-weight:600; }
+  .gallery.interests .item .d{ font-size:.95rem; margin-top:7px; }
   @media(max-width:560px){ .gallery .item{ aspect-ratio:auto; min-height:190px; } }
 
   /* Project cards with architecture figures + summary */
@@ -283,10 +286,10 @@
       </div>
       <h3 class="sub">Research Interests</h3>
       <div class="list gallery interests">
-        <div class="item"><b>Cybersecurity &amp; Explainable AI</b><span class="d">Interpretable intrusion- and DDoS-detection for SDN and next-gen networks.</span></div>
-        <div class="item"><b>Federated Learning</b><span class="d">Robust, Byzantine-resilient aggregation against poisoning attacks.</span></div>
-        <div class="item"><b>Privacy-Preserving ML</b><span class="d">Mitigating gradient-based privacy leakage in vehicular learning.</span></div>
-        <div class="item"><b>Cloud, Edge &amp; IoT</b><span class="d">Edge intelligence and content caching for the Internet of Things.</span></div>
+        <div class="item"><div class="art"><img src="assets/art-cyber.svg" alt=""></div><div class="txt"><b>Cybersecurity &amp; Explainable AI</b><span class="d">Interpretable intrusion- and DDoS-detection for SDN and next-gen networks.</span></div></div>
+        <div class="item"><div class="art"><img src="assets/art-fedlearning.svg" alt=""></div><div class="txt"><b>Federated Learning</b><span class="d">Robust, Byzantine-resilient aggregation against poisoning attacks.</span></div></div>
+        <div class="item"><div class="art"><img src="assets/art-privacy.svg" alt=""></div><div class="txt"><b>Privacy-Preserving ML</b><span class="d">Mitigating gradient-based privacy leakage in vehicular learning.</span></div></div>
+        <div class="item"><div class="art"><img src="assets/art-cloud.svg" alt=""></div><div class="txt"><b>Cloud, Edge &amp; IoT</b><span class="d">Edge intelligence and content caching for the Internet of Things.</span></div></div>
       </div>
     </section>
 
