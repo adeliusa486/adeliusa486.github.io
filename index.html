@@ -103,6 +103,16 @@
   .badge.accepted,.badge.done{ color:var(--st-accept); background:var(--st-accept-bg); }
   .pub h4{ font-family:var(--serif); font-weight:600; font-size:1.12rem; margin:0 0 5px; line-height:1.3; }
   .pub .venue{ color:var(--accent); font-weight:700; font-size:.9rem; margin:0 0 3px; } .pub .meta{ color:var(--soft); font-size:.86rem; margin:0; }
+  /* gallery — square cards */
+  .gallery{ grid-template-columns:repeat(2,1fr); gap:15px; }
+  @media(max-width:560px){ .gallery{ grid-template-columns:1fr; } }
+  .gallery .item{ aspect-ratio:1/1; display:flex; flex-direction:column; padding:22px; border-radius:18px; background:linear-gradient(155deg,#fffefb,var(--surface)); box-shadow:0 3px 14px rgba(25,42,63,.05); transition:transform .18s, box-shadow .18s, border-color .18s; }
+  .gallery .item:hover{ transform:translateY(-4px); box-shadow:0 16px 32px rgba(25,42,63,.11); border-color:#e7dcc2; }
+  .gallery.pubs .item .venue{ margin-top:auto; }
+  .gallery.interests .item{ justify-content:center; }
+  .gallery.interests .item b{ font-family:var(--serif); font-size:1.22rem; font-weight:600; }
+  .gallery.interests .item .d{ font-size:.98rem; margin-top:8px; }
+  @media(max-width:560px){ .gallery .item{ aspect-ratio:auto; min-height:190px; } }
 
   /* Project cards with architecture figures + summary */
   .pcards{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
@@ -265,14 +275,14 @@
       <p class="eyebrow">Research &amp; Publications</p>
       <h2>Publications</h2>
       <p class="lead">Peer-reviewed, in-review, and submitted work.</p>
-      <div class="list">
+      <div class="list gallery pubs">
         <div class="item pub"><span class="badge accepted">Accepted</span><h4>Privacy Leakage in Federated Learning: Gradient-Based Client Identity Inference and Defense Analysis for Secure Vehicular Networks</h4><p class="venue">IEEE 104th Vehicular Technology Conference (VTC2026-Fall)</p><p class="meta">Co-author · 2026</p></div>
         <div class="item pub"><span class="badge review">Peer Review</span><h4>Balancing Spatial Urgency and Content Popularity for Edge Caching in Vehicular Networks</h4><p class="venue">Springer Nature — Discover Telecommunications</p><p class="meta">In peer review · 2026</p></div>
         <div class="item pub"><span class="badge submitted">Submitted</span><h4>XAI-SDN: A Lightweight, Interpretable DDoS Detection System for SDN Using Entropy Feature Augmentation and SHAP</h4><p class="venue">Submitted to a peer-reviewed journal</p><p class="meta">Awaiting decision · 2026</p></div>
         <div class="item pub"><span class="badge submitted">Submitted</span><h4>Adaptive Multi-Factor Trust Aggregation for Byzantine-Robust Federated Learning in IoT Networks</h4><p class="venue">Submitted to a peer-reviewed journal</p><p class="meta">Awaiting decision · 2026</p></div>
       </div>
       <h3 class="sub">Research Interests</h3>
-      <div class="list">
+      <div class="list gallery interests">
         <div class="item"><b>Cybersecurity &amp; Explainable AI</b><span class="d">Interpretable intrusion- and DDoS-detection for SDN and next-gen networks.</span></div>
         <div class="item"><b>Federated Learning</b><span class="d">Robust, Byzantine-resilient aggregation against poisoning attacks.</span></div>
         <div class="item"><b>Privacy-Preserving ML</b><span class="d">Mitigating gradient-based privacy leakage in vehicular learning.</span></div>
