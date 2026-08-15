@@ -69,10 +69,13 @@
   #p-intro .pill{ margin-bottom:7px; }
   #p-intro .lead{ font-size:.93rem; line-height:1.52; margin-bottom:8px; }
   #p-intro .lead b{ color:var(--ink); font-weight:700; }
-  .glance{ display:flex; flex-wrap:wrap; gap:7px; margin:0 0 9px; }
-  .glance span{ display:inline-flex; align-items:center; gap:8px; font-size:.8rem; font-weight:600; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:4px 14px 4px 4px; }
-  .glance span i{ display:inline-flex; width:25px; height:25px; border-radius:50%; align-items:center; justify-content:center; background:var(--gcb,#f8e2d8); color:var(--gc,var(--accent)); flex:none; }
-  .glance span i svg{ width:15px; height:15px; }
+  .glance{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:26px 0 4px; }
+  @media(max-width:760px){ .glance{ grid-template-columns:1fr 1fr; } }
+  @media(max-width:400px){ .glance{ grid-template-columns:1fr; } }
+  .glance span{ display:flex; align-items:center; gap:14px; font-family:var(--serif); font-size:1.05rem; font-weight:600; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:16px 18px; box-shadow:0 2px 10px rgba(25,42,63,.05); transition:transform .15s, box-shadow .15s; }
+  .glance span:hover{ transform:translateY(-2px); box-shadow:0 8px 20px rgba(25,42,63,.09); }
+  .glance span i{ display:inline-flex; width:44px; height:44px; border-radius:13px; align-items:center; justify-content:center; background:var(--gcb,#f8e2d8); color:var(--gc,var(--accent)); flex:none; }
+  .glance span i svg{ width:24px; height:24px; }
   .quicknav{ display:flex; flex-wrap:nowrap; gap:clamp(6px,1.4vw,14px); }
   .quicknav a{ display:flex; flex-direction:column; align-items:center; gap:6px; text-decoration:none; color:var(--soft); cursor:pointer; font-size:.66rem; font-weight:600; flex:1 1 0; min-width:0; }
   .quicknav a .ic{ width:100%; max-width:44px; aspect-ratio:1; border-radius:13px; border:1.5px solid var(--line); background:var(--surface); display:flex; align-items:center; justify-content:center; color:var(--ink); box-shadow:0 3px 8px rgba(25,42,63,.06); transition:transform .18s, border-color .18s, background .18s, color .18s, box-shadow .18s; }
@@ -164,6 +167,16 @@
   .home-btn svg{ width:38px; height:38px; }
   .home-btn span{ font-family:var(--mono); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; opacity:.85; }
 
+  /* certificate "View" link + lightbox */
+  .viewcert{ font-size:.72rem; font-weight:700; color:var(--teal); cursor:pointer; margin-left:8px; white-space:nowrap; }
+  .viewcert:hover{ text-decoration:underline; }
+  .cert h4{ display:flex; align-items:center; flex-wrap:wrap; gap:4px; }
+  .lightbox{ display:none; position:fixed; inset:0; z-index:100; background:rgba(25,42,63,.85); align-items:center; justify-content:center; padding:24px; }
+  .lightbox.open{ display:flex; }
+  .lightbox img{ max-width:min(940px,96vw); max-height:90vh; border-radius:12px; box-shadow:0 24px 70px rgba(0,0,0,.55); background:#fff; }
+  .lightbox .lb-close{ position:absolute; top:16px; right:22px; font-size:2.4rem; color:#fff; cursor:pointer; line-height:1; background:none; border:0; }
+  .lightbox .lb-msg{ color:#fff; font-family:var(--mono); font-size:.95rem; text-align:center; max-width:24em; }
+
   @media(max-width:960px){
     .content{ padding:38px 22px 60px; }
     .pcards,.cards{ grid-template-columns:1fr; }
@@ -202,20 +215,12 @@
       <h1>Hi, I'm Adeel — working at the intersection of <span class="mark">cybersecurity, AI, and networks.</span></h1>
       <p class="lead">I'm a final-year Information Technology student at <b>IUM</b>, studying on a fully-funded <b>Saudi Government scholarship</b> awarded for academic excellence. My journey into computing began in Gujranwala, Pakistan, with a simple curiosity — taking apart small programs and networks to understand how they really work — and has grown into a focused mission: making artificial intelligence <b>secure, private, and explainable</b> enough to protect the networks the world depends on. Over the past two years I've co-authored peer-reviewed research on privacy in federated learning, designed interpretable intrusion-detection systems for software-defined networks, and built complete systems from Raspberry Pi hardware to cloud dashboards. I'm currently sharpening my practical security skills through hands-on <b>TryHackMe</b> cybersecurity labs, alongside my AWS and networking training.</p>
       <div class="glance">
-        <span><i style="--gc:#8a5cf6;--gcb:#efe8ff"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8z"/></svg></i> 3.2/4 CGPA</span>
+        <span><i style="--gc:#8a5cf6;--gcb:#efe8ff"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8z"/></svg></i> 3.2 / 4 CGPA</span>
         <span><i style="--gc:#2a8f96;--gcb:#d7eef0"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 3 7v10l9 5 9-5V7zm0 2.3 5.5 3-5.5 3-5.5-3zM5 8.9l6 3.3v6.5l-6-3.3zm14 0v6.5l-6 3.3v-6.5z"/></svg></i> IEEE Author</span>
-        <span><i style="--gc:#df563e;--gcb:#f8e2d8"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 2v2h1v4.5L4.7 17A3 3 0 0 0 7.3 21.5h9.4A3 3 0 0 0 19.3 17L14 8.5V4h1V2zm3 2h0v5l1.6 2.6a5 5 0 0 1-3.2 0L12 9z"/></svg></i> 4 Research Projects</span>
-        <span><i style="--gc:#e8811a;--gcb:#fcecd6"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 20A4.5 4.5 0 0 1 5.6 11 6.5 6.5 0 0 1 18 9.2a4.4 4.4 0 0 1-.5 8.8z"/></svg></i> AWS</span>
-        <span><i style="--gc:#2563c9;--gcb:#dce7fb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20m0 2c1.3 0 2.8 2.2 3.4 5.5H8.6C9.2 6.2 10.7 4 12 4M4.3 11h3.1a19 19 0 0 0 0 2H4.3a8 8 0 0 1 0-2m3.3 4h8.8c-.6 3.3-2.1 5.5-3.4 5.5S9.2 18.3 8.6 15zm8.8-2H8.6a17 17 0 0 1 0-2h7.8a17 17 0 0 1 0 2m1.6 2h1.7a8 8 0 0 1-4 3.8c.6-1 1.1-2.3 1.4-3.8zM16.6 9c-.3-1.5-.8-2.8-1.4-3.8a8 8 0 0 1 4 3.8z"/></svg></i> CCNA</span>
+        <span><i style="--gc:#df563e;--gcb:#f8e2d8"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 2v2h1v4.5L4.7 17A3 3 0 0 0 7.3 21.5h9.4A3 3 0 0 0 19.3 17L14 8.5V4h1V2zm3 2h0v5l1.6 2.6a5 5 0 0 1-3.2 0L12 9z"/></svg></i> 4 Research Papers</span>
+        <span><i style="--gc:#e8811a;--gcb:#fcecd6"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 20A4.5 4.5 0 0 1 5.6 11 6.5 6.5 0 0 1 18 9.2a4.4 4.4 0 0 1-.5 8.8z"/></svg></i> AWS Cloud</span>
+        <span><i style="--gc:#2563c9;--gcb:#dce7fb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20m0 2c1.3 0 2.8 2.2 3.4 5.5H8.6C9.2 6.2 10.7 4 12 4M4.3 11h3.1a19 19 0 0 0 0 2H4.3a8 8 0 0 1 0-2m3.3 4h8.8c-.6 3.3-2.1 5.5-3.4 5.5S9.2 18.3 8.6 15zm8.8-2H8.6a17 17 0 0 1 0-2h7.8a17 17 0 0 1 0 2m1.6 2h1.7a8 8 0 0 1-4 3.8c.6-1 1.1-2.3 1.4-3.8zM16.6 9c-.3-1.5-.8-2.8-1.4-3.8a8 8 0 0 1 4 3.8z"/></svg></i> Cisco CCNP</span>
         <span><i style="--gc:#2e9e63;--gcb:#dcf4e9"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1 3 5v6c0 5.2 3.8 9.4 9 11 5.2-1.6 9-5.8 9-11V5zm-1 14-4-4 1.4-1.4L11 12.2l4.6-4.6L17 9z"/></svg></i> Cybersecurity</span>
-      </div>
-      <div class="quicknav">
-        <a data-go="research"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><em>Research</em></a>
-        <a data-go="projects"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6 2 12l6 6"/><path d="m16 6 6 6-6 6"/></svg></span><em>Projects</em></a>
-        <a data-go="experience"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg></span><em>Experience</em></a>
-        <a data-go="credentials"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12 7 21l5-3 5 3-1.5-9"/></svg></span><em>Skills</em></a>
-        <a data-go="contact"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span><em>Contact</em></a>
-        <a data-go="cv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><em>CV</em></a>
       </div>
     </section>
 
@@ -315,6 +320,8 @@
       </div>
       <h3 class="sub">Certifications</h3>
       <div class="certs">
+        <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><circle cx="19" cy="6" r="2.4"/><circle cx="12" cy="18.5" r="2.4"/><path d="M6.9 7.4 10.6 16M17.1 7.4 13.4 16M7.4 6h9.2"/></svg></div><div><span class="badge done">Completed</span><h4>CCNP Enterprise: Core Networking <a class="viewcert" data-cert="ccnp-core">View ↗</a></h4><p>Cisco Networking Academy (Open University Cisco ITC) — L2 redundancy, EIGRP &amp; advanced OSPF, eBGP, multicast &amp; QoS, VPNs, secure infrastructure, and network automation.</p></div></div>
+        <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><circle cx="19" cy="6" r="2.4"/><circle cx="12" cy="18.5" r="2.4"/><path d="M6.9 7.4 10.6 16M17.1 7.4 13.4 16M7.4 6h9.2"/></svg></div><div><span class="badge done">Completed</span><h4>CCNP Enterprise: Advanced Routing <a class="viewcert" data-cert="ccnp-adv">View ↗</a></h4><p>Cisco Networking Academy — advanced routing, route redistribution, path control, and enterprise VPN technologies.</p></div></div>
         <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><div><span class="badge done">Completed</span><h4>Cisco NetAcad — Network Security</h4><p>Threat defense, secure network design, and monitoring.</p></div></div>
         <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0 0-9 6 6 0 0 0-11.6-1.5A4 4 0 1 0 5 19z"/></svg></div><div><span class="badge review">Preparing</span><h4>AWS Certified Solutions Architect – Associate</h4><p>Completed Adrian Cantrill's SAA course; preparing for the exam.</p></div></div>
         <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="14" width="8" height="8" rx="1"/><path d="M6 10v4a2 2 0 0 0 2 2h6M18 14v-4a2 2 0 0 0-2-2h-6"/></svg></div><div><span class="badge review">Preparing</span><h4>Cisco Certified Network Associate (CCNA)</h4><p>Routing &amp; switching, OSPF/EIGRP, VLANs, ACLs.</p></div></div>
@@ -385,6 +392,12 @@
   </div>
 </div>
 
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose" aria-label="Close">×</button>
+  <img id="lbImg" alt="Certificate">
+  <div class="lb-msg" id="lbMsg" style="display:none">This certificate will be viewable here soon.</div>
+</div>
+
 <script>
   function showPanel(id){
     document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='p-'+id));
@@ -401,6 +414,16 @@
 
   // summary toggles (Projects)
   document.addEventListener('click',e=>{ const b=e.target.closest('.sumbtn'); if(!b)return; const s=b.parentElement.parentElement.querySelector('.summary'); const open=s.classList.toggle('open'); b.textContent=open?'Hide summary ▴':'Read summary ▾'; });
+
+  // certificate lightbox — opens assets/cert-<id>.jpg (falls back gracefully if not added yet)
+  const lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg'), lbMsg=document.getElementById('lbMsg');
+  lbImg.onerror=()=>{ lbImg.style.display='none'; lbMsg.style.display='block'; };
+  document.addEventListener('click',e=>{
+    const v=e.target.closest('.viewcert');
+    if(v){ e.preventDefault(); lbMsg.style.display='none'; lbImg.style.display='block'; lbImg.src='assets/cert-'+v.dataset.cert+'.jpg'; lb.classList.add('open'); return; }
+    if(e.target===lb || e.target.id==='lbClose'){ lb.classList.remove('open'); }
+  });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') lb.classList.remove('open'); });
 
   // live repositories (exclude portfolio + profile repos)
   const EXCLUDE=['adeliusa486.github.io','adeliusa486'];
