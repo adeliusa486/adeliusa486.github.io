@@ -36,7 +36,8 @@
   .brand img{ width:40px; height:40px; border-radius:50%; object-fit:cover; border:2px solid var(--surface); box-shadow:0 3px 10px rgba(25,42,63,.2); }
   .brand span{ color:var(--accent); }
   .navlinks{ display:flex; gap:3px; list-style:none; margin:0; padding:0; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
-  .navlinks a{ text-decoration:none; color:var(--ink); font-size:.94rem; font-weight:500; padding:8px 13px; border-radius:999px; cursor:pointer; white-space:nowrap; transition:background .15s,color .15s; }
+  .navlinks a{ display:inline-flex; align-items:center; gap:6px; text-decoration:none; color:var(--ink); font-size:.94rem; font-weight:500; padding:8px 13px; border-radius:999px; cursor:pointer; white-space:nowrap; transition:background .15s,color .15s; }
+  .navlinks a svg{ width:15px; height:15px; flex:none; opacity:.85; }
   .navlinks a:hover{ background:var(--accent-soft); color:var(--accent); }
   .navlinks a.navactive{ background:var(--mustard); color:var(--ink); font-weight:700; }
   .menu-btn{ display:none; background:none; border:0; color:var(--ink); font-size:1.6rem; cursor:pointer; line-height:1; }
@@ -76,6 +77,7 @@
   .glance span:hover{ transform:translateY(-2px); box-shadow:0 8px 20px rgba(25,42,63,.09); }
   .glance span i{ display:inline-flex; width:44px; height:44px; border-radius:13px; align-items:center; justify-content:center; background:var(--gcb,#f8e2d8); color:var(--gc,var(--accent)); flex:none; }
   .glance span i svg{ width:24px; height:24px; }
+  .glance span i img{ width:27px; height:27px; object-fit:contain; display:block; }
 
   .badgerow{ display:flex; gap:12px; flex-wrap:wrap; margin:14px 0 0; }
   .vbadge{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:8px 14px 8px 8px; cursor:pointer; transition:transform .15s, border-color .15s, box-shadow .15s; }
@@ -208,13 +210,13 @@
   <a class="brand" data-go="intro"><img src="profile.jpg" alt="Adeel Ahmad">Adeel Ahmad<span>.</span></a>
   <button class="menu-btn" id="mb" aria-label="Menu">☰</button>
   <ul class="navlinks" id="menu">
-    <li><a data-go="intro">Home</a></li>
-    <li><a data-go="research">Research</a></li>
-    <li><a data-go="projects">Projects</a></li>
-    <li><a data-go="experience">Experience</a></li>
-    <li><a data-go="credentials">Skills</a></li>
-    <li><a data-go="contact">Contact</a></li>
-    <li><a data-go="cv">CV</a></li>
+    <li><a data-go="intro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>Home</a></li>
+    <li><a data-go="research"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19a2 2 0 0 0 2 2h13"/></svg>Research</a></li>
+    <li><a data-go="projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6"/><path d="m16 6 6 6-6 6"/></svg>Projects</a></li>
+    <li><a data-go="experience"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Experience</a></li>
+    <li><a data-go="credentials"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg>Skills</a></li>
+    <li><a data-go="contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6L22 7"/></svg>Contact</a></li>
+    <li><a data-go="cv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>CV</a></li>
   </ul>
 </div></nav>
 
@@ -224,14 +226,13 @@
     <!-- INTRO -->
     <section class="panel active" id="p-intro">
       <span class="pill">Madinah, Saudi Arabia</span>
-      <h1>Hi, I'm Adeel — working at the intersection of <span class="mark">cybersecurity, AI, and networks.</span></h1>
-      <p class="lead">I'm a final-year Information Technology student at <b>IUM</b>, studying on a fully-funded <b>Saudi Government scholarship</b> awarded for academic excellence. My journey into computing began in Gujranwala, Pakistan, with a simple curiosity — taking apart small programs and networks to understand how they really work — and has grown into a focused mission: making artificial intelligence <b>secure, private, and explainable</b> enough to protect the networks the world depends on. Over the past two years I've co-authored peer-reviewed research on privacy in federated learning, designed interpretable intrusion-detection systems for software-defined networks, and built complete systems from Raspberry Pi hardware to cloud dashboards. I'm currently sharpening my practical security skills through hands-on <b>TryHackMe</b> cybersecurity labs, alongside my AWS and networking training.</p>
+      <h1>Hi, I'm Adeel — I build <span class="mark">secure, private, and explainable AI</span> for the networks the world runs on.</h1>
+      <p class="lead">Final-year Information Technology student at <b>IUM</b>, on a fully-funded <b>Saudi Government scholarship</b> awarded for academic excellence. I turn research into working systems — <b>IEEE-published</b> work on privacy attacks and defenses in federated learning, interpretable intrusion detection for software-defined networks, and complete builds spanning Raspberry Pi hardware to cloud dashboards. My mission is to make artificial intelligence trustworthy enough to defend critical infrastructure, and I sharpen my hands-on offensive-security skills daily through <b>TryHackMe</b> labs alongside my AWS and Cisco networking training.</p>
       <div class="glance">
         <span><i style="--gc:#8a5cf6;--gcb:#efe8ff"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8z"/></svg></i> 3.2 / 4 CGPA</span>
-        <span><i style="--gc:#2a8f96;--gcb:#d7eef0"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 3 7v10l9 5 9-5V7zm0 2.3 5.5 3-5.5 3-5.5-3zM5 8.9l6 3.3v6.5l-6-3.3zm14 0v6.5l-6 3.3v-6.5z"/></svg></i> IEEE Author</span>
+        <span><i style="--gcb:#e2edf4"><img src="assets/logo-ieee.svg" alt="IEEE"></i> IEEE Author</span>
         <span><i style="--gc:#df563e;--gcb:#f8e2d8"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 2v2h1v4.5L4.7 17A3 3 0 0 0 7.3 21.5h9.4A3 3 0 0 0 19.3 17L14 8.5V4h1V2zm3 2h0v5l1.6 2.6a5 5 0 0 1-3.2 0L12 9z"/></svg></i> 4 Research Papers</span>
-        <span><i style="--gc:#e8811a;--gcb:#fcecd6"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 20A4.5 4.5 0 0 1 5.6 11 6.5 6.5 0 0 1 18 9.2a4.4 4.4 0 0 1-.5 8.8z"/></svg></i> AWS Cloud</span>
-        <span><i style="--gc:#2563c9;--gcb:#dce7fb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20m0 2c1.3 0 2.8 2.2 3.4 5.5H8.6C9.2 6.2 10.7 4 12 4M4.3 11h3.1a19 19 0 0 0 0 2H4.3a8 8 0 0 1 0-2m3.3 4h8.8c-.6 3.3-2.1 5.5-3.4 5.5S9.2 18.3 8.6 15zm8.8-2H8.6a17 17 0 0 1 0-2h7.8a17 17 0 0 1 0 2m1.6 2h1.7a8 8 0 0 1-4 3.8c.6-1 1.1-2.3 1.4-3.8zM16.6 9c-.3-1.5-.8-2.8-1.4-3.8a8 8 0 0 1 4 3.8z"/></svg></i> Cisco CCNP</span>
+        <span><i style="--gcb:#fff3df"><img src="assets/logo-aws.svg" alt="AWS"></i> AWS Cloud</span>
         <span><i style="--gc:#2e9e63;--gcb:#dcf4e9"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1 3 5v6c0 5.2 3.8 9.4 9 11 5.2-1.6 9-5.8 9-11V5zm-1 14-4-4 1.4-1.4L11 12.2l4.6-4.6L17 9z"/></svg></i> Cybersecurity</span>
       </div>
 
