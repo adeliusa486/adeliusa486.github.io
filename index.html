@@ -80,8 +80,8 @@
   .badgerow{ display:flex; gap:12px; flex-wrap:wrap; margin:14px 0 0; }
   .vbadge{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:8px 14px 8px 8px; cursor:pointer; transition:transform .15s, border-color .15s, box-shadow .15s; }
   .vbadge:hover{ transform:translateY(-2px); border-color:#1BA0D7; box-shadow:0 8px 18px rgba(27,160,215,.18); }
-  .vbi{ display:flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:9px; background:linear-gradient(160deg,#4fc3e8,#1BA0D7); color:#fff; flex:none; }
-  .vbi svg{ width:18px; height:18px; }
+  .vbi{ display:flex; align-items:center; justify-content:center; flex:none; }
+  .vbi img{ width:44px; height:44px; border-radius:8px; display:block; object-fit:contain; }
   .vbt{ display:flex; flex-direction:column; line-height:1.25; }
   .vbt b{ font-size:.82rem; font-weight:700; }
   .vbt em{ font-style:normal; font-size:.68rem; color:var(--soft); font-family:var(--mono); letter-spacing:.02em; }
@@ -237,12 +237,12 @@
 
       <div class="badgerow">
         <a class="vbadge" data-cert="ccnp-core">
-          <span class="vbi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5.2 3.4 9 8 11 4.6-2 8-5.8 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg></span>
-          <span class="vbt"><b>CCNP: Core Networking</b><em>Credly Verified</em></span>
+          <span class="vbi"><img src="assets/badge-ccnp-core.jpg" alt="CCNP Enterprise: Core Networking verified badge"></span>
+          <span class="vbt"><b>CCNP: Core Networking</b><em>Cisco Verified</em></span>
         </a>
         <a class="vbadge" data-cert="ccnp-adv">
-          <span class="vbi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5.2 3.4 9 8 11 4.6-2 8-5.8 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg></span>
-          <span class="vbt"><b>CCNP: Advanced Routing</b><em>Credly Verified</em></span>
+          <span class="vbi"><img src="assets/badge-ccnp-adv.jpg" alt="CCNP Enterprise: Advanced Routing verified badge"></span>
+          <span class="vbt"><b>CCNP: Advanced Routing</b><em>Cisco Verified</em></span>
         </a>
       </div>
     </section>
