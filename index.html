@@ -1,12 +1,20 @@
 <!--
-  ADEEL AHMAD — INTERACTIVE WOODEN-HELM PORTFOLIO
-  ============================================================================
-  Steer the ship's wheel (right, half-visible) to rotate through sections.
-  The wooden HOME button at the centre stays still — click it to return here.
-  All text lives in the .panel blocks below — find the words and type over them.
-  Projects show your paper architecture figures + a "Read summary" toggle;
-  the full repo list loads live from GitHub (excluding the portfolio & profile repos).
-  ============================================================================
+  ADEEL AHMAD  |  PORTFOLIO
+  ===========================================================================
+  HOW TO EDIT (no coding needed):
+    1. Click "Edit this page" at the bottom of the site (or open this file on
+       GitHub and click the pencil icon).
+    2. Every screen (Home, Research, Publications, etc.) is a block below,
+       written in plain words. Find the words and type over them.
+    3. Each editable block is marked with the word  EDIT  in a note above it.
+    4. Save / "Commit changes". Your live site updates in about 1 minute.
+
+  ADD A NEW PAPER: in the PUBLICATIONS block, copy one whole  div.pub  block,
+  paste it, and change the text. For the status pick ONE word for both the
+  class and the label:  submitted , review , accepted , published .
+
+  The REPOSITORIES screen loads automatically from GitHub. Never edit it.
+  ===========================================================================
 -->
 <title>Adeel Ahmad</title>
 
@@ -17,496 +25,574 @@
 <style>
   :root{
     --bg:#fcf5e6; --surface:#fffdf7; --ink:#192a3f; --soft:#5d6a7a; --line:#e3decf;
-    --accent:#df563e; --accent-soft:#f8e2d8; --teal:#2a8f96; --mustard:#f4be47; --green:#accfb2; --mark:#f7d774; --gold:#c9a24a;
-    --st-submit:#8a8594; --st-submit-bg:#efeae2; --st-review:#c07d1a; --st-review-bg:#f7ead0;
-    --st-accept:#2e9e63; --st-accept-bg:#dcf1e6; --st-pub:#2a8f96; --st-pub-bg:#d7eef0;
-    --serif:'Fraunces','Iowan Old Style',Georgia,serif; --sans:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --accent:#df563e;            /* terracotta */
+    --accent-soft:#f8e2d8;
+    --mustard:#f4be47;           /* nav pill + active */
+    --mark:#f7d774;              /* headline highlighter */
+    --green:#accfb2;             /* location pill */
+    --st-submit:#8a8594; --st-submit-bg:#efeae2;
+    --st-review:#c07d1a; --st-review-bg:#f7ead0;
+    --st-accept:#2e9e63; --st-accept-bg:#dcf1e6;
+    --st-pub:#2a8f96;    --st-pub-bg:#d7eef0;
+    --serif:'Fraunces','Iowan Old Style',Georgia,serif;
+    --sans:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
     --mono:'SFMono-Regular',ui-monospace,'Cascadia Code',Consolas,monospace;
   }
   *{ box-sizing:border-box; }
-  html,body{ height:100%; }
-  body{ margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); line-height:1.7; -webkit-font-smoothing:antialiased; overflow:hidden; }
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); line-height:1.7; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:1040px; margin:0 auto; padding:0 30px; }
   a{ color:var(--accent); }
 
-  /* fixed top fade so scrolled content never visually collides with the logo */
-  .topbar{ position:fixed; top:0; left:0; width:100%; height:96px; z-index:29; background:linear-gradient(to bottom, var(--bg) 62%, transparent); pointer-events:none; }
-  .brand{ position:fixed; top:20px; left:34px; z-index:30; display:flex; align-items:center; gap:12px; font-family:var(--serif); font-weight:600; font-size:1.5rem; color:var(--ink); text-decoration:none; cursor:pointer; }
-  .brand img{ width:42px; height:42px; border-radius:50%; object-fit:cover; border:2px solid var(--surface); box-shadow:0 3px 10px rgba(25,42,63,.2); }
+  /* Nav */
+  nav{ position:sticky; top:0; z-index:20; background:color-mix(in srgb,var(--bg) 92%,transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  nav .row{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0 16px; }
+  .brand{ font-family:var(--serif); font-weight:600; font-size:1.5rem; text-decoration:none; color:var(--ink); cursor:pointer; white-space:nowrap; }
   .brand span{ color:var(--accent); }
-  .hint{ position:fixed; bottom:22px; left:34px; z-index:30; font-family:var(--mono); font-size:.76rem; letter-spacing:.08em; color:var(--soft); text-transform:uppercase; }
-  .hint b{ color:var(--accent); }
-
-  .stage{ position:relative; width:100%; height:100vh; overflow:hidden; }
-
-  .content{ position:absolute; top:0; left:0; width:54%; height:100%; padding:104px 40px 20px 34px; overflow-y:auto; overflow-x:hidden; }
-  .content::-webkit-scrollbar{ width:8px; } .content::-webkit-scrollbar-thumb{ background:var(--line); border-radius:8px; }
-  .panel{ display:none; animation:fade .45s ease; max-width:640px; }
-  .panel.active{ display:block; }
-  @keyframes fade{ from{ opacity:0; transform:translateY(12px);} to{ opacity:1; transform:none;} }
-  @media(prefers-reduced-motion:reduce){ .panel{ animation:none; } }
-
-  .eyebrow{ font-family:var(--mono); font-size:.76rem; text-transform:uppercase; letter-spacing:.16em; color:var(--accent); margin:0 0 10px; }
-  .panel h1{ font-family:var(--serif); font-weight:600; font-size:clamp(2.4rem,4.5vw,3.6rem); line-height:1.03; letter-spacing:-.02em; margin:0 0 14px; }
-  .panel h1 .mark{ background:linear-gradient(180deg,transparent 58%,var(--mark) 58%,var(--mark) 94%,transparent 94%); padding:0 3px; }
-  .panel h2{ font-family:var(--serif); font-weight:600; font-size:2rem; margin:0 0 8px; }
-  .panel .lead{ font-size:1.08rem; color:var(--soft); margin:0 0 22px; }
-  .panel h3.sub{ font-family:var(--mono); font-size:.78rem; text-transform:uppercase; letter-spacing:.14em; color:var(--teal); margin:28px 0 14px; padding-bottom:6px; border-bottom:1px solid var(--line); }
-
-  .pill{ display:inline-block; background:var(--green); color:var(--ink); font-family:var(--mono); font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; padding:7px 15px; border-radius:999px; margin-bottom:18px; }
-  .btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border-radius:999px; font-weight:700; font-size:.95rem; text-decoration:none; cursor:pointer; border:0; font-family:var(--sans); transition:transform .15s; }
-  .btn:hover{ transform:translateY(-2px); } .btn.primary{ background:var(--accent); color:#fff; box-shadow:0 8px 20px rgba(223,86,62,.32); }
-  #p-intro{ margin-top:-8px; }
-  #p-intro h1{ font-size:clamp(1.85rem,3.1vw,2.6rem); line-height:1.06; margin-bottom:8px; }
-  #p-intro .pill{ margin-bottom:7px; }
-  #p-intro .lead{ font-size:.93rem; line-height:1.52; margin-bottom:8px; }
-  #p-intro .lead b{ color:var(--ink); font-weight:700; }
-  .glance{ display:flex; flex-wrap:wrap; gap:7px; margin:0 0 9px; }
-  .glance span{ display:inline-flex; align-items:center; gap:8px; font-size:.8rem; font-weight:600; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:4px 14px 4px 4px; }
-  .glance span i{ display:inline-flex; width:25px; height:25px; border-radius:50%; align-items:center; justify-content:center; background:var(--gcb,#f8e2d8); color:var(--gc,var(--accent)); flex:none; }
-  .glance span i svg{ width:15px; height:15px; }
-  .quicknav{ display:flex; flex-wrap:nowrap; gap:clamp(6px,1.4vw,14px); }
-  .quicknav a{ display:flex; flex-direction:column; align-items:center; gap:6px; text-decoration:none; color:var(--soft); cursor:pointer; font-size:.66rem; font-weight:600; flex:1 1 0; min-width:0; }
-  .quicknav a .ic{ width:100%; max-width:44px; aspect-ratio:1; border-radius:13px; border:1.5px solid var(--line); background:var(--surface); display:flex; align-items:center; justify-content:center; color:var(--ink); box-shadow:0 3px 8px rgba(25,42,63,.06); transition:transform .18s, border-color .18s, background .18s, color .18s, box-shadow .18s; }
-  .quicknav a:hover .ic{ transform:translateY(-4px); border-color:var(--accent); background:var(--accent); color:#fff; box-shadow:0 10px 22px rgba(223,86,62,.3); }
-  .quicknav a:hover{ color:var(--accent); }
-  .quicknav a svg{ width:19px; height:19px; }
-  .quicknav a em{ font-style:normal; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
-
-  .list{ display:grid; gap:12px; }
-  .item{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 18px; }
-  .item b{ font-weight:700; } .item .d{ color:var(--soft); font-size:.95rem; display:block; margin-top:3px; }
-  .badge{ display:inline-block; font-family:var(--mono); font-size:.68rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:4px 10px; border-radius:999px; margin-bottom:10px; }
-  .badge.submitted{ color:var(--st-submit); background:var(--st-submit-bg); } .badge.review{ color:var(--st-review); background:var(--st-review-bg); }
-  .badge.accepted,.badge.done{ color:var(--st-accept); background:var(--st-accept-bg); }
-  .pub h4{ font-family:var(--serif); font-weight:600; font-size:1.12rem; margin:0 0 5px; line-height:1.3; }
-  .pub .venue{ color:var(--accent); font-weight:700; font-size:.9rem; margin:0 0 3px; } .pub .meta{ color:var(--soft); font-size:.86rem; margin:0; }
-
-  /* Project cards with architecture figures + summary */
-  .pcards{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-  @media(max-width:1250px){ .pcards{ grid-template-columns:1fr; } }
-  .pcard{ background:var(--surface); border:1px solid var(--line); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; }
-  .pcard .fig{ background:#fff; border-bottom:1px solid var(--line); padding:12px; }
-  .pcard .fig img{ width:100%; display:block; border-radius:8px; }
-  .pcard .body{ padding:16px 18px; display:flex; flex-direction:column; gap:10px; }
-  .pcard h4{ font-family:var(--serif); font-weight:600; font-size:1.12rem; margin:0; }
-  .ptags{ display:flex; gap:6px; flex-wrap:wrap; } .tag{ font-family:var(--mono); font-size:.68rem; padding:3px 9px; border-radius:999px; background:var(--accent-soft); color:#b4432c; }
-  .rowbtns{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-  .sumbtn{ font-family:var(--sans); font-weight:600; font-size:.85rem; color:var(--teal); background:none; border:1px solid var(--line); border-radius:999px; padding:7px 14px; cursor:pointer; transition:border-color .18s,color .18s; }
-  .sumbtn:hover{ border-color:var(--teal); }
-  .plink{ font-size:.85rem; font-weight:600; text-decoration:none; }
-  .summary{ max-height:0; overflow:hidden; transition:max-height .4s ease; color:var(--soft); font-size:.94rem; }
-  .summary.open{ max-height:340px; }
-  .summary p{ margin:6px 0 0; }
-
-  .cards{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-  @media(max-width:1250px){ .cards{ grid-template-columns:1fr; } }
-  .card{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; text-decoration:none; color:inherit; display:flex; flex-direction:column; transition:transform .18s,border-color .18s; }
-  .card:hover{ transform:translateY(-3px); border-color:var(--accent); }
-  .card h4{ font-family:var(--serif); font-weight:600; font-size:1.02rem; margin:0 0 6px; } .card p{ color:var(--soft); font-size:.88rem; margin:0 0 10px; flex:1; }
-  .repo-meta{ display:flex; gap:14px; font-family:var(--mono); font-size:.72rem; color:var(--soft); margin-top:auto; } .repo-meta .lg::before{ content:""; display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--accent); margin-right:5px; }
-  .loading,.err{ color:var(--soft); font-family:var(--mono); font-size:.85rem; padding:12px 0; }
-
-  /* Skills — icon style */
-  .stack{ margin:2px 0 6px; } .stack img{ max-width:100%; }
-  .netrow{ display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; } .netrow img{ height:30px; } .chip{ font-size:.84rem; padding:5px 12px; border-radius:999px; background:var(--surface); border:1px solid var(--line); }
-  .klabel{ font-family:var(--mono); font-size:.74rem; color:var(--teal); text-transform:uppercase; letter-spacing:.06em; margin:16px 0 8px; }
-
-  /* Certifications — icon cards */
-  .certs{ display:grid; gap:12px; }
-  .cert{ display:flex; gap:15px; align-items:flex-start; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 18px; }
-  .cert .ci{ flex:none; width:46px; height:46px; border-radius:12px; background:var(--accent-soft); display:flex; align-items:center; justify-content:center; color:var(--accent); }
-  .cert .ci svg{ width:24px; height:24px; }
-  .cert h4{ margin:0 0 3px; font-family:var(--serif); font-weight:600; font-size:1.06rem; } .cert p{ margin:0; color:var(--soft); font-size:.9rem; }
-
-  .links{ display:flex; gap:12px; flex-wrap:wrap; } .links a{ display:inline-flex; align-items:center; gap:9px; padding:12px 22px; border:1.5px solid var(--line); border-radius:999px; text-decoration:none; color:var(--ink); font-weight:600; font-size:.92rem; background:var(--surface); cursor:pointer; transition:border-color .18s,transform .18s,color .18s; } .links a:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
-  .links a svg{ width:18px; height:18px; }
-  /* CV document */
-  .cv-bar{ margin-bottom:20px; }
-  .cv-doc{ background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:36px 40px; }
-  @media(max-width:600px){ .cv-doc{ padding:24px 20px; } }
-  .cv-doc .cvhead{ text-align:center; border-bottom:1px solid var(--line); padding-bottom:16px; }
-  .cv-doc .cvhead h3{ font-family:var(--serif); font-weight:700; font-size:1.9rem; margin:0; }
-  .cv-doc .cvhead .t{ color:var(--soft); margin:4px 0 8px; } .cv-doc .cvhead .c{ font-size:.88rem; color:var(--soft); } .cv-doc .cvhead .c a{ color:var(--accent); text-decoration:none; }
-  .cv-sec{ margin-top:22px; } .cv-sec h4{ font-family:var(--mono); font-size:.78rem; text-transform:uppercase; letter-spacing:.12em; color:var(--accent); margin:0 0 10px; padding-bottom:6px; border-bottom:1px solid var(--line); }
-  .cv-sec p{ margin:0 0 7px; } .cv-sec b{ color:var(--ink); }
-  .cv-sec .row2{ display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; } .cv-sec .row2 .yr{ color:var(--soft); font-family:var(--mono); font-size:.84rem; white-space:nowrap; }
-  .cv-sec ul{ margin:6px 0 0; padding-left:20px; color:var(--soft); } .cv-sec li{ margin-bottom:4px; }
-
-  /* ---------- HELM ---------- */
-  .helm{ position:absolute; top:50%; right:0; width:880px; height:880px; transform:translate(44%,-50%); z-index:10; touch-action:none; }
-  .helm-inner{ position:absolute; inset:0; transform:scale(.85); transform-origin:50% 50%; }
-  .rotor{ position:absolute; inset:0; will-change:transform; cursor:grab; }
-  .rotor.dragging{ cursor:grabbing; }
-  .rotor.snap{ transition:transform .62s cubic-bezier(.16,1,.3,1); }
-  .rotor svg{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
-  .node{ position:absolute; width:84px; height:84px; margin:-42px 0 0 -42px; border-radius:50%; background:radial-gradient(circle at 40% 34%, #24374e, #101d2c); border:3px solid var(--gold); display:flex; align-items:center; justify-content:center; color:#cfe6f2; box-shadow:0 6px 16px rgba(0,0,0,.42), inset 0 1px 2px rgba(255,255,255,.18); transition:transform .32s cubic-bezier(.22,1,.36,1), border-color .3s, box-shadow .3s; cursor:pointer; }
-  .node svg{ position:static; width:34px; height:34px; }
-  .node:hover{ transform:scale(1.1); }
-  .node.active{ border-color:#f6df9a; color:#fff; transform:scale(1.26); box-shadow:0 0 0 5px rgba(246,223,154,.4), 0 14px 34px rgba(0,0,0,.5); }
-  .node .lbl{ position:absolute; right:100px; top:50%; transform:translateY(-50%); white-space:nowrap; font-family:var(--serif); font-weight:600; font-size:1.4rem; color:#452a18; opacity:0; transition:opacity .3s; pointer-events:none; text-shadow:0 1px 0 rgba(255,255,255,.6); }
-  .node.active .lbl{ opacity:1; }
-  .selector{ position:absolute; top:50%; left:2px; transform:translateY(-50%); width:0; height:0; border-top:14px solid transparent; border-bottom:14px solid transparent; border-left:19px solid var(--gold); z-index:11; filter:drop-shadow(0 2px 4px rgba(0,0,0,.3)); }
-  /* stationary wooden HOME button at the exact centre */
-  .home-btn{ position:absolute; top:50%; left:50%; width:126px; height:126px; margin:-63px 0 0 -63px; border-radius:50%; z-index:13; cursor:pointer;
-    background:radial-gradient(circle at 42% 34%, #8a5a34, #5a3a20 60%, #3f2917);
-    border:3px solid var(--gold); box-shadow:0 8px 22px rgba(0,0,0,.45), inset 0 2px 4px rgba(255,224,170,.25);
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; color:#f4ead6; transition:transform .2s; }
-  .home-btn:hover{ transform:scale(1.06); }
-  .home-btn svg{ width:38px; height:38px; }
-  .home-btn span{ font-family:var(--mono); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; opacity:.85; }
-
+  nav ul{ display:flex; flex-wrap:wrap; gap:4px; list-style:none; margin:0; padding:0; align-items:center; justify-content:flex-end; }
+  .navlink{ text-decoration:none; color:var(--ink); font-size:.96rem; font-weight:500; padding:8px 15px; border-radius:999px; transition:background .15s, color .15s; cursor:pointer; white-space:nowrap; }
+  .navlink:hover{ background:var(--accent-soft); color:var(--accent); }
+  .navlink.active{ background:var(--mustard); color:var(--ink); font-weight:700; }
+  .ext{ color:var(--soft); text-decoration:none; font-size:.96rem; font-weight:500; padding:8px 12px; white-space:nowrap; }
+  .ext:hover{ color:var(--accent); }
+  .menu-btn{ display:none; background:none; border:0; color:var(--ink); font-size:1.7rem; cursor:pointer; }
   @media(max-width:960px){
-    body{ overflow:auto; } .stage{ height:auto; min-height:100vh; display:flex; flex-direction:column; }
-    .content{ position:static; width:100%; height:auto; padding:92px 22px 40px; order:2; }
-    .pcards,.cards{ grid-template-columns:1fr; }
-    .helm{ position:relative; order:1; width:360px; height:360px; margin:64px auto 0; right:auto; top:auto; transform:translate(26%,0); }
-    .node{ width:58px; height:58px; margin:-29px 0 0 -29px; } .node svg{ width:24px; height:24px; } .node .lbl{ right:72px; font-size:1rem; }
-    .home-btn{ width:78px; height:78px; margin:-39px 0 0 -39px; } .home-btn svg{ width:26px; height:26px; } .home-btn span{ font-size:.5rem; }
-    .hint{ position:static; text-align:center; margin:14px 0 0; }
+    nav ul{ display:none; }
+    nav ul.open{ display:flex; flex-direction:column; align-items:stretch; justify-content:flex-start; width:100%; padding:6px 0 12px; }
+    nav ul.open .navlink, nav ul.open .ext{ padding:12px 8px; }
+    .menu-btn{ display:block; }
+    nav .row{ flex-wrap:wrap; }
   }
+
+  main{ min-height:60vh; }
+  .page{ display:none; padding:56px 0 44px; animation:fade .3s ease; }
+  .page.active{ display:block; }
+  @keyframes fade{ from{ opacity:0; transform:translateY(8px);} to{ opacity:1; transform:none;} }
+  @media(prefers-reduced-motion:reduce){ .page{ animation:none; } }
+
+  .eyebrow{ font-family:var(--mono); font-size:.78rem; text-transform:uppercase; letter-spacing:.16em; color:var(--accent); margin:0 0 12px; }
+  .page h2{ font-family:var(--serif); font-weight:600; font-size:2.4rem; letter-spacing:-.01em; margin:0 0 12px; }
+  .sub{ color:var(--soft); max-width:46em; margin:0 0 32px; font-size:1.08rem; }
+
+  /* HOME — two-column hero like Emma */
+  .hero{ display:grid; grid-template-columns:1.15fr .85fr; gap:48px; align-items:center; }
+  @media(max-width:860px){ .hero{ grid-template-columns:1fr; gap:34px; } }
+  .pill{ display:inline-block; background:var(--green); color:var(--ink); font-family:var(--mono); font-size:.74rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; padding:7px 15px; border-radius:999px; margin-bottom:22px; }
+  .hero h1{ font-family:var(--serif); font-weight:600; font-size:clamp(2.7rem,5.5vw,4rem); line-height:1.02; margin:0 0 26px; letter-spacing:-.02em; }
+  .hero h1 .mark{ background:linear-gradient(180deg, transparent 58%, var(--mark) 58%, var(--mark) 94%, transparent 94%); padding:0 2px; }
+  .hero .bio{ font-size:1.1rem; color:var(--soft); margin:0 0 30px; }
+  .hero .bio b{ color:var(--ink); font-weight:700; }
+  .cta{ display:flex; gap:13px; flex-wrap:wrap; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:13px 26px; border-radius:999px; font-weight:700; font-size:.97rem; text-decoration:none; transition:transform .15s, box-shadow .15s; cursor:pointer; border:0; font-family:var(--sans); }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn.primary{ background:var(--accent); color:#fff; box-shadow:0 8px 20px rgba(223,86,62,.32); }
+  .btn.ghost{ border:1.5px solid var(--ink); color:var(--ink); background:transparent; }
+  .btn.ghost:hover{ border-color:var(--accent); color:var(--accent); }
+  .hero-photo{ justify-self:center; }
+  .hero-photo img{ width:100%; max-width:330px; aspect-ratio:1/1; object-fit:cover; border-radius:50%; border:7px solid var(--surface); box-shadow:0 18px 50px rgba(223,86,62,.24); background:var(--surface); }
+
+  /* Stat tiles */
+  .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:52px; }
+  @media(max-width:720px){ .stats{ grid-template-columns:1fr 1fr; } }
+  .stat{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:22px 20px; text-align:center; }
+  .stat .n{ font-family:var(--serif); font-weight:600; font-size:2.4rem; color:var(--accent); line-height:1; }
+  .stat .l{ font-size:.9rem; color:var(--soft); margin-top:8px; }
+
+  /* Research */
+  .research{ display:grid; gap:12px; }
+  .r-item{ display:flex; gap:15px; align-items:flex-start; padding:18px 22px; background:var(--surface); border:1px solid var(--line); border-radius:14px; }
+  .r-item::before{ content:""; margin-top:10px; width:9px; height:9px; border-radius:50%; background:var(--accent); flex:none; }
+  .r-item b{ font-weight:700; }
+  .r-item span{ font-size:1.05rem; }
+  .r-item .d{ color:var(--soft); font-size:.96rem; display:block; margin-top:2px; }
+
+  /* Publications */
+  .pubs{ display:grid; gap:16px; }
+  .pub{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:24px 26px; }
+  .badge{ display:inline-block; font-family:var(--mono); font-size:.72rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:5px 12px; border-radius:999px; margin-bottom:13px; }
+  .badge.submitted{ color:var(--st-submit); background:var(--st-submit-bg); }
+  .badge.review{ color:var(--st-review); background:var(--st-review-bg); }
+  .badge.accepted{ color:var(--st-accept); background:var(--st-accept-bg); }
+  .badge.published{ color:var(--st-pub); background:var(--st-pub-bg); }
+  .pub h3{ font-family:var(--serif); font-weight:600; font-size:1.26rem; margin:0 0 8px; line-height:1.32; }
+  .pub .venue{ color:var(--accent); font-weight:700; font-size:.97rem; margin:0 0 6px; }
+  .pub .meta{ color:var(--soft); font-size:.94rem; margin:0; }
+
+  /* Cards */
+  .grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  @media(max-width:640px){ .grid{ grid-template-columns:1fr; } }
+  .card{ background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:26px; display:flex; flex-direction:column; text-decoration:none; color:inherit; transition:transform .2s, box-shadow .2s, border-color .2s; }
+  .card:hover{ transform:translateY(-4px); box-shadow:0 14px 36px rgba(25,42,63,.1); border-color:var(--accent); }
+  .card h3{ font-family:var(--serif); font-weight:600; font-size:1.24rem; margin:0 0 10px; }
+  .card p{ color:var(--soft); font-size:.96rem; margin:0 0 16px; flex:1; }
+  .tags{ display:flex; gap:7px; flex-wrap:wrap; }
+  .tag{ font-family:var(--mono); font-size:.72rem; padding:4px 10px; border-radius:999px; background:var(--accent-soft); color:#b4432c; }
+
+  /* Timeline */
+  .timeline{ display:grid; }
+  .tl{ display:grid; grid-template-columns:180px 1fr; gap:24px; padding:24px 0; border-bottom:1px solid var(--line); }
+  .tl:last-child{ border-bottom:0; }
+  .tl .when{ font-family:var(--mono); font-size:.85rem; color:var(--accent); padding-top:3px; }
+  .tl h3{ margin:0; font-size:1.2rem; font-family:var(--serif); font-weight:600; }
+  .tl .place{ color:var(--ink); font-weight:700; font-size:.98rem; margin:3px 0 8px; }
+  .tl ul{ margin:6px 0 0; padding-left:18px; color:var(--soft); font-size:.97rem; }
+  .tl li{ margin-bottom:5px; }
+  .tl .note{ color:var(--soft); font-size:.97rem; }
+  @media(max-width:560px){ .tl{ grid-template-columns:1fr; gap:6px; } }
+
+  /* Skills */
+  .skills-wrap{ display:grid; gap:4px; }
+  .skill-row{ display:grid; grid-template-columns:190px 1fr; gap:18px; padding:18px 0; border-bottom:1px solid var(--line); align-items:start; }
+  .skill-row:last-child{ border-bottom:0; }
+  .skill-row .k{ font-family:var(--mono); font-size:.82rem; color:var(--accent); text-transform:uppercase; letter-spacing:.06em; padding-top:5px; }
+  .chips{ display:flex; gap:8px; flex-wrap:wrap; }
+  .chip{ font-size:.88rem; padding:6px 14px; border-radius:999px; background:var(--surface); border:1px solid var(--line); }
+  @media(max-width:560px){ .skill-row{ grid-template-columns:1fr; gap:8px; } }
+
+  /* Certifications */
+  .certs{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  @media(max-width:640px){ .certs{ grid-template-columns:1fr; } }
+  .cert{ background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:24px; display:flex; gap:16px; align-items:flex-start; }
+  .cert .ic{ font-size:1.7rem; line-height:1; flex:none; }
+  .cert h3{ font-family:var(--serif); font-weight:600; font-size:1.14rem; margin:0 0 4px; }
+  .cert p{ margin:0; color:var(--soft); font-size:.94rem; }
+
+  /* Repos */
+  .repo-head{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:6px; }
+  .live{ display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:.75rem; color:var(--st-accept); }
+  .live .pulse{ width:9px; height:9px; border-radius:50%; background:var(--st-accept); animation:pulse 1.9s infinite; }
+  @keyframes pulse{ 0%{ box-shadow:0 0 0 0 rgba(46,158,99,.4);} 70%{ box-shadow:0 0 0 9px transparent;} }
+  @media(prefers-reduced-motion:reduce){ .live .pulse{ animation:none; } }
+  .repo-meta{ display:flex; gap:16px; font-family:var(--mono); font-size:.75rem; color:var(--soft); margin-top:auto; padding-top:14px; }
+  .repo-meta .lang{ display:inline-flex; align-items:center; gap:6px; }
+  .repo-meta .lang::before{ content:""; width:9px; height:9px; border-radius:50%; background:var(--accent); }
+  .loading,.err{ color:var(--soft); font-family:var(--mono); font-size:.9rem; padding:18px 0; }
+
+  /* CV document (rendered inline, same style) */
+  .cv-bar{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:24px; }
+  .cv-doc{ background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:40px 44px; }
+  @media(max-width:600px){ .cv-doc{ padding:26px 22px; } }
+  .cv-doc .cvhead{ text-align:center; border-bottom:1px solid var(--line); padding-bottom:18px; margin-bottom:6px; }
+  .cv-doc .cvhead h3{ font-family:var(--serif); font-weight:700; font-size:2rem; margin:0; }
+  .cv-doc .cvhead .t{ color:var(--soft); margin:4px 0 8px; }
+  .cv-doc .cvhead .c{ font-size:.9rem; color:var(--soft); }
+  .cv-doc .cvhead .c a{ color:var(--accent); text-decoration:none; }
+  .cv-sec{ margin-top:24px; }
+  .cv-sec h4{ font-family:var(--mono); font-size:.8rem; text-transform:uppercase; letter-spacing:.12em; color:var(--accent); margin:0 0 10px; padding-bottom:6px; border-bottom:1px solid var(--line); }
+  .cv-sec p{ margin:0 0 8px; }
+  .cv-sec .row2{ display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .cv-sec .row2 .yr{ color:var(--soft); font-family:var(--mono); font-size:.85rem; white-space:nowrap; }
+  .cv-sec ul{ margin:6px 0 0; padding-left:20px; color:var(--soft); }
+  .cv-sec li{ margin-bottom:4px; }
+  .cv-sec b{ color:var(--ink); }
+
+  /* Contact */
+  .links{ display:flex; gap:12px; flex-wrap:wrap; margin-top:6px; }
+  .links a{ display:inline-flex; align-items:center; gap:8px; padding:13px 24px; border:1.5px solid var(--line); border-radius:999px; text-decoration:none; color:var(--ink); font-weight:600; font-size:.94rem; background:var(--surface); transition:border-color .2s, transform .2s; }
+  .links a:hover{ border-color:var(--accent); transform:translateY(-2px); }
+
+  footer{ border-top:1px solid var(--line); padding:24px 0; text-align:center; color:var(--soft); font-family:var(--mono); font-size:.78rem; }
+  footer a{ color:var(--soft); text-decoration:none; border-bottom:1px dotted var(--soft); }
+  footer a:hover{ color:var(--accent); border-color:var(--accent); }
 </style>
 
-<div class="topbar"></div>
-<a class="brand" data-go="intro"><img src="profile.jpg" alt="Adeel Ahmad">Adeel Ahmad<span>.</span></a>
-
-<div class="stage">
-  <div class="content" id="content">
-
-    <!-- INTRO -->
-    <section class="panel active" id="p-intro">
-      <span class="pill">Madinah, Saudi Arabia</span>
-      <h1>Hi, I'm Adeel — working at the intersection of <span class="mark">cybersecurity, AI, and networks.</span></h1>
-      <p class="lead">I'm a final-year Information Technology student at <b>IUM</b>, studying on a fully-funded <b>Saudi Government scholarship</b> awarded for academic excellence. My journey into computing began in Gujranwala, Pakistan, with a simple curiosity — taking apart small programs and networks to understand how they really work — and has grown into a focused mission: making artificial intelligence <b>secure, private, and explainable</b> enough to protect the networks the world depends on. Over the past two years I've co-authored peer-reviewed research on privacy in federated learning, designed interpretable intrusion-detection systems for software-defined networks, and built complete systems from Raspberry Pi hardware to cloud dashboards. I'm currently sharpening my practical security skills through hands-on <b>TryHackMe</b> cybersecurity labs, alongside my AWS and networking training.</p>
-      <div class="glance">
-        <span><i style="--gc:#8a5cf6;--gcb:#efe8ff"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9l11 6 9-4.9V17h2V9zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8z"/></svg></i> 3.2/4 CGPA</span>
-        <span><i style="--gc:#2a8f96;--gcb:#d7eef0"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 3 7v10l9 5 9-5V7zm0 2.3 5.5 3-5.5 3-5.5-3zM5 8.9l6 3.3v6.5l-6-3.3zm14 0v6.5l-6 3.3v-6.5z"/></svg></i> IEEE Author</span>
-        <span><i style="--gc:#df563e;--gcb:#f8e2d8"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 2v2h1v4.5L4.7 17A3 3 0 0 0 7.3 21.5h9.4A3 3 0 0 0 19.3 17L14 8.5V4h1V2zm3 2h0v5l1.6 2.6a5 5 0 0 1-3.2 0L12 9z"/></svg></i> 4 Research Projects</span>
-        <span><i style="--gc:#e8811a;--gcb:#fcecd6"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 20A4.5 4.5 0 0 1 5.6 11 6.5 6.5 0 0 1 18 9.2a4.4 4.4 0 0 1-.5 8.8z"/></svg></i> AWS</span>
-        <span><i style="--gc:#2563c9;--gcb:#dce7fb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20m0 2c1.3 0 2.8 2.2 3.4 5.5H8.6C9.2 6.2 10.7 4 12 4M4.3 11h3.1a19 19 0 0 0 0 2H4.3a8 8 0 0 1 0-2m3.3 4h8.8c-.6 3.3-2.1 5.5-3.4 5.5S9.2 18.3 8.6 15zm8.8-2H8.6a17 17 0 0 1 0-2h7.8a17 17 0 0 1 0 2m1.6 2h1.7a8 8 0 0 1-4 3.8c.6-1 1.1-2.3 1.4-3.8zM16.6 9c-.3-1.5-.8-2.8-1.4-3.8a8 8 0 0 1 4 3.8z"/></svg></i> CCNA</span>
-        <span><i style="--gc:#2e9e63;--gcb:#dcf4e9"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1 3 5v6c0 5.2 3.8 9.4 9 11 5.2-1.6 9-5.8 9-11V5zm-1 14-4-4 1.4-1.4L11 12.2l4.6-4.6L17 9z"/></svg></i> Cybersecurity</span>
-      </div>
-      <div class="quicknav">
-        <a data-go="research"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><em>Research</em></a>
-        <a data-go="projects"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6 2 12l6 6"/><path d="m16 6 6 6-6 6"/></svg></span><em>Projects</em></a>
-        <a data-go="experience"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg></span><em>Experience</em></a>
-        <a data-go="credentials"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12 7 21l5-3 5 3-1.5-9"/></svg></span><em>Skills</em></a>
-        <a data-go="contact"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span><em>Contact</em></a>
-        <a data-go="cv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg></span><em>CV</em></a>
-      </div>
-    </section>
-
-    <!-- RESEARCH — Publications first, interests under -->
-    <section class="panel" id="p-research">
-      <p class="eyebrow">Research &amp; Publications</p>
-      <h2>Publications</h2>
-      <p class="lead">Peer-reviewed, in-review, and submitted work.</p>
-      <div class="list">
-        <div class="item pub"><span class="badge accepted">Accepted</span><h4>Privacy Leakage in Federated Learning: Gradient-Based Client Identity Inference and Defense Analysis for Secure Vehicular Networks</h4><p class="venue">IEEE 104th Vehicular Technology Conference (VTC2026-Fall)</p><p class="meta">Co-author · 2026</p></div>
-        <div class="item pub"><span class="badge review">Peer Review</span><h4>Balancing Spatial Urgency and Content Popularity for Edge Caching in Vehicular Networks</h4><p class="venue">Springer Nature — Discover Telecommunications</p><p class="meta">In peer review · 2026</p></div>
-        <div class="item pub"><span class="badge submitted">Submitted</span><h4>XAI-SDN: A Lightweight, Interpretable DDoS Detection System for SDN Using Entropy Feature Augmentation and SHAP</h4><p class="venue">Submitted to a peer-reviewed journal</p><p class="meta">Awaiting decision · 2026</p></div>
-        <div class="item pub"><span class="badge submitted">Submitted</span><h4>Adaptive Multi-Factor Trust Aggregation for Byzantine-Robust Federated Learning in IoT Networks</h4><p class="venue">Submitted to a peer-reviewed journal</p><p class="meta">Awaiting decision · 2026</p></div>
-      </div>
-      <h3 class="sub">Research Interests</h3>
-      <div class="list">
-        <div class="item"><b>Cybersecurity &amp; Explainable AI</b><span class="d">Interpretable intrusion- and DDoS-detection for SDN and next-gen networks.</span></div>
-        <div class="item"><b>Federated Learning</b><span class="d">Robust, Byzantine-resilient aggregation against poisoning attacks.</span></div>
-        <div class="item"><b>Privacy-Preserving ML</b><span class="d">Mitigating gradient-based privacy leakage in vehicular learning.</span></div>
-        <div class="item"><b>Cloud, Edge &amp; IoT</b><span class="d">Edge intelligence and content caching for the Internet of Things.</span></div>
-      </div>
-    </section>
-
-    <!-- PROJECTS — architecture figures + summary, then live repos -->
-    <section class="panel" id="p-projects">
-      <p class="eyebrow">Projects &amp; Repositories</p>
-      <h2>Featured work</h2>
-      <p class="lead">System architectures from my research. Open a summary, or view the code.</p>
-      <div class="pcards">
-        <div class="pcard">
-          <div class="fig"><img src="assets/xai-sdn-arch.jpeg" alt="XAI-SDN architecture"></div>
-          <div class="body"><h4>XAI-SDN — Explainable DDoS Detection</h4>
-            <div class="ptags"><span class="tag">SDN</span><span class="tag">SHAP</span><span class="tag">Random Forest</span></div>
-            <div class="rowbtns"><button class="sumbtn">Read summary ▾</button><a class="plink" href="https://github.com/adeliusa486/XAI-SDN" target="_blank" rel="noopener">View repo ↗</a></div>
-            <div class="summary"><p>A lightweight, interpretable DDoS-detection system for software-defined networks. Flows are summarised with an O(1) rolling-entropy feature, classified by a Random Forest, and every decision is explained with SHAP — reaching 99.99% accuracy at sub-millisecond inference while feeding a real-time mitigation loop.</p></div>
-          </div>
-        </div>
-        <div class="pcard">
-          <div class="fig"><img src="assets/trajectorycache-architecture.png" alt="TrajectoryCache architecture"></div>
-          <div class="body"><h4>TrajectoryCache — Vehicular Edge Caching</h4>
-            <div class="ptags"><span class="tag">V2X</span><span class="tag">SUMO</span><span class="tag">Docker</span></div>
-            <div class="rowbtns"><button class="sumbtn">Read summary ▾</button><a class="plink" href="https://github.com/adeliusa486/TrajectoryCache" target="_blank" rel="noopener">View repo ↗</a></div>
-            <div class="summary"><p>A mobility-aware content-caching policy for vehicular (V2X) named-data networks. It balances each item's spatial urgency against its temporal popularity under SUMO-style platoon traffic with GPS noise, making cache-eviction decisions in under 43 microseconds.</p></div>
-          </div>
-        </div>
-        <div class="pcard">
-          <div class="fig"><img src="assets/fedlearning-arch.png" alt="Federated trust-aggregation architecture"></div>
-          <div class="body"><h4>Byzantine-Robust Federated Learning</h4>
-            <div class="ptags"><span class="tag">Federated</span><span class="tag">IoT</span><span class="tag">Trust</span></div>
-            <div class="rowbtns"><button class="sumbtn">Read summary ▾</button><a class="plink" href="https://github.com/adeliusa486/Adaptive-Multi-Factor-Trust-Aggregation-for-Byzantine-Robust-Federated-Learning-in-IoT-Networks" target="_blank" rel="noopener">View repo ↗</a></div>
-            <div class="summary"><p>A Byzantine-robust aggregation scheme for federated learning in IoT. A cloud trust engine fuses cosine-similarity and historical-reputation signals to score each client, filtering poisoned updates before they corrupt the global model.</p></div>
-          </div>
-        </div>
-        <div class="pcard">
-          <div class="fig"><img src="assets/cxai-rca-arch.png" alt="Causal-XAI root-cause analysis pipeline"></div>
-          <div class="body"><h4>CXAI-RCA — Causal Root-Cause Analysis</h4>
-            <div class="ptags"><span class="tag">Causal AI</span><span class="tag">GraphSAGE</span><span class="tag">SHAP</span></div>
-            <div class="rowbtns"><button class="sumbtn">Read summary ▾</button><a class="plink" href="https://github.com/adeliusa486/cxai-rca" target="_blank" rel="noopener">View repo ↗</a></div>
-            <div class="summary"><p>A causal-and-explainable pipeline for cyber-attack root-cause analysis in cloud-native microservices. Telemetry builds a service-dependency graph; a GraphSAGE detector flags intrusions; NOTEARS causal discovery traces the propagation path; and SHAP + counterfactuals produce an explainable incident report.</p></div>
-          </div>
-        </div>
-      </div>
-      <h3 class="sub">All Repositories · live from GitHub</h3>
-      <div id="repos"><div class="loading">Loading repositories…</div></div>
-    </section>
-
-    <!-- EXPERIENCE + EDUCATION -->
-    <section class="panel" id="p-experience">
-      <p class="eyebrow">Experience &amp; Education</p>
-      <h2>Where I've worked &amp; studied</h2>
-      <h3 class="sub">Experience</h3>
-      <div class="list">
-        <div class="item"><b>Intern — Asaqefah Business Development, Madinah</b><span class="d">Jun 2026 – Present · Built an AWS-powered multilingual crowd-management MVP for Al-Masjid an-Nabawi with an operations dashboard; owned the full stack.</span></div>
-        <div class="item"><b>Developer — Team VisionBridge AI (King Salman Center AI Hackathon)</b><span class="d">2026 · Built an offline Raspberry Pi smart cane; selected into the hackathon acceleration phase.</span></div>
-      </div>
-      <h3 class="sub">Education</h3>
-      <div class="list">
-        <div class="item"><b>Bachelor of Information Technology — Islamic University of Madinah</b><span class="d">2023 – Present · CGPA 3.99/5.00 (≈ 3.2/4.00). Saudi Government-funded scholarship for academic excellence.</span></div>
-        <div class="item"><b>Higher Secondary — Punjab College of Commerce</b><span class="d">2020 · 92%</span></div>
-        <div class="item"><b>Secondary — Govt. High School, Qila Didar Singh, Gujranwala</b><span class="d">2017 · 90%</span></div>
-      </div>
-    </section>
-
-    <!-- SKILLS + CERTIFICATIONS — icon style -->
-    <section class="panel" id="p-credentials">
-      <p class="eyebrow">Skills &amp; Certifications</p>
-      <h2>Tools &amp; credentials</h2>
-      <h3 class="sub">Technical Skills</h3>
-      <div class="klabel">Languages · ML · Cloud · DevOps</div>
-      <div class="stack"><img src="https://skillicons.dev/icons?i=py,java,mysql,pytorch,sklearn,opencv,aws,docker,linux,terraform,ansible,git,bash&perline=7" alt="Tech stack icons"></div>
-      <div class="klabel">Networking &amp; Simulation</div>
-      <div class="netrow">
-        <img src="https://img.shields.io/badge/-Cisco%20CCNA-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white" alt="CCNA">
-        <img src="https://img.shields.io/badge/-GNS3-009639?style=for-the-badge&logo=gns3&logoColor=white" alt="GNS3">
-        <img src="https://img.shields.io/badge/-Wireshark-1679A7?style=for-the-badge&logo=wireshark&logoColor=white" alt="Wireshark">
-        <span class="chip">Packet Tracer</span><span class="chip">SUMO</span><span class="chip">OSPF</span><span class="chip">EIGRP</span><span class="chip">VLANs</span><span class="chip">ACLs</span>
-      </div>
-      <h3 class="sub">Certifications</h3>
-      <div class="certs">
-        <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><div><span class="badge done">Completed</span><h4>Cisco NetAcad — Network Security</h4><p>Threat defense, secure network design, and monitoring.</p></div></div>
-        <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0 0-9 6 6 0 0 0-11.6-1.5A4 4 0 1 0 5 19z"/></svg></div><div><span class="badge review">Preparing</span><h4>AWS Certified Solutions Architect – Associate</h4><p>Completed Adrian Cantrill's SAA course; preparing for the exam.</p></div></div>
-        <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="14" width="8" height="8" rx="1"/><path d="M6 10v4a2 2 0 0 0 2 2h6M18 14v-4a2 2 0 0 0-2-2h-6"/></svg></div><div><span class="badge review">Preparing</span><h4>Cisco Certified Network Associate (CCNA)</h4><p>Routing &amp; switching, OSPF/EIGRP, VLANs, ACLs.</p></div></div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="panel" id="p-contact">
-      <p class="eyebrow">Contact</p>
-      <h2>Let's work together</h2>
-      <p class="lead">Actively seeking a fully-funded PhD position and open to research collaborations.</p>
-      <div class="links">
-        <a href="mailto:443057803@stu.iu.edu.sa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg> Email</a>
-        <a href="https://github.com/adeliusa486" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.8c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.1-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C16.9 5 17.9 5.3 17.9 5.3c.6 1.6.2 2.8.1 3.1.7.8 1.1 1.8 1.1 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg> GitHub</a>
-        <a href="https://linkedin.com/in/adeel-ahmad-5a041b237" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.3a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5zM19 19h-3v-4.7c0-1.1 0-2.5-1.5-2.5S13 13 13 14.2V19h-3v-9h2.9v1.3a3.1 3.1 0 0 1 2.8-1.5c3 0 3.6 2 3.6 4.5z"/></svg> LinkedIn</a>
-        <a data-go="cv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg> View CV</a>
-      </div>
-    </section>
-
-    <!-- CV — themed, viewable in-page + separate download -->
-    <section class="panel" id="p-cv">
-      <p class="eyebrow">Curriculum Vitae</p>
-      <div class="cv-bar"><a class="btn primary" href="Adeel-Ahmad-CV.pdf" download style="background:var(--teal);box-shadow:0 8px 20px rgba(42,143,150,.3)">Download PDF ↓</a></div>
-      <div class="cv-doc">
-        <div class="cvhead">
-          <h3>Adeel Ahmad</h3>
-          <div class="t">Information Technology Student — Networking, Cloud &amp; AI</div>
-          <div class="c">Madinah, Saudi Arabia · <a href="mailto:443057803@stu.iu.edu.sa">443057803@stu.iu.edu.sa</a><br>
-          <a href="https://github.com/adeliusa486" target="_blank" rel="noopener">github.com/adeliusa486</a> · <a href="https://linkedin.com/in/adeel-ahmad-5a041b237" target="_blank" rel="noopener">linkedin.com/in/adeel-ahmad-5a041b237</a></div>
-        </div>
-        <div class="cv-sec"><h4>Summary</h4><p>Final-year Information Technology undergraduate at the Islamic University of Madinah with hands-on experience in networking, AWS cloud computing, and applied machine learning. Co-author of an IEEE conference paper and builder of full systems from hardware to dashboard.</p></div>
-        <div class="cv-sec"><h4>Education</h4>
-          <div class="row2"><span><b>Bachelor of Information Technology</b>, Islamic University of Madinah</span><span class="yr">2023 – Present</span></div>
-          <p>CGPA: 3.99 / 5.00 (equivalent to 3.2 / 4.00)</p>
-          <div class="row2"><span><b>Higher Secondary Education</b>, Punjab College of Commerce</span><span class="yr">2020 (92%)</span></div>
-          <div class="row2"><span><b>Secondary Education</b>, Govt. High School, Qila Didar Singh, Gujranwala</span><span class="yr">2017 (90%)</span></div>
-        </div>
-        <div class="cv-sec"><h4>Technical Skills</h4>
-          <p><b>Programming:</b> Python, Java, SQL, Bash, MATLAB</p>
-          <p><b>AI &amp; Machine Learning:</b> PyTorch, scikit-learn, NumPy, OpenCV, SHAP</p>
-          <p><b>Networking:</b> CCNA, OSPF, RIP, EIGRP, VLANs, ACLs, Wireshark, Packet Tracer</p>
-          <p><b>Cloud &amp; DevOps:</b> AWS, CloudFormation, Terraform, Ansible, Docker, Linux</p>
-          <p><b>Simulation &amp; Tools:</b> GNS3, SUMO, Git, Raspberry Pi, Flutter</p>
-        </div>
-        <div class="cv-sec"><h4>Experience</h4>
-          <div class="row2"><span><b>Intern</b>, Asaqefah Business Development — Madinah</span><span class="yr">Jun 2026 – Present</span></div>
-          <ul><li>Built an AWS-powered, multilingual crowd-management MVP for Al-Masjid an-Nabawi with an operations dashboard.</li><li>Owned the full stack across real-time navigation, crowd analysis, and cloud architecture.</li></ul>
-          <div class="row2"><span><b>Developer, Team VisionBridge AI</b> — King Salman Center AI Hackathon</span><span class="yr">2026</span></div>
-          <ul><li>Built an offline Raspberry Pi smart cane; selected into the hackathon acceleration phase.</li></ul>
-        </div>
-        <div class="cv-sec"><h4>Publications</h4>
-          <ul>
-            <li><b>Accepted:</b> "Privacy Leakage in Federated Learning…", IEEE VTC2026-Fall.</li>
-            <li><b>In peer review:</b> "Balancing Spatial Urgency and Content Popularity for Edge Caching in Vehicular Networks", Springer Nature, Discover Telecommunications.</li>
-            <li><b>Submitted:</b> "XAI-SDN: A Lightweight, Interpretable DDoS Detection System for SDN…".</li>
-            <li><b>Submitted:</b> "Adaptive Multi-Factor Trust Aggregation for Byzantine-Robust Federated Learning in IoT Networks".</li>
-          </ul>
-        </div>
-        <div class="cv-sec"><h4>Activities &amp; Honours</h4>
-          <ul><li>Saudi Government-funded scholarship recipient, Islamic University of Madinah (Mar 2023).</li>
-          <li>Cisco NetAcad Network Security badge (completed); preparing for AWS SAA (completed Adrian Cantrill's course) and CCNA.</li>
-          <li>Currently completing hands-on cybersecurity labs on TryHackMe.</li></ul>
-        </div>
-        <div class="cv-sec"><h4>Languages</h4><p>Urdu (Native), Punjabi (Native), English (B2), Arabic (Beginner)</p></div>
-      </div>
-    </section>
-
+<nav>
+  <div class="wrap row">
+    <a class="brand" data-page="home">Adeel Ahmad<span>.</span></a>
+    <ul id="menu">
+      <li><a class="navlink" data-page="home">Home</a></li>
+      <li><a class="navlink" data-page="research">Research</a></li>
+      <li><a class="navlink" data-page="publications">Publications</a></li>
+      <li><a class="navlink" data-page="projects">Projects</a></li>
+      <li><a class="navlink" data-page="repos">Repositories</a></li>
+      <li><a class="navlink" data-page="education">Education</a></li>
+      <li><a class="navlink" data-page="experience">Experience</a></li>
+      <li><a class="navlink" data-page="skills">Skills</a></li>
+      <li><a class="navlink" data-page="certifications">Certifications</a></li>
+      <li><a class="navlink" data-page="cv">Curriculum Vitae</a></li>
+      <li><a class="navlink" data-page="contact">Contact</a></li>
+      <li><a class="ext" href="https://github.com/adeliusa486" target="_blank" rel="noopener">GitHub ↗</a></li>
+      <li><a class="ext" href="https://linkedin.com/in/adeel-ahmad-5a041b237" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+    </ul>
+    <button class="menu-btn" id="mb" aria-label="Menu">☰</button>
   </div>
+</nav>
 
-  <!-- HELM -->
-  <div class="helm" id="helm">
-    <div class="helm-inner">
-      <div class="rotor" id="rotor"></div>
-      <div class="home-btn" data-go="intro" title="Home">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
-        <span>Home</span>
+<main class="wrap">
+
+  <!-- ===== HOME (EDIT the headline and intro below) ===== -->
+  <section class="page active" id="home">
+    <div class="hero">
+      <div>
+        <span class="pill">Madinah, Saudi Arabia</span>
+        <h1>Hi, I'm Adeel — working at the intersection of <span class="mark">cybersecurity, AI, and networks.</span></h1>
+        <p class="bio">I'm a final-year Information Technology student at <b>IUM</b>, studying on a <b>fully-funded Saudi Government scholarship</b> awarded for academic excellence. My journey into computing began in Gujranwala, Pakistan, with a simple curiosity — taking apart small programs and networks to understand how they really work — and has grown into a focused mission: making artificial intelligence <b>secure, private, and explainable</b> enough to protect the networks the world depends on. Over the past two years I've co-authored peer-reviewed research on privacy in federated learning, designed interpretable intrusion-detection systems for software-defined networks, and built complete systems from Raspberry Pi hardware to cloud dashboards. I'm currently sharpening my practical security skills through hands-on <b>TryHackMe cybersecurity labs</b>, alongside my AWS and networking training. I care deeply about research that is rigorous, reproducible, and genuinely useful — and I'm ready to bring that curiosity and drive to a research team advancing <b>trustworthy AI for critical networks</b>.</p>
+        <div class="cta">
+          <a class="btn primary" data-page="research">Explore my research →</a>
+          <a class="btn ghost" href="https://linkedin.com/in/adeel-ahmad-5a041b237" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="profile.jpg" alt="Adeel Ahmad">
       </div>
     </div>
+
+    <div class="stats">
+      <div class="stat"><div class="n">4</div><div class="l">Research papers</div></div>
+      <div class="stat"><div class="n">1</div><div class="l">IEEE acceptance</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">GitHub repositories</div></div>
+      <div class="stat"><div class="n">5</div><div class="l">Research areas</div></div>
+    </div>
+  </section>
+
+  <!-- ===== RESEARCH (EDIT: copy an r-item to add an interest) ===== -->
+  <section class="page" id="research">
+    <p class="eyebrow">Research Interests</p>
+    <h2>What I work on</h2>
+    <p class="sub">My research sits at the intersection of machine learning, security, and networks — building AI systems that are trustworthy, privacy-preserving, and explainable enough to deploy in critical infrastructure.</p>
+    <div class="research">
+      <div class="r-item"><span><b>Cybersecurity &amp; Explainable AI (XAI)</b><span class="d">Interpretable intrusion- and DDoS-detection for software-defined and next-generation networks.</span></span></div>
+      <div class="r-item"><span><b>Federated Learning</b><span class="d">Robust, Byzantine-resilient aggregation and defenses against poisoning attacks in distributed settings.</span></span></div>
+      <div class="r-item"><span><b>Privacy-Preserving Machine Learning</b><span class="d">Analyzing and mitigating gradient-based privacy leakage in collaborative and vehicular learning.</span></span></div>
+      <div class="r-item"><span><b>Computer Networking &amp; SDN</b><span class="d">Software-defined networking, routing, and traffic engineering for intelligent, resilient networks.</span></span></div>
+      <div class="r-item"><span><b>Cloud Computing, Edge &amp; IoT</b><span class="d">Edge intelligence, content caching, and cloud-native systems for the Internet of Things.</span></span></div>
+    </div>
+  </section>
+
+  <!-- ===== PUBLICATIONS (EDIT: copy a div.pub; status word = submitted/review/accepted/published) ===== -->
+  <section class="page" id="publications">
+    <p class="eyebrow">Publications</p>
+    <h2>Papers &amp; research output</h2>
+    <p class="sub">Peer-reviewed, in-review, and submitted work. Each paper shows its current stage.</p>
+    <div class="pubs">
+
+      <div class="pub">
+        <span class="badge accepted">Accepted</span>
+        <h3>Privacy Leakage in Federated Learning: Gradient-Based Client Identity Inference and Defense Analysis for Secure Vehicular Networks</h3>
+        <p class="venue">IEEE 104th Vehicular Technology Conference (VTC2026-Fall)</p>
+        <p class="meta">Co-author · Accepted 2026</p>
+      </div>
+
+      <div class="pub">
+        <span class="badge review">Peer Review</span>
+        <h3>Balancing Spatial Urgency and Content Popularity for Edge Caching in Vehicular Networks</h3>
+        <p class="venue">Springer Nature — Discover Telecommunications</p>
+        <p class="meta">In peer review · 2026</p>
+      </div>
+
+      <div class="pub">
+        <span class="badge submitted">Submitted</span>
+        <h3>XAI-SDN: A Lightweight, Interpretable DDoS Detection System for Software-Defined Networks Using Entropy Feature Augmentation and SHAP Explanations</h3>
+        <p class="venue">Submitted to a peer-reviewed journal</p>
+        <p class="meta">Under submission · awaiting decision · 2026</p>
+      </div>
+
+      <div class="pub">
+        <span class="badge submitted">Submitted</span>
+        <h3>Adaptive Multi-Factor Trust Aggregation for Byzantine-Robust Federated Learning in IoT Networks</h3>
+        <p class="venue">Submitted to a peer-reviewed journal</p>
+        <p class="meta">Under submission · awaiting decision · 2026</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS (EDIT: copy a card block to add a project) ===== -->
+  <section class="page" id="projects">
+    <p class="eyebrow">Selected Projects</p>
+    <h2>Featured work</h2>
+    <p class="sub">A curated selection. My complete, always-current code lives in the Repositories tab.</p>
+    <div class="grid">
+      <a class="card" href="https://github.com/adeliusa486/XAI-SDN" target="_blank" rel="noopener">
+        <h3>XAI-SDN — Explainable DDoS Detection</h3>
+        <p>Random Forest with SHAP explanations on CIC-DDoS2019 (3.59M flows) — 99.99% accuracy at sub-millisecond inference, served via FastAPI + Streamlit.</p>
+        <div class="tags"><span class="tag">SDN</span><span class="tag">SHAP</span><span class="tag">FastAPI</span></div>
+      </a>
+      <a class="card" href="https://github.com/adeliusa486/smart-obstacle-cane" target="_blank" rel="noopener">
+        <h3>Smart Cane for the Visually Impaired</h3>
+        <p>Real-time object detection (SSD MobileNet V1, OpenCV) on a Raspberry Pi with spoken alerts. Selected into the King Salman Center AI Hackathon acceleration phase.</p>
+        <div class="tags"><span class="tag">Edge AI</span><span class="tag">Raspberry Pi</span><span class="tag">OpenCV</span></div>
+      </a>
+      <a class="card" href="https://github.com/adeliusa486/cxai-rca" target="_blank" rel="noopener">
+        <h3>Causal &amp; Explainable AI for Root-Cause Analysis</h3>
+        <p>Combining causal inference and XAI to trace the root cause of cyber attacks in cloud-native microservice architectures.</p>
+        <div class="tags"><span class="tag">Causal AI</span><span class="tag">XAI</span><span class="tag">Microservices</span></div>
+      </a>
+      <a class="card" href="https://github.com/adeliusa486/TrajectoryCache" target="_blank" rel="noopener">
+        <h3>TrajectoryCache — Vehicular Edge Caching</h3>
+        <p>Mobility-aware content caching for Vehicle-to-Everything Named-Data Networking, evaluated with SUMO-style platoon traffic simulation and a Dockerized REST API.</p>
+        <div class="tags"><span class="tag">V2X</span><span class="tag">SUMO</span><span class="tag">Docker</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== REPOSITORIES (auto-synced; do NOT edit) ===== -->
+  <section class="page" id="repos">
+    <div class="repo-head">
+      <p class="eyebrow" style="margin:0;">Repositories</p>
+      <span class="live"><span class="pulse"></span>LIVE · auto-synced</span>
+    </div>
+    <h2>Straight from my GitHub</h2>
+    <p class="sub">Every new repository I publish appears here automatically — no editing needed.</p>
+    <div id="repos-out"><div class="loading">Loading repositories from GitHub…</div></div>
+  </section>
+
+  <!-- ===== EDUCATION (EDIT your degrees) ===== -->
+  <section class="page" id="education">
+    <p class="eyebrow">Education</p>
+    <h2>Academic background</h2>
+    <div class="timeline" style="margin-top:8px;">
+      <div class="tl">
+        <div class="when">2023 – Present</div>
+        <div>
+          <h3>Bachelor of Information Technology</h3>
+          <div class="place">Islamic University of Madinah</div>
+          <div class="note">CGPA: 3.99 / 5.00 &nbsp;(equivalent to 3.2 / 4.00). Saudi Government-funded scholarship recipient for academic excellence.</div>
+        </div>
+      </div>
+      <div class="tl">
+        <div class="when">2020</div>
+        <div>
+          <h3>Higher Secondary Education</h3>
+          <div class="place">Punjab College of Commerce</div>
+          <div class="note">92%</div>
+        </div>
+      </div>
+      <div class="tl">
+        <div class="when">2017</div>
+        <div>
+          <h3>Secondary Education</h3>
+          <div class="place">Govt. High School, Qila Didar Singh, Gujranwala</div>
+          <div class="note">90%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE (EDIT your roles) ===== -->
+  <section class="page" id="experience">
+    <p class="eyebrow">Experience</p>
+    <h2>Work &amp; research roles</h2>
+    <div class="timeline" style="margin-top:8px;">
+      <div class="tl">
+        <div class="when">Jun 2026 – Present</div>
+        <div>
+          <h3>Intern</h3>
+          <div class="place">Asaqefah Business Development — Madinah</div>
+          <ul>
+            <li>Built an MVP of a smart crowd-management system for Al-Masjid an-Nabawi: an AWS-powered, multilingual visitor app with an operations dashboard.</li>
+            <li>Owned the full stack across real-time navigation, crowd analysis, and cloud architecture.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl">
+        <div class="when">2026</div>
+        <div>
+          <h3>Developer — Team VisionBridge AI</h3>
+          <div class="place">King Salman Center AI Hackathon</div>
+          <ul>
+            <li>Built an offline Raspberry Pi smart cane using AI object detection and a laser sensor for visually impaired users; selected into the hackathon acceleration phase.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS (EDIT: add/remove chip items) ===== -->
+  <section class="page" id="skills">
+    <p class="eyebrow">Technical Skills</p>
+    <h2>Tools &amp; technologies</h2>
+    <p class="sub">A working toolkit spanning machine learning, networking, cloud, and DevOps.</p>
+    <div class="skills-wrap">
+      <div class="skill-row"><div class="k">Programming</div><div class="chips"><span class="chip">Python</span><span class="chip">Java</span><span class="chip">SQL</span><span class="chip">Bash</span><span class="chip">MATLAB</span></div></div>
+      <div class="skill-row"><div class="k">AI / Machine Learning</div><div class="chips"><span class="chip">Machine Learning</span><span class="chip">PyTorch</span><span class="chip">scikit-learn</span><span class="chip">NumPy</span><span class="chip">OpenCV</span><span class="chip">SHAP</span></div></div>
+      <div class="skill-row"><div class="k">Networking</div><div class="chips"><span class="chip">CCNA</span><span class="chip">Routing &amp; Switching</span><span class="chip">OSPF</span><span class="chip">EIGRP</span><span class="chip">RIP</span><span class="chip">VLANs</span><span class="chip">ACLs</span></div></div>
+      <div class="skill-row"><div class="k">Network Simulation</div><div class="chips"><span class="chip">GNS3</span><span class="chip">Cisco Packet Tracer</span><span class="chip">SUMO</span><span class="chip">SimPy</span><span class="chip">Wireshark</span></div></div>
+      <div class="skill-row"><div class="k">Cloud &amp; DevOps</div><div class="chips"><span class="chip">AWS</span><span class="chip">AWS CloudFormation</span><span class="chip">Terraform</span><span class="chip">Ansible</span><span class="chip">Docker</span></div></div>
+      <div class="skill-row"><div class="k">Systems &amp; Tools</div><div class="chips"><span class="chip">Linux</span><span class="chip">Git</span><span class="chip">Raspberry Pi</span><span class="chip">Flutter</span><span class="chip">WordPress</span></div></div>
+    </div>
+  </section>
+
+  <!-- ===== CERTIFICATIONS (EDIT: copy a cert block to add one) ===== -->
+  <section class="page" id="certifications">
+    <p class="eyebrow">Certifications</p>
+    <h2>Professional certifications</h2>
+    <p class="sub">Industry credentials in networking, cloud, and security — earned and in progress.</p>
+    <div class="certs">
+      <div class="cert">
+        <div class="ic">🛡️</div>
+        <div>
+          <span class="badge accepted">Completed</span>
+          <h3>Cisco NetAcad — Network Security</h3>
+          <p>Cisco Networking Academy Network Security badge — threat defense, secure network design, and monitoring.</p>
+        </div>
+      </div>
+      <div class="cert">
+        <div class="ic">☁️</div>
+        <div>
+          <span class="badge review">Currently preparing</span>
+          <h3>AWS Certified Solutions Architect – Associate</h3>
+          <p>Completed Adrian Cantrill's AWS SAA course; now preparing for the certification exam — resilient, secure, cost-optimized cloud architecture.</p>
+        </div>
+      </div>
+      <div class="cert">
+        <div class="ic">🌐</div>
+        <div>
+          <span class="badge review">Currently preparing</span>
+          <h3>Cisco Certified Network Associate (CCNA)</h3>
+          <p>Preparing for the CCNA exam — routing &amp; switching, OSPF/EIGRP, VLANs, ACLs, and network troubleshooting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CURRICULUM VITAE (rendered inline, same page & style) ===== -->
+  <section class="page" id="cv">
+    <p class="eyebrow">Curriculum Vitae</p>
+    <h2>My CV</h2>
+    <p class="sub">Read the full CV right here on the page. You can also save a PDF copy.</p>
+    <div class="cv-bar">
+      <a class="btn ghost" href="Adeel-Ahmad-CV.pdf" download>Download PDF ↓</a>
+    </div>
+    <div class="cv-doc">
+      <div class="cvhead">
+        <h3>Adeel Ahmad</h3>
+        <div class="t">Information Technology Student — Networking, Cloud &amp; AI</div>
+        <div class="c">Madinah, Saudi Arabia · <a href="mailto:443057803@stu.iu.edu.sa">443057803@stu.iu.edu.sa</a><br>
+        <a href="https://github.com/adeliusa486" target="_blank" rel="noopener">github.com/adeliusa486</a> · <a href="https://linkedin.com/in/adeel-ahmad-5a041b237" target="_blank" rel="noopener">linkedin.com/in/adeel-ahmad-5a041b237</a></div>
+      </div>
+
+      <div class="cv-sec">
+        <h4>Summary</h4>
+        <p>Final-year Information Technology undergraduate at the Islamic University of Madinah with hands-on experience in networking, AWS cloud computing, and applied machine learning. Co-author of an IEEE conference paper and builder of full systems from hardware to dashboard.</p>
+      </div>
+
+      <div class="cv-sec">
+        <h4>Education</h4>
+        <div class="row2"><span><b>Bachelor of Information Technology</b>, Islamic University of Madinah</span><span class="yr">2023 – Present</span></div>
+        <p>CGPA: 3.99 / 5.00 (equivalent to 3.2 / 4.00)</p>
+        <div class="row2"><span><b>Higher Secondary Education</b>, Punjab College of Commerce</span><span class="yr">2020 (92%)</span></div>
+        <div class="row2"><span><b>Secondary Education</b>, Govt. High School, Qila Didar Singh, Gujranwala</span><span class="yr">2017 (90%)</span></div>
+      </div>
+
+      <div class="cv-sec">
+        <h4>Technical Skills</h4>
+        <p><b>Programming:</b> Python, Java, SQL, Bash, MATLAB</p>
+        <p><b>AI &amp; Machine Learning:</b> Machine Learning, PyTorch, scikit-learn, NumPy, OpenCV, SHAP</p>
+        <p><b>Networking:</b> CCNA, Routing &amp; Switching, OSPF, RIP, EIGRP, VLANs, ACLs, Wireshark, Packet Tracer</p>
+        <p><b>Network Simulation:</b> GNS3, Cisco Packet Tracer, SUMO, SimPy</p>
+        <p><b>Cloud &amp; DevOps:</b> AWS, AWS CloudFormation, Terraform, Ansible, Docker, Linux</p>
+        <p><b>Tools:</b> Git, Raspberry Pi, Flutter, WordPress</p>
+      </div>
+
+      <div class="cv-sec">
+        <h4>Experience</h4>
+        <div class="row2"><span><b>Intern</b>, Asaqefah Business Development — Madinah</span><span class="yr">Jun 2026 – Present</span></div>
+        <ul>
+          <li>Built an MVP of a smart crowd-management system for Al-Masjid an-Nabawi: an AWS-powered, multilingual visitor app with an operations dashboard.</li>
+          <li>Owned the full stack across real-time navigation, crowd analysis, and cloud architecture.</li>
+        </ul>
+        <div class="row2"><span><b>Developer, Team VisionBridge AI</b> — King Salman Center AI Hackathon</span><span class="yr">2026</span></div>
+        <ul>
+          <li>Built an offline Raspberry Pi smart cane using AI object detection and a laser sensor for visually impaired users; selected into the hackathon acceleration phase.</li>
+        </ul>
+      </div>
+
+      <div class="cv-sec">
+        <h4>Publications</h4>
+        <ul>
+          <li><b>Accepted:</b> Co-author, "Privacy Leakage in Federated Learning: Gradient-Based Client Identity Inference and Defense Analysis for Secure Vehicular Networks," IEEE 104th Vehicular Technology Conference (VTC2026-Fall).</li>
+          <li><b>In peer review:</b> "Balancing Spatial Urgency and Content Popularity for Edge Caching in Vehicular Networks," Springer Nature, Discover Telecommunications.</li>
+          <li><b>Submitted:</b> "XAI-SDN: A Lightweight, Interpretable DDoS Detection System for Software-Defined Networks Using Entropy Feature Augmentation and SHAP Explanations."</li>
+          <li><b>Submitted:</b> "Adaptive Multi-Factor Trust Aggregation for Byzantine-Robust Federated Learning in IoT Networks."</li>
+        </ul>
+      </div>
+
+      <div class="cv-sec">
+        <h4>Activities &amp; Honours</h4>
+        <ul>
+          <li>Saudi Government-funded scholarship recipient, Islamic University of Madinah (Mar 2023), for academic excellence.</li>
+          <li>Cisco NetAcad Network Security badge (completed). Currently preparing for AWS Solutions Architect – Associate (completed Adrian Cantrill's course) and CCNA.</li>
+          <li>Currently completing hands-on cybersecurity labs on TryHackMe.</li>
+        </ul>
+      </div>
+
+      <div class="cv-sec">
+        <h4>Languages</h4>
+        <p>Urdu (Native), Punjabi (Native), English (B2), Arabic (Beginner)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT (EDIT your links) ===== -->
+  <section class="page" id="contact">
+    <p class="eyebrow">Contact</p>
+    <h2>Let's work together</h2>
+    <p class="sub">I'm actively seeking a fully-funded PhD position and open to research collaborations. Feel free to reach out.</p>
+    <div class="links">
+      <a href="mailto:443057803@stu.iu.edu.sa">✉ Email</a>
+      <a href="https://github.com/adeliusa486" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://linkedin.com/in/adeel-ahmad-5a041b237" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a data-page="cv">View CV</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    © <span id="yr"></span> Adeel Ahmad · Built with HTML &amp; CSS · Hosted on GitHub Pages
+    &nbsp;·&nbsp; <a href="https://github.com/adeliusa486/adeliusa486.github.io/edit/main/index.html" target="_blank" rel="noopener">✎ Edit this page</a>
   </div>
-</div>
+</footer>
 
 <script>
-  const ICONS = {
-    research:'<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>',
-    projects:'<path d="M8 6 2 12l6 6"/><path d="m16 6 6 6-6 6"/>',
-    experience:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/>',
-    credentials:'<circle cx="12" cy="8" r="5"/><path d="M8.5 12 7 21l5-3 5 3-1.5-9"/>',
-    contact:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/>'
-  };
-  const SECTIONS=[
-    {id:'research',label:'Research'},{id:'projects',label:'Projects'},
-    {id:'experience',label:'Experience'},{id:'credentials',label:'Credentials'},{id:'contact',label:'Contact'}
-  ];
+  document.getElementById("yr").textContent = new Date().getFullYear();
+  const pages = document.querySelectorAll(".page");
+  const links = document.querySelectorAll(".navlink");
+  const menu  = document.getElementById("menu");
 
-  const SIZE=880, C=SIZE/2, RIM=286, ICON_R=372;
-  const rotor=document.getElementById('rotor');
-  const rad=d=>d*Math.PI/180;
-  const PRIM=[36,108,180,252,324], SEC=[0,72,144,216,288];
-
-  (function buildWheel(){
-    const cos=a=>Math.cos(rad(a)), sin=a=>Math.sin(rad(a));
-    const P=(r,a)=>[(C+cos(a)*r).toFixed(1),(C+sin(a)*r).toFixed(1)];
-    let g='';
-    // 10 turned spokes from hub to rim (base + centre highlight + two collar rings)
-    [...PRIM,...SEC].forEach(a=>{ const s=P(60,a),e=P(276,a), sh=P(64,a),eh=P(272,a);
-      g+=`<line x1="${s[0]}" y1="${s[1]}" x2="${e[0]}" y2="${e[1]}" stroke="url(#wood)" stroke-width="34" stroke-linecap="round"/>`;
-      g+=`<line x1="${sh[0]}" y1="${sh[1]}" x2="${eh[0]}" y2="${eh[1]}" stroke="rgba(255,226,182,.30)" stroke-width="9" stroke-linecap="round"/>`;
-      g+=`<circle cx="${P(120,a)[0]}" cy="${P(120,a)[1]}" r="15" fill="url(#woodK)" stroke="#3a2414" stroke-width="2"/>`;
-      g+=`<circle cx="${P(198,a)[0]}" cy="${P(198,a)[1]}" r="19" fill="url(#woodK)" stroke="#3a2414" stroke-width="2"/>`; });
-    // secondary handles (short, wood knob)
-    SEC.forEach(a=>{ const b=P(286,a),t=P(360,a);
-      g+=`<line x1="${b[0]}" y1="${b[1]}" x2="${t[0]}" y2="${t[1]}" stroke="url(#wood)" stroke-width="38" stroke-linecap="round"/>`;
-      g+=`<circle cx="${P(302,a)[0]}" cy="${P(302,a)[1]}" r="15" fill="url(#brass)" stroke="#5e440f" stroke-width="1.5"/>`;
-      g+=`<circle cx="${t[0]}" cy="${t[1]}" r="24" fill="url(#woodK)" stroke="#3a2414" stroke-width="2.5"/>`; });
-    // primary handles (longer — icon sits at the top of the spoke; brass collar at base)
-    PRIM.forEach(a=>{ const b=P(286,a),t=P(366,a);
-      g+=`<line x1="${b[0]}" y1="${b[1]}" x2="${t[0]}" y2="${t[1]}" stroke="url(#wood)" stroke-width="44" stroke-linecap="round"/>`;
-      g+=`<circle cx="${P(304,a)[0]}" cy="${P(304,a)[1]}" r="16" fill="url(#brass)" stroke="#5e440f" stroke-width="1.5"/>`; });
-    rotor.innerHTML=`
-    <svg viewBox="0 0 ${SIZE} ${SIZE}">
-      <defs>
-        <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#a86e3c"/><stop offset=".5" stop-color="#7a4e2b"/><stop offset="1" stop-color="#4d3018"/></linearGradient>
-        <radialGradient id="woodK" cx=".4" cy=".33" r=".85">
-          <stop offset="0" stop-color="#b87f4a"/><stop offset="1" stop-color="#4d3018"/></radialGradient>
-        <radialGradient id="brass" cx=".38" cy=".32" r=".85">
-          <stop offset="0" stop-color="#f8e39c"/><stop offset=".55" stop-color="#cc9d3b"/><stop offset="1" stop-color="#7d5a12"/></radialGradient>
-        <radialGradient id="rimG" cx=".5" cy=".5" r=".5">
-          <stop offset=".86" stop-color="#7a4e2b"/><stop offset=".9" stop-color="#a86e3c"/><stop offset="1" stop-color="#4d3018"/></radialGradient>
-        <filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="9" stdDeviation="13" flood-color="#000" flood-opacity=".45"/></filter>
-      </defs>
-      <g filter="url(#sh)">
-        ${g}
-        <circle cx="${C}" cy="${C}" r="${RIM}" fill="none" stroke="url(#wood)" stroke-width="46"/>
-        <circle cx="${C}" cy="${C}" r="${RIM+21}" fill="none" stroke="#3a2414" stroke-width="3"/>
-        <circle cx="${C}" cy="${C}" r="${RIM-21}" fill="none" stroke="#3a2414" stroke-width="3"/>
-        <circle cx="${C}" cy="${C}" r="${RIM-6}" fill="none" stroke="rgba(255,231,183,.20)" stroke-width="7"/>
-        <circle cx="${C}" cy="${C}" r="${RIM+9}" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="6"/>
-      </g>
-      <g filter="url(#sh)">
-        <circle cx="${C}" cy="${C}" r="70" fill="url(#brass)" stroke="#5e440f" stroke-width="2"/>
-        <circle cx="${C}" cy="${C}" r="52" fill="none" stroke="#8a6417" stroke-width="2"/>
-        <circle cx="${C}" cy="${C}" r="60" fill="url(#woodK)"/>
-      </g>
-    </svg>`;
-  })();
-
-  const nodes=[];
-  SECTIONS.forEach((s,i)=>{
-    s.home=180-i*72;
-    const n=document.createElement('div'); n.className='node'; n.dataset.id=s.id;
-    n.style.left=(C+Math.cos(rad(s.home))*ICON_R)+'px';
-    n.style.top =(C+Math.sin(rad(s.home))*ICON_R)+'px';
-    n.innerHTML=`<span class="lbl">${s.label}</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[s.id]}</svg>`;
-    n.addEventListener('click',()=>{ if(!moved) selectSection(s.id); });
-    rotor.appendChild(n); s.node=n; nodes.push(n);
-  });
-
-  let angle=0, userInteracted=false, hintIv=null;
-  function norm(a){ a%=360; if(a<0)a+=360; return a; }
-  function apply(){
-    rotor.style.transform=`rotate(${angle}deg)`;
-    let best=null,bd=999;
-    SECTIONS.forEach(s=>{ s.node.style.transform=`rotate(${-angle}deg)`; s.node.classList.remove('active');
-      const sc=norm(s.home+angle); let d=Math.abs(sc-180); d=Math.min(d,360-d); if(d<bd){bd=d;best=s;} });
-    if(best) best.node.classList.add('active');
+  function show(id){
+    if(!document.getElementById(id)) id = "home";
+    pages.forEach(p => p.classList.toggle("active", p.id === id));
+    links.forEach(l => l.classList.toggle("active", l.dataset.page === id));
+    menu.classList.remove("open");
+    window.scrollTo({ top:0 });
+    if (history.replaceState) history.replaceState(null, "", "#" + id);
+    if (id === "repos") loadRepos();
   }
-  function showPanel(id){
-    if(showPanel._cur===id) return; showPanel._cur=id;
-    document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='p-'+id));
-    document.getElementById('content').scrollTop=0;
-    if(id==='projects') loadRepos();
-  }
-  function selectSection(id){
-    userInteracted=true; clearInterval(hintIv);
-    const s=SECTIONS.find(x=>x.id===id); if(!s) return;
-    let t=180-s.home; while(t-angle>180)t-=360; while(t-angle<-180)t+=360;
-    rotor.classList.add('snap'); angle=t; apply(); setTimeout(()=>rotor.classList.remove('snap'),640);
-    showPanel(id);
-  }
-  document.querySelectorAll('[data-go]').forEach(el=>el.addEventListener('click',e=>{
-    const g=el.dataset.go;
-    if(g==='intro'||g==='cv'){ e.preventDefault(); showPanel._cur=null; document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='p-'+g)); document.getElementById('content').scrollTop=0; }
-    else { e.preventDefault(); selectSection(g); }
-  }));
+  document.querySelectorAll("[data-page]").forEach(el =>
+    el.addEventListener("click", e => { e.preventDefault(); show(el.dataset.page); }));
+  document.getElementById("mb").addEventListener("click", () => menu.classList.toggle("open"));
 
-  // summary toggles
-  document.addEventListener('click',e=>{ const b=e.target.closest('.sumbtn'); if(!b)return; const s=b.parentElement.parentElement.querySelector('.summary'); const open=s.classList.toggle('open'); b.textContent=open?'Hide summary ▴':'Read summary ▾'; });
+  const start = location.hash.replace("#","");
+  if (start) show(start);
 
-  /* drag to steer with flick inertia */
-  const helm=document.getElementById('helm');
-  let dragging=false,startA=0,startRot=0,moved=false,vel=0,prevA=0,prevT=0;
-  function centerPt(){ const r=helm.getBoundingClientRect(); return {x:r.left+r.width/2,y:r.top+r.height/2}; }
-  function ptAngle(e){ const c=centerPt(); return Math.atan2(e.clientY-c.y,e.clientX-c.x)*180/Math.PI; }
-  function snapTo(from){ let best=null,bd=999; SECTIONS.forEach(s=>{ const sc=norm(s.home+from); let d=Math.abs(sc-180); d=Math.min(d,360-d); if(d<bd){bd=d;best=s;} });
-    if(!best)return; let t=180-best.home; while(t-from>180)t-=360; while(t-from<-180)t+=360; rotor.classList.add('snap'); angle=t; apply(); setTimeout(()=>rotor.classList.remove('snap'),640); showPanel(best.id); }
-  rotor.addEventListener('pointerdown',e=>{ dragging=true; moved=false; userInteracted=true; clearInterval(hintIv); vel=0; prevA=angle; prevT=performance.now(); startA=ptAngle(e); startRot=angle; rotor.classList.add('dragging'); rotor.classList.remove('snap'); rotor.setPointerCapture(e.pointerId); });
-  rotor.addEventListener('pointermove',e=>{ if(!dragging)return; const d=ptAngle(e)-startA; if(Math.abs(d)>2)moved=true; angle=startRot+d; apply(); const now=performance.now(),dt=now-prevT; if(dt>0)vel=(angle-prevA)/dt; prevA=angle; prevT=now; });
-  function endDrag(){ if(!dragging)return; dragging=false; rotor.classList.remove('dragging'); const flick=Math.max(-130,Math.min(130,vel*100)); snapTo(angle+flick); }
-  rotor.addEventListener('pointerup',endDrag); rotor.addEventListener('pointercancel',endDrag);
-
-  apply();
-  (function(){ let t=0; hintIv=setInterval(()=>{ t++; angle=Math.sin(t/2.4)*9*Math.max(0,(18-t)/18); apply(); if(t>=18){ clearInterval(hintIv); angle=0; apply(); } },55); })();
-
-  /* live repos (exclude portfolio + profile repos) */
-  const EXCLUDE=['adeliusa486.github.io','adeliusa486'];
-  let reposLoaded=false;
+  /* Change ONLY if your GitHub username changes */
+  const GITHUB_USERNAME = "adeliusa486";
+  let reposLoaded = false;
   function loadRepos(){
-    if(reposLoaded)return; reposLoaded=true;
-    const out=document.getElementById('repos');
-    const fmt=d=>new Date(d).toLocaleDateString(undefined,{year:'numeric',month:'short'});
-    fetch('https://api.github.com/users/adeliusa486/repos?sort=updated&per_page=100')
-      .then(r=>r.ok?r.json():Promise.reject())
-      .then(repos=>{ const list=repos.filter(r=>!r.fork&&!EXCLUDE.includes(r.name)).slice(0,12);
-        if(!list.length){ out.innerHTML='<div class="err">No public repositories yet.</div>'; return; }
-        out.innerHTML='<div class="cards">'+list.map(r=>`<a class="card" href="${r.html_url}" target="_blank" rel="noopener"><h4>${r.name}</h4><p>${r.description||'—'}</p><div class="repo-meta">${r.language?`<span class="lg">${r.language}</span>`:''}<span>★ ${r.stargazers_count}</span><span>${fmt(r.updated_at)}</span></div></a>`).join('')+'</div>'; })
-      .catch(()=>{ reposLoaded=false; out.innerHTML='<div class="err">Couldn\'t load repositories. See <a href="https://github.com/adeliusa486" target="_blank" rel="noopener">github.com/adeliusa486</a></div>'; });
+    if (reposLoaded) return; reposLoaded = true;
+    const out = document.getElementById("repos-out");
+    const fmt = d => new Date(d).toLocaleDateString(undefined, { year:"numeric", month:"short" });
+    fetch("https://api.github.com/users/" + GITHUB_USERNAME + "/repos?sort=updated&per_page=100")
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(repos => {
+        const list = repos.filter(r => !r.fork).slice(0, 12);
+        if (!list.length){ out.innerHTML = '<div class="err">No public repositories yet.</div>'; return; }
+        out.innerHTML = '<div class="grid">' + list.map(r =>
+          '<a class="card" href="' + r.html_url + '" target="_blank" rel="noopener">' +
+            '<h3>' + r.name + '</h3>' +
+            '<p>' + (r.description ? r.description : "—") + '</p>' +
+            '<div class="repo-meta">' +
+              (r.language ? '<span class="lang">' + r.language + '</span>' : '') +
+              '<span>★ ' + r.stargazers_count + '</span>' +
+              '<span>Updated ' + fmt(r.updated_at) + '</span>' +
+            '</div>' +
+          '</a>').join("") + '</div>';
+      })
+      .catch(() => { reposLoaded = false; out.innerHTML =
+        '<div class="err">Couldn\'t load repositories right now. See them all at ' +
+        '<a href="https://github.com/' + GITHUB_USERNAME + '" target="_blank" rel="noopener">github.com/' + GITHUB_USERNAME + '</a></div>'; });
   }
+  if (start === "repos") loadRepos();
 </script>
