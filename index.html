@@ -27,7 +27,6 @@
     <li><a data-go="projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6"/><path d="m16 6 6 6-6 6"/></svg>Projects</a></li>
     <li><a data-go="experience"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Experience</a></li>
     <li><a data-go="credentials"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg>Skills</a></li>
-    <li><a data-go="contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6L22 7"/></svg>Contact</a></li>
     <li><a data-go="cv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>CV</a></li>
   </ul>
 </div></nav>
@@ -163,56 +162,55 @@
       <p class="eyebrow">Skills &amp; Certifications</p>
       <h2>Tools &amp; credentials</h2>
       <h3 class="sub">Technical Skills</h3>
-      <div class="klabel">Languages · ML · Cloud · DevOps</div>
-      <div class="stack"><img src="https://skillicons.dev/icons?i=py,java,mysql,pytorch,sklearn,opencv,aws,docker,linux,terraform,ansible,git,bash&perline=7" alt="Tech stack icons"></div>
-      <div class="klabel">Networking &amp; Simulation</div>
-      <div class="netrow">
-        <img src="https://img.shields.io/badge/-Cisco%20CCNA-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white" alt="CCNA">
-        <img src="https://img.shields.io/badge/-GNS3-009639?style=for-the-badge&logo=gns3&logoColor=white" alt="GNS3">
-        <img src="https://img.shields.io/badge/-Wireshark-1679A7?style=for-the-badge&logo=wireshark&logoColor=white" alt="Wireshark">
-        <span class="chip">Packet Tracer</span><span class="chip">SUMO</span><span class="chip">OSPF</span><span class="chip">EIGRP</span><span class="chip">VLANs</span><span class="chip">ACLs</span>
+      <div class="tools-grid">
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"> Python</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"> Java</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL"> SQL</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Bash"> Bash</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch"> PyTorch</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy"> NumPy</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV"> OpenCV</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"> AWS</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"> Docker</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="Terraform"> Terraform</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg" alt="Ansible"> Ansible</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"> Linux</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"> Git</span>
+      </div>
+      <h3 class="sub">Networking &amp; Simulation</h3>
+      <div class="tools-grid">
+        <span class="tool-chip">🛡️ Cybersecurity</span>
+        <span class="tool-chip">📡 Networking (OSPF, BGP, EIGRP)</span>
+        <span class="tool-chip">🔧 GNS3 &amp; Packet Tracer</span>
+        <span class="tool-chip">🚗 SUMO Simulation</span>
+        <span class="tool-chip">🦈 Wireshark</span>
       </div>
       <h3 class="sub">Certifications</h3>
-      <div class="certs">
+      <div class="certs-grid">
         <div class="cert">
-          <div class="clogo badgebox"><img src="assets/badge-ccnp-core.jpg" alt="CCNP Enterprise: Core Networking verified badge"></div>
-          <div class="certtext"><span class="badge done">Completed</span><h4>CCNP Enterprise: Core Networking</h4><p>Cisco Networking Academy (Open University Cisco ITC) — L2 redundancy, EIGRP &amp; advanced OSPF, eBGP, multicast &amp; QoS, VPNs, secure infrastructure, and network automation.</p></div>
-          <a class="viewcert" data-cert="ccnp-core"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>View</a>
+          <div class="clogo badgebox"><img src="assets/badge-ccnp-core.jpg" alt="CCNP Core"></div>
+          <div class="certtext"><span class="badge done">Completed</span><h4>CCNP: Core Networking</h4><p>Cisco Networking Academy — L2, OSPF, eBGP, multicast, QoS, VPNs.</p></div>
         </div>
         <div class="cert">
-          <div class="clogo badgebox"><img src="assets/badge-ccnp-adv.jpg" alt="CCNP Enterprise: Advanced Routing verified badge"></div>
-          <div class="certtext"><span class="badge done">Completed</span><h4>CCNP Enterprise: Advanced Routing</h4><p>Cisco Networking Academy — advanced routing, route redistribution, path control, and enterprise VPN technologies.</p></div>
-          <a class="viewcert" data-cert="ccnp-adv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>View</a>
+          <div class="clogo badgebox"><img src="assets/badge-ccnp-adv.jpg" alt="CCNP Adv"></div>
+          <div class="certtext"><span class="badge done">Completed</span><h4>CCNP: Advanced Routing</h4><p>Cisco Networking Academy — route redistribution, path control, and VPN tech.</p></div>
         </div>
         <div class="cert">
-          <div class="clogo" style="background:transparent; border:none; box-shadow:none;"><img src="assets/badge-netsec.png" alt="Cisco NetSec"></div>
-          <div class="certtext"><span class="badge done">Completed</span><h4>Cisco NetAcad Network Security</h4><p>Threat defense, secure network design, and monitoring.</p></div>
-          <a class="viewcert" data-cert="netsec" data-type="pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>View</a>
+          <div class="clogo" style="background:transparent; border:none; box-shadow:none;"><img src="assets/badge-netsec.png" alt="NetSec"></div>
+          <div class="certtext"><span class="badge done">Completed</span><h4>Cisco Network Security</h4><p>Threat defense, secure network design, and advanced monitoring.</p></div>
         </div>
         <div class="cert">
-          <div class="clogo" style="background:transparent; border:none; box-shadow:none;"><img src="assets/badge-aws-saa.png" alt="AWS Solutions Architect Associate"></div>
-          <div class="certtext"><span class="badge done">Completed</span><h4>AWS Certified Solutions Architect Associate (SAA-C03) Course</h4><p>Adrian Cantrill's SAA-C03 VPC, EC2, S3, IAM, RDS, CloudFormation, HA/FT architectures, serverless, and cost optimisation.</p></div>
-          <a class="viewcert" data-cert="aws-saa" data-type="pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>View</a>
+          <div class="clogo" style="background:transparent; border:none; box-shadow:none;"><img src="assets/badge-aws-saa.png" alt="AWS"></div>
+          <div class="certtext"><span class="badge done">Completed</span><h4>AWS Solutions Architect (SAA)</h4><p>Adrian Cantrill course — VPC, EC2, S3, IAM, RDS, CloudFormation, serverless.</p></div>
         </div>
         <div class="cert">
-          <div class="clogo"><img src="assets/logo-cisco.svg" alt="Cisco"></div>
-          <div class="certtext"><span class="badge review">Preparing</span><h4>Cisco Certified Network Associate (CCNA)</h4><p>Routing &amp; switching, OSPF/EIGRP, VLANs, ACLs.</p></div>
+          <div class="clogo"><img src="assets/logo-cisco.svg" alt="CCNA"></div>
+          <div class="certtext"><span class="badge review">Preparing</span><h4>Cisco CCNA</h4><p>Routing &amp; switching, OSPF/EIGRP, VLANs, ACLs.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="panel" id="p-contact">
-      <p class="eyebrow">Contact</p>
-      <h2>Let's work together</h2>
-      <p class="lead">Actively seeking a fully-funded PhD position and open to research collaborations.</p>
-      <div class="links">
-        <a href="mailto:443057803@stu.iu.edu.sa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg> Email</a>
-        <a href="https://github.com/adeliusa486" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.8c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.1-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C16.9 5 17.9 5.3 17.9 5.3c.6 1.6.2 2.8.1 3.1.7.8 1.1 1.8 1.1 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg> GitHub</a>
-        <a href="https://linkedin.com/in/adeel-ahmad-5a041b237" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.3a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5zM19 19h-3v-4.7c0-1.1 0-2.5-1.5-2.5S13 13 13 14.2V19h-3v-9h2.9v1.3a3.1 3.1 0 0 1 2.8-1.5c3 0 3.6 2 3.6 4.5z"/></svg> LinkedIn</a>
-        <a data-go="cv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg> View CV</a>
-      </div>
-    </section>
+
 
     <!-- CV — themed, viewable in-page + separate download -->
     <section class="panel" id="p-cv">
