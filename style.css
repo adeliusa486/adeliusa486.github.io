@@ -391,3 +391,20 @@ a.hcard:hover, .item:hover, .pcard:hover, .card:hover, .cert:hover, .links a:hov
 
 
 .pub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+
+/* Compact Homepage for 100% Fit */
+#p-intro h1 { font-size: 2.3rem !important; margin-bottom: 8px !important; }
+#p-intro .lead { font-size: 0.9rem !important; margin-bottom: 12px !important; line-height: 1.5 !important; }
+#p-intro .pill { margin-bottom: 10px !important; padding: 4px 10px !important; font-size: 0.75rem !important; }
+.herostats { margin: 10px 0 !important; gap: 8px !important; grid-template-columns: repeat(4, 1fr) !important; }
+.hcard { padding: 8px 12px !important; }
+.hic { width: 32px !important; height: 32px !important; }
+.hic svg { width: 16px !important; height: 16px !important; }
+.htext b { font-size: 0.8rem !important; }
+.htext em { font-size: 0.65rem !important; }
+.topnav { padding: 8px 24px !important; margin-bottom: 16px !important; }
+.brand { gap: 10px !important; }
+.brand img { width: 40px !important; height: 40px !important; }
+.brand h2 { font-size: 1.1rem !important; }
+.stage { padding: 0 16px !important; padding-bottom: 20px !important; }
+body { font-size: 14px !important; }
