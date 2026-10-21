@@ -1,359 +1,379 @@
-<!--
-  ADEEL AHMAD — INTERACTIVE WOODEN-HELM PORTFOLIO
-  ============================================================================
-  Steer the ship's wheel (right, half-visible) to rotate through sections.
-  The wooden HOME button at the centre stays still — click it to return here.
-  All text lives in the .panel blocks below — find the words and type over them.
-  Projects show your paper architecture figures + a "Read summary" toggle;
-  the full repo list loads live from GitHub (excluding the portfolio & profile repos).
-  ============================================================================
--->
-<title>Adeel Ahmad</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css?v=3">
-
-<nav class="topnav"><div class="navwrap">
-  <a class="brand" data-go="intro"><img src="profile.jpg" alt="Adeel Ahmad">Adeel Ahmad<span>.</span></a>
-  <button class="menu-btn" id="mb" aria-label="Menu">☰</button>
-  <ul class="navlinks" id="menu">
-    <li><a data-go="intro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>Home</a></li>
-    <li><a data-go="research"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19a2 2 0 0 0 2 2h13"/></svg>Research</a></li>
-    <li><a data-go="projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6"/><path d="m16 6 6 6-6 6"/></svg>Projects</a></li>
-    <li><a data-go="experience"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Experience</a></li>
-    <li><a data-go="credentials"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg>Skills</a></li>
-    <li><a data-go="cv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>CV</a></li>
-  </ul>
-</div></nav>
-
-<div class="stage">
-  <div class="content" id="content">
-
-    <!-- INTRO -->
-    <section class="panel active" id="p-intro">
-      <span class="pill">IUM, Saudi Arabia</span>
-      <h1>Hi, I'm Adeel, a cloud engineer integrating <span class="mark">XAI and cybersecurity into cloud and networks.</span></h1>
-      <p class="lead">I'm a final-year Information Technology student at the <b>Islamic University of Madinah</b>, studying on a fully-funded <b>Saudi Government scholarship</b> awarded for academic excellence. My goal is simple but ambitious: to design, secure, and scale the digital systems the world depends on from the network layer all the way up to the cloud. I pair strong foundations in <b>networking and security</b> with hands-on <b>cloud engineering and XAI integration</b>, and I've already co-authored <b>four peer-reviewed research papers</b> spanning network security, federated learning, and intelligent systems. Beyond research, I build. I've engineered complete systems from <b>Raspberry Pi hardware to live cloud dashboards</b>, earned <b>Cisco CCNP Enterprise</b> certifications in Core Networking and Advanced Routing, and I sharpen my practical skills every day through hands-on <b>TryHackMe</b> security labs and <b>AWS</b> cloud training. Whether it's hardening a network, deploying to the cloud, or integrating XAI into cloud environments, I bring curiosity, discipline, and a relentless drive to learn and I'm always eager to take on <b>research, scholarship, and professional opportunities</b> where I can contribute, grow, and make an impact.</p>
-      <div class="herostats">
-        <a class="hcard" data-cert="ccnp-core">
-          <span class="hic"><img src="assets/badge-ccnp-core.jpg" alt="CCNP Core"></span>
-          <span class="htext"><b>CCNP: Core Networking</b><em>Cisco Verified</em></span>
-        </a>
-        <a class="hcard" data-cert="ccnp-adv">
-          <span class="hic"><img src="assets/badge-ccnp-adv.jpg" alt="CCNP Advanced"></span>
-          <span class="htext"><b>CCNP: Advanced Routing</b><em>Cisco Verified</em></span>
-        </a>
-        <a class="hcard" data-cert="aws-saa" data-type="pdf">
-          <span class="hic" style="background:transparent; border:none; box-shadow:none;"><img src="assets/badge-aws-saa.png" alt="AWS SAA"></span>
-          <span class="htext"><b>AWS SAA Course</b><em>Solutions Architect</em></span>
-        </a>
-        <a class="hcard" data-cert="netsec" data-type="pdf">
-          <span class="hic" style="background:transparent; border:none; box-shadow:none;"><img src="assets/badge-netsec.png" alt="Network Security"></span>
-          <span class="htext"><b>Network Security</b><em>Cisco NetAcad</em></span>
-        </a>
-        <a class="hcard" data-go="research">
-          <span class="hic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span>
-          <span class="htext"><b>4 Research Papers</b><em>Peer-Reviewed</em></span>
-        </a>
-        <a class="hcard" data-go="research">
-          <span class="hic" style="background:transparent; border:none; box-shadow:none;"><img src="assets/logo-ieee.svg" alt="IEEE"></span>
-          <span class="htext"><b>IEEE Author</b><em>Published Researcher</em></span>
-        </a>
-        <a class="hcard" href="https://github.com/adeliusa486" target="_blank" rel="noopener">
-          <span class="hic" style="background:transparent; border:none; box-shadow:none; filter:invert(1);"><img src="assets/logo-github.svg" alt="GitHub"></span>
-          <span class="htext"><b>GitHub Profile</b><em>Open Source</em></span>
-        </a>
-        <a class="hcard" href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=EjQm_kcAAAAJ" target="_blank" rel="noopener">
-          <span class="hic" style="background:transparent; border:none; box-shadow:none;"><img src="assets/logo-scholar.svg" alt="Google Scholar"></span>
-          <span class="htext"><b>Google Scholar</b><em>Citations</em></span>
-        </a>
-      </div>
-    </section>
-
-    <!-- RESEARCH — Publications first, interests under -->
-    <section class="panel" id="p-research">
-      <p class="eyebrow">Research &amp; Publications</p>
-      <h2>Publications</h2>
-      <p class="lead">Peer-reviewed and in-review work.</p>
-      <div class="pub-grid">
-        <div class="item pub"><span class="badge accepted">Accepted</span><h4>Privacy Leakage in Federated Learning: Gradient-Based Client Identity Inference and Defense Analysis for Secure Vehicular Networks</h4><p class="venue">IEEE 104th Vehicular Technology Conference (VTC2026-Fall)</p><p class="meta">Co-author · 2026</p></div>
-        <div class="item pub"><span class="badge review">Peer Review</span><h4>Balancing Spatial Urgency and Content Popularity for Edge Caching in Vehicular Networks</h4><p class="venue">Springer Nature — Discover Telecommunications</p><p class="meta">In peer review · 2026</p></div>
-        <div class="item pub"><span class="badge review">Peer Review</span><h4>XAI-SDN: A Lightweight, Interpretable DDoS Detection System for SDN Using Entropy Feature Augmentation and SHAP</h4><p class="venue">In peer review at a journal</p><p class="meta">Awaiting decision · 2026</p></div>
-        <div class="item pub"><span class="badge review">Peer Review</span><h4>Adaptive Multi-Factor Trust Aggregation for Byzantine-Robust Federated Learning in IoT Networks</h4><p class="venue">In peer review at a journal</p><p class="meta">Awaiting decision · 2026</p></div>
-      </div>
-    </section>
-
-    <!-- PROJECTS — architecture figures + summary, then live repos -->
-    <section class="panel" id="p-projects">
-      <p class="eyebrow">Projects &amp; Repositories</p>
-      <h2>Featured work</h2>
-      <p class="lead">System architectures from my research and cloud engineering. Open a summary, or view the code.</p>
-      <div class="pcards">
-        <div class="pcard">
-          <div class="fig"><img src="assets/xai-sdn-arch.jpeg" alt="XAI-SDN architecture"></div>
-          <div class="body"><h4>XAI-SDN — Explainable DDoS Detection</h4>
-            <div class="ptags"><span class="tag">SDN</span><span class="tag">SHAP</span><span class="tag">Random Forest</span></div>
-            <div class="rowbtns"><button class="sumbtn">Read summary ▾</button><a class="plink" href="https://github.com/adeliusa486/XAI-SDN" target="_blank" rel="noopener">View repo ↗</a></div>
-            <div class="summary"><p>A lightweight, interpretable DDoS-detection system for software-defined networks. Flows are summarised with an O(1) rolling-entropy feature, classified by a Random Forest, and every decision is explained with SHAP — reaching 99.99% accuracy at sub-millisecond inference while feeding a real-time mitigation loop.</p></div>
-          </div>
-        </div>
-        <div class="pcard">
-          <div class="fig"><img src="assets/trajectorycache-architecture.png" alt="TrajectoryCache architecture"></div>
-          <div class="body"><h4>TrajectoryCache — Vehicular Edge Caching</h4>
-            <div class="ptags"><span class="tag">V2X</span><span class="tag">SUMO</span><span class="tag">Docker</span></div>
-            <div class="rowbtns"><button class="sumbtn">Read summary ▾</button><a class="plink" href="https://github.com/adeliusa486/TrajectoryCache" target="_blank" rel="noopener">View repo ↗</a></div>
-            <div class="summary"><p>A mobility-aware content-caching policy for vehicular (V2X) named-data networks. It balances each item's spatial urgency against its temporal popularity under SUMO-style platoon traffic with GPS noise, making cache-eviction decisions in under 43 microseconds.</p></div>
-          </div>
-        </div>
-        <div class="pcard">
-          <div class="fig"><img src="assets/pp2-arch.jpeg" alt="PP2 Architecture"></div>
-          <div class="body"><h4>Serverless Global CDN (PP2)</h4>
-            <div class="ptags"><span class="tag">AWS</span><span class="tag">CloudFront</span><span class="tag">Serverless</span></div>
-            <div class="rowbtns"><button class="sumbtn">Read summary ▾</button><a class="plink" href="https://github.com/adeliusa486/02-CE-02-serverless-global-cdn" target="_blank" rel="noopener">View repo ↗</a></div>
-            <div class="summary"><p>Designed a serverless global CDN architecture leveraging AWS CloudFront and edge locations to reduce latency and securely serve static and dynamic content globally.</p></div>
-          </div>
-        </div>
-        <div class="pcard">
-          <div class="fig"><img src="assets/pp3-arch.jpeg" alt="PP3 Architecture"></div>
-          <div class="body"><h4>Event-Driven eCommerce Backend (PP3)</h4>
-            <div class="ptags"><span class="tag">Serverless</span><span class="tag">EventBridge</span><span class="tag">DynamoDB</span></div>
-            <div class="rowbtns"><button class="sumbtn">Read summary ▾</button><a class="plink" href="https://github.com/adeliusa486/PP3-CE-event-driven-ecommerce-backend" target="_blank" rel="noopener">View repo ↗</a></div>
-            <div class="summary"><p>Built an event-driven serverless eCommerce backend. Uses AWS Lambda, EventBridge, SQS, SNS, and DynamoDB for high scalability and loose coupling.</p></div>
-          </div>
-        </div>
-        <div class="pcard">
-          <div class="fig"><img src="assets/smart-cane-real.jpeg" alt="Smart Cane Architecture"></div>
-          <div class="body"><h4>Smart Obstacle Cane</h4>
-            <div class="ptags"><span class="tag">Raspberry Pi</span><span class="tag">Computer Vision</span><span class="tag">AI</span></div>
-            <div class="rowbtns"><button class="sumbtn">Read summary ▾</button><a class="plink" href="https://github.com/adeliusa486/smart-obstacle-cane" target="_blank" rel="noopener">View repo ↗</a></div>
-            <div class="summary"><p>An offline Raspberry Pi-based smart cane for visually impaired individuals. Integrates computer vision and sensor fusion to detect obstacles and provide haptic/audio feedback in real time.</p></div>
-          </div>
-        </div>
-        <div class="pcard">
-          <div class="fig"><img src="assets/green-hours.jpg" alt="Green Hours Architecture"></div>
-          <div class="body"><h4>Green Hours</h4>
-            <div class="ptags"><span class="tag">Multi-Agent RL</span><span class="tag">Mechanism Design</span><span class="tag">Datacenters</span></div>
-            <div class="rowbtns"><button class="sumbtn">Read summary ▾</button><a class="plink" href="https://github.com/adeliusa486/Green-Hours" target="_blank" rel="noopener">View repo ↗</a></div>
-            <div class="summary"><p>Investigated equilibrium inefficiency in multi-agent datacenter schedulers competing for green energy. Designed a novel mechanism (SHADE) to prevent carbon-aware algorithms from causing synchronized grid spikes.</p></div>
-          </div>
-        </div>
-      </div>
-      <h3 class="sub">All Repositories · live from GitHub</h3>
-      <div id="repos"><div class="loading">Loading repositories…</div></div>
-    </section>
-
-    <!-- EXPERIENCE + EDUCATION -->
-    <section class="panel" id="p-experience">
-      <p class="eyebrow">Experience &amp; Education</p>
-      <h2>Where I've worked &amp; studied</h2>
-      <h3 class="sub">Experience</h3>
-      <div class="list">
-        <div class="item exp-item">
-          <div class="exp-header"><b>Research Intern — AI Centre, IUM, Saudi Arabia</b><span class="yr">Jun 2026 – Aug 2026</span></div>
-          <p class="d">Conducted applied research in network security, federated learning, and intelligent systems, leading to multiple peer-reviewed publications.</p>
-        </div>
-        <div class="item exp-item">
-          <div class="exp-header"><b>Intern — Asaqefah Business Development, Madinah</b><span class="yr">Jun 2026 – Aug 2026</span></div>
-          <p class="d">Built an AWS-powered multilingual crowd-management MVP for Al-Masjid an-Nabawi with an operations dashboard; owned the full stack.</p>
-        </div>
-        <div class="item exp-item">
-          <div class="exp-header"><b>Developer — Team VisionBridge AI</b><span class="yr">2026</span></div>
-          <p class="d">King Salman Center AI Hackathon. Built an offline Raspberry Pi smart cane; selected into the hackathon acceleration phase.</p>
-        </div>
-      </div>
-      <h3 class="sub">Education</h3>
-      <div class="list">
-        <div class="item exp-item">
-          <div class="exp-header"><b>Bachelor of Information Technology — Islamic University of Madinah</b><span class="yr">2023 – Present</span></div>
-          <p class="d">Saudi Government-funded scholarship for academic excellence. <a href="assets/transcripts.pdf" target="_blank" rel="noopener">View Academic Transcript ↗</a></p>
-        </div>
-        <div class="item exp-item">
-          <div class="exp-header"><b>Higher Secondary — Punjab College of Commerce</b><span class="yr">2020</span></div>
-          <p class="d">Graduated with 92% marks.</p>
-        </div>
-        <div class="item exp-item">
-          <div class="exp-header"><b>Secondary — Govt. High School, Qila Didar Singh, Gujranwala</b><span class="yr">2017</span></div>
-          <p class="d">Graduated with 90% marks.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS + CERTIFICATIONS — icon style -->
-    <section class="panel" id="p-credentials">
-      <p class="eyebrow">Skills &amp; Certifications</p>
-      <h2>Tools &amp; credentials</h2>
-      <h3 class="sub">Technical Skills</h3>
-      <div class="tools-grid">
-        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"> Python</span>
-        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"> Java</span>
-        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL"> SQL</span>
-        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Bash"> Bash</span>
-        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch"> PyTorch</span>
-        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy"> NumPy</span>
-        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV"> OpenCV</span>
-        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"> AWS</span>
-        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"> Docker</span>
-        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="Terraform"> Terraform</span>
-        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg" alt="Ansible"> Ansible</span>
-        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"> Linux</span>
-        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"> Git</span>
-      </div>
-      <h3 class="sub">Networking &amp; Simulation</h3>
-      <div class="tools-grid">
-        <span class="tool-chip">🛡️ Cybersecurity</span>
-        <span class="tool-chip">📡 Networking (OSPF, BGP, EIGRP)</span>
-        <span class="tool-chip">🔧 GNS3 &amp; Packet Tracer</span>
-        <span class="tool-chip">🚗 SUMO Simulation</span>
-        <span class="tool-chip">🦈 Wireshark</span>
-      </div>
-      <h3 class="sub">Certifications</h3>
-      <div class="certs-grid">
-        <div class="cert">
-          <div class="clogo badgebox"><img src="assets/badge-ccnp-core.jpg" alt="CCNP Core"></div>
-          <div class="certtext"><h4>CCNP: Core Networking</h4><p>Cisco Networking Academy — L2, OSPF, eBGP, multicast, QoS, VPNs.</p></div>
-        </div>
-        <div class="cert">
-          <div class="clogo badgebox"><img src="assets/badge-ccnp-adv.jpg" alt="CCNP Adv"></div>
-          <div class="certtext"><h4>CCNP: Advanced Routing</h4><p>Cisco Networking Academy — route redistribution, path control, and VPN tech.</p></div>
-        </div>
-        <div class="cert">
-          <div class="clogo" style="background:transparent; border:none; box-shadow:none;"><img src="assets/badge-netsec.png" alt="NetSec"></div>
-          <div class="certtext"><h4>Cisco Network Security</h4><p>Threat defense, secure network design, and advanced monitoring.</p></div>
-        </div>
-        <div class="cert">
-          <div class="clogo" style="background:transparent; border:none; box-shadow:none;"><img src="assets/badge-aws-saa.png" alt="AWS"></div>
-          <div class="certtext"><h4>AWS Solutions Architect (SAA)</h4><p>Adrian Cantrill course — VPC, EC2, S3, IAM, RDS, CloudFormation, serverless.</p></div>
-        </div>
-        <div class="cert">
-          <div class="clogo"><img src="assets/logo-cisco.svg" alt="CCNA"></div>
-          <div class="certtext"><h4>Cisco CCNA</h4><p>Routing &amp; switching, OSPF/EIGRP, VLANs, ACLs.</p></div>
-        </div>
-      </div>
-    </section>
-
-
-
-    <!-- CV — themed, viewable in-page + separate download -->
-    <section class="panel" id="p-cv">
-      <p class="eyebrow">Curriculum Vitae</p>
-      <div class="cv-bar"><a class="btn primary" href="Adeel-Ahmad-CV.pdf" download>Download PDF ↓</a></div>
-      <div class="cv-doc">
-        <div class="cvhead">
-          <h3>Adeel Ahmad</h3>
-          <div class="t">Information Technology Student — Networking, Cloud &amp; AI</div>
-          <div class="c">Madinah, Saudi Arabia · <a href="mailto:443057803@stu.iu.edu.sa">443057803@stu.iu.edu.sa</a><br>
-          <a href="https://github.com/adeliusa486" target="_blank" rel="noopener">github.com/adeliusa486</a> · <a href="https://linkedin.com/in/adeel-ahmad-5a041b237" target="_blank" rel="noopener">linkedin.com/in/adeel-ahmad-5a041b237</a> · <a href="https://scholar.google.com/citations?user=EjQm_kcAAAAJ" target="_blank" rel="noopener">Google Scholar</a></div>
-        </div>
-        <div class="cv-sec"><h4>Summary</h4><p>Final-year Information Technology undergraduate at the Islamic University of Madinah with hands-on experience in networking, AWS cloud computing, and applied machine learning. Co-author of an IEEE conference paper and builder of full systems from hardware to dashboard.</p></div>
-        <div class="cv-sec"><h4>Education</h4>
-          <div class="row2"><span><b>Bachelor of Information Technology</b>, Islamic University of Madinah</span><span class="yr">2023 – Present</span></div>
-          <p>Saudi Government-funded scholarship for academic excellence.</p>
-          <div class="row2"><span><b>Higher Secondary Education</b>, Punjab College of Commerce</span><span class="yr">2020 (92%)</span></div>
-          <div class="row2"><span><b>Secondary Education</b>, Govt. High School, Qila Didar Singh, Gujranwala</span><span class="yr">2017 (90%)</span></div>
-        </div>
-        <div class="cv-sec"><h4>Technical Skills</h4>
-          <p><b>Programming:</b> Python, Java, SQL, Bash, MATLAB</p>
-          <p><b>AI &amp; Machine Learning:</b> PyTorch, scikit-learn, NumPy, OpenCV, SHAP</p>
-          <p><b>Networking:</b> CCNA, OSPF, RIP, EIGRP, VLANs, ACLs, Wireshark, Packet Tracer</p>
-          <p><b>Cloud &amp; DevOps:</b> AWS, CloudFormation, Terraform, Ansible, Docker, Linux</p>
-          <p><b>Simulation &amp; Tools:</b> GNS3, SUMO, Git, Raspberry Pi, Flutter</p>
-        </div>
-        <div class="cv-sec"><h4>Experience</h4>
-          <div class="row2"><span><b>Research Intern</b>, AI Centre, IUM — Madinah, Saudi Arabia</span><span class="yr">Jun 2026 – Aug 2026</span></div>
-          <ul><li>Conducted applied research in network security, federated learning, and intelligent systems, leading to multiple peer-reviewed publications.</li></ul>
-          <div class="row2"><span><b>Intern</b>, Asaqefah Business Development — Madinah</span><span class="yr">Jun 2026 – Aug 2026</span></div>
-          <ul><li>Built an AWS-powered, multilingual crowd-management MVP for Al-Masjid an-Nabawi with an operations dashboard.</li><li>Owned the full stack across real-time navigation, crowd analysis, and cloud architecture.</li></ul>
-          <div class="row2"><span><b>Developer, Team VisionBridge AI</b> — King Salman Center AI Hackathon</span><span class="yr">2026</span></div>
-          <ul><li>Built an offline Raspberry Pi smart cane; selected into the hackathon acceleration phase.</li></ul>
-        </div>
-        <div class="cv-sec"><h4>Publications</h4>
-          <ul>
-            <li><b>Accepted:</b> "Privacy Leakage in Federated Learning…", IEEE VTC2026-Fall.</li>
-            <li><b>In peer review:</b> "Balancing Spatial Urgency and Content Popularity for Edge Caching in Vehicular Networks", Springer Nature, Discover Telecommunications.</li>
-            <li><b>In peer review:</b> "XAI-SDN: A Lightweight, Interpretable DDoS Detection System for SDN…".</li>
-            <li><b>In peer review:</b> "Adaptive Multi-Factor Trust Aggregation for Byzantine-Robust Federated Learning in IoT Networks".</li>
-          </ul>
-        </div>
-        <div class="cv-sec"><h4>Activities &amp; Honours</h4>
-          <ul><li>Saudi Government-funded scholarship recipient, Islamic University of Madinah (Mar 2023).</li>
-          <li>Cisco NetAcad Network Security badge (completed); AWS Certified Solutions Architect – Associate (SAA-C03) course completed (Adrian Cantrill); preparing for CCNA.</li>
-          <li>Currently completing hands-on cybersecurity labs on TryHackMe.</li></ul>
-        </div>
-        <div class="cv-sec"><h4>Languages</h4><p>Urdu (Native), Punjabi (Native), English (B2), Arabic (Beginner)</p></div>
-      </div>
-    </section>
-
-  </div>
-</div>
-
-<div class="lightbox" id="lightbox">
-  <button class="lb-close" id="lbClose" aria-label="Close">×</button>
-  <img id="lbImg" alt="Certificate">
-  <iframe id="lbIframe" style="display:none; width:90%; height:90%; max-width:1000px; border:none; border-radius:12px; box-shadow:0 20px 50px rgba(0,0,0,0.5); background:#fff;"></iframe>
-  <div class="lb-msg" id="lbMsg" style="display:none">This certificate will be viewable here soon.</div>
-</div>
-
-<script>
-  function showPanel(id){
-    document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='p-'+id));
-    document.querySelectorAll('[data-go]').forEach(a=>a.classList.toggle('navactive', a.dataset.go===id));
-    window.scrollTo({top:0});
-    const menu=document.getElementById('menu'); if(menu) menu.classList.remove('open');
-    if(id==='projects') loadRepos();
-  }
-  document.querySelectorAll('[data-go]').forEach(el=>el.addEventListener('click',e=>{ e.preventDefault(); showPanel(el.dataset.go); }));
-
-  // mobile menu
-  const mb=document.getElementById('mb');
-  if(mb) mb.addEventListener('click',()=>document.getElementById('menu').classList.toggle('open'));
-
-  // summary toggles (Projects)
-  document.addEventListener('click',e=>{ const b=e.target.closest('.sumbtn'); if(!b)return; const s=b.parentElement.parentElement.querySelector('.summary'); const open=s.classList.toggle('open'); b.textContent=open?'Hide summary ▴':'Read summary ▾'; });
-
-  // certificate lightbox — opens assets/cert-<id>.jpg or .pdf based on data-type
-  const lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg'), lbIframe=document.getElementById('lbIframe'), lbMsg=document.getElementById('lbMsg');
-  lbImg.onerror=()=>{ lbImg.style.display='none'; lbMsg.style.display='block'; };
-  document.addEventListener('click',e=>{
-    const v=e.target.closest('.viewcert') || e.target.closest('a.hcard[data-cert]');
-    if(v){ 
-      e.preventDefault(); 
-      lbMsg.style.display='none'; 
-      if (v.dataset.type === 'pdf') {
-         lbImg.style.display='none';
-         lbIframe.style.display='block';
-         lbIframe.src = 'assets/cert-'+v.dataset.cert+'.pdf';
-      } else {
-         lbIframe.style.display='none';
-         lbImg.style.display='block';
-         lbImg.src='assets/cert-'+v.dataset.cert+'.jpg'; 
-      }
-      lb.classList.add('open'); 
-      return; 
-    }
-    if(e.target===lb || e.target.id==='lbClose'){ 
-        lb.classList.remove('open'); 
-        setTimeout(()=>{ lbIframe.src = ''; }, 300); 
-    }
-  });
-  document.addEventListener('keydown',e=>{ if(e.key==='Escape') { lb.classList.remove('open'); setTimeout(()=>{ lbIframe.src = ''; }, 300); } });
-
-  // live repositories (exclude portfolio + profile repos)
-  const EXCLUDE=['adeliusa486.github.io','adeliusa486'];
-  let reposLoaded=false;
-  function loadRepos(){
-    if(reposLoaded)return; reposLoaded=true;
-    const out=document.getElementById('repos');
-    const fmt=d=>new Date(d).toLocaleDateString(undefined,{year:'numeric',month:'short'});
-    fetch('https://api.github.com/users/adeliusa486/repos?sort=updated&per_page=100')
-      .then(r=>r.ok?r.json():Promise.reject())
-      .then(repos=>{ const list=repos.filter(r=>!r.fork&&!EXCLUDE.includes(r.name)).slice(0,12);
-        if(!list.length){ out.innerHTML='<div class="err">No public repositories yet.</div>'; return; }
-        out.innerHTML='<div class="cards">'+list.map(r=>`<a class="card" href="${r.html_url}" target="_blank" rel="noopener"><h4>${r.name}</h4><p>${r.description||'—'}</p><div class="repo-meta">${r.language?`<span class="lg">${r.language}</span>`:''}<span>★ ${r.stargazers_count}</span><span>${fmt(r.updated_at)}</span></div></a>`).join('')+'</div>'; })
-      .catch(()=>{ reposLoaded=false; out.innerHTML='<div class="err">Couldn\'t load repositories. See <a href="https://github.com/adeliusa486" target="_blank" rel="noopener">github.com/adeliusa486</a></div>'; });
-  }
-</script>
+<!--
+  ADEEL AHMAD — INTERACTIVE WOODEN-HELM PORTFOLIO
+  ============================================================================
+  Steer the ship's wheel (right, half-visible) to rotate through sections.
+  The wooden HOME button at the centre stays still — click it to return here.
+  All text lives in the .panel blocks below — find the words and type over them.
+  Projects show your paper architecture figures + a "Read summary" toggle;
+  the full repo list loads live from GitHub (excluding the portfolio & profile repos).
+  ============================================================================
+-->
+<title>Adeel Ahmad</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css?v=3">
+
+<nav class="topnav"><div class="navwrap">
+  <a class="brand" data-go="intro"><img src="profile.jpg" alt="Adeel Ahmad">Adeel Ahmad<span>.</span></a>
+  <button class="menu-btn" id="mb" aria-label="Menu">☰</button>
+  <ul class="navlinks" id="menu">
+    <li><a data-go="intro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>Home</a></li>
+    <li><a data-go="research"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19a2 2 0 0 0 2 2h13"/></svg>Research</a></li>
+    <li><a data-go="projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6"/><path d="m16 6 6 6-6 6"/></svg>Projects</a></li>
+    <li><a data-go="experience"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Experience</a></li>
+    <li><a data-go="credentials"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg>Skills</a></li>
+    <li><a data-go="cv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>CV</a></li>
+  </ul>
+</div></nav>
+
+<div class="stage">
+  <div class="content" id="content">
+
+    <!-- INTRO -->
+    <section class="panel active" id="p-intro">
+      <span class="pill">IUM, Saudi Arabia</span>
+      <h1>Hi, I'm Adeel, a cloud engineer integrating <span class="mark">XAI and cybersecurity into cloud and networks.</span></h1>
+      <p class="lead">I'm a final-year Information Technology student at the <b>Islamic University of Madinah</b>, studying on a fully-funded <b>Saudi Government scholarship</b> awarded for academic excellence. My goal is simple but ambitious: to design, secure, and scale the digital systems the world depends on from the network layer all the way up to the cloud. I pair strong foundations in <b>networking and security</b> with hands-on <b>cloud engineering and XAI integration</b>, and I've already co-authored <b>four peer-reviewed research papers</b> spanning network security, federated learning, and intelligent systems. Beyond research, I build. I've engineered complete systems from <b>Raspberry Pi hardware to live cloud dashboards</b>, earned <b>Cisco CCNP Enterprise</b> certifications in Core Networking and Advanced Routing, and I sharpen my practical skills every day through hands-on <b>TryHackMe</b> security labs and <b>AWS</b> cloud training. Whether it's hardening a network, deploying to the cloud, or integrating XAI into cloud environments, I bring curiosity, discipline, and a relentless drive to learn and I'm always eager to take on <b>research, scholarship, and professional opportunities</b> where I can contribute, grow, and make an impact.</p>
+      <div class="herostats">
+        <a class="hcard" data-cert="ccnp-core">
+          <span class="hic"><img src="assets/badge-ccnp-core.jpg" alt="CCNP Core"></span>
+          <span class="htext"><b>CCNP: Core Networking</b><em>Cisco Verified</em></span>
+        </a>
+        <a class="hcard" data-cert="ccnp-adv">
+          <span class="hic"><img src="assets/badge-ccnp-adv.jpg" alt="CCNP Advanced"></span>
+          <span class="htext"><b>CCNP: Advanced Routing</b><em>Cisco Verified</em></span>
+        </a>
+        <a class="hcard" data-cert="aws-saa" data-type="pdf">
+          <span class="hic" style="background:transparent; border:none; box-shadow:none;"><img src="assets/badge-aws-saa.png" alt="AWS SAA"></span>
+          <span class="htext"><b>AWS SAA Course</b><em>Solutions Architect</em></span>
+        </a>
+        <a class="hcard" data-cert="netsec" data-type="pdf">
+          <span class="hic" style="background:transparent; border:none; box-shadow:none;"><img src="assets/badge-netsec.png" alt="Network Security"></span>
+          <span class="htext"><b>Network Security</b><em>Cisco NetAcad</em></span>
+        </a>
+        <a class="hcard" data-go="research">
+          <span class="hic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></span>
+          <span class="htext"><b>4 Research Papers</b><em>Peer-Reviewed</em></span>
+        </a>
+        <a class="hcard" data-go="research">
+          <span class="hic" style="background:transparent; border:none; box-shadow:none;"><img src="assets/logo-ieee.svg" alt="IEEE"></span>
+          <span class="htext"><b>IEEE Author</b><em>Published Researcher</em></span>
+        </a>
+        <a class="hcard" href="https://github.com/adeliusa486" target="_blank" rel="noopener">
+          <span class="hic" style="background:transparent; border:none; box-shadow:none; filter:invert(1);"><img src="assets/logo-github.svg" alt="GitHub"></span>
+          <span class="htext"><b>GitHub Profile</b><em>Open Source</em></span>
+        </a>
+        <a class="hcard" href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=EjQm_kcAAAAJ" target="_blank" rel="noopener">
+          <span class="hic" style="background:transparent; border:none; box-shadow:none;"><img src="assets/logo-scholar.svg" alt="Google Scholar"></span>
+          <span class="htext"><b>Google Scholar</b><em>Citations</em></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- RESEARCH — Publications first, interests under -->
+    <section class="panel" id="p-research">
+      <p class="eyebrow">Research &amp; Publications</p>
+      <h2>Publications</h2>
+      <p class="lead">Peer-reviewed and in-review work.</p>
+      <div class="pub-grid">
+        <div class="item pub">
+          <span class="badge published">Published</span>
+          <h4>XAI-SDN: An Explainable Entropy-Guided Machine Learning Framework for Real-Time DDoS Detection in Software Defined Networks</h4>
+          <p class="venue"><b>IEEE Access</b> · 2026</p>
+          <p class="meta">First author · <a href="https://ieeexplore.ieee.org/document/11741196" target="_blank" rel="noopener" style="color:var(--accent); font-weight:600;">IEEE Xplore ↗</a> · DOI: <a href="https://doi.org/10.1109/ACCESS.2026.3745236" target="_blank" rel="noopener">10.1109/ACCESS.2026.3745236</a> · <a href="https://github.com/adeliusa486/XAI-SDN" target="_blank" rel="noopener">Code ↗</a></p>
+        </div>
+        <div class="item pub">
+          <span class="badge accepted">Accepted</span>
+          <h4>Privacy Leakage in Federated Learning: Gradient-Based Client Identity Inference and Defense Analysis for Secure Vehicular Networks</h4>
+          <p class="venue">IEEE 104th Vehicular Technology Conference (VTC2026-Fall)</p>
+          <p class="meta">Co-author · 2026</p>
+        </div>
+        <div class="item pub">
+          <span class="badge review">Peer Review</span>
+          <h4>Which Robust Aggregation Rule Should You Trust for Open-RAN? An Empirical Study of Federated Poisoning Defenses on Recorded Cellular Measurements</h4>
+          <p class="venue">Computer Networks, Elsevier</p>
+          <p class="meta">First author · Under review (2nd round) · 2026 · <a href="https://github.com/adeliusa486/oran-fed-robust" target="_blank" rel="noopener">Code ↗</a></p>
+        </div>
+        <div class="item pub">
+          <span class="badge review">Peer Review</span>
+          <h4>Balancing Spatial Urgency and Content Popularity for Edge Caching in Vehicular Networks</h4>
+          <p class="venue">Springer Nature — Discover Telecommunications</p>
+          <p class="meta">In peer review · 2026</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS — architecture figures + summary, then live repos -->
+    <section class="panel" id="p-projects">
+      <p class="eyebrow">Projects &amp; Repositories</p>
+      <h2>Featured work</h2>
+      <p class="lead">System architectures from my research and cloud engineering. Open a summary, or view the code.</p>
+      <div class="pcards">
+        <div class="pcard">
+          <div class="fig"><img src="assets/xai-sdn-arch.jpeg" alt="XAI-SDN architecture"></div>
+          <div class="body"><h4>XAI-SDN — Explainable DDoS Detection</h4>
+            <div class="ptags"><span class="tag">SDN</span><span class="tag">SHAP</span><span class="tag">Random Forest</span></div>
+            <div class="rowbtns"><button class="sumbtn">Read summary ▾</button><a class="plink" href="https://ieeexplore.ieee.org/document/11741196" target="_blank" rel="noopener" style="color:var(--accent); font-weight:600;">IEEE Paper ↗</a><a class="plink" href="https://github.com/adeliusa486/XAI-SDN" target="_blank" rel="noopener">View repo ↗</a></div>
+            <div class="summary"><p>A lightweight, interpretable DDoS-detection system for software-defined networks. Flows are summarised with an O(1) rolling-entropy feature, classified by a Random Forest, and every decision is explained with SHAP — reaching 99.99% accuracy at sub-millisecond inference while feeding a real-time mitigation loop.</p></div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="fig"><img src="assets/trajectorycache-architecture.png" alt="TrajectoryCache architecture"></div>
+          <div class="body"><h4>TrajectoryCache — Vehicular Edge Caching</h4>
+            <div class="ptags"><span class="tag">V2X</span><span class="tag">SUMO</span><span class="tag">Docker</span></div>
+            <div class="rowbtns"><button class="sumbtn">Read summary ▾</button><a class="plink" href="https://github.com/adeliusa486/TrajectoryCache" target="_blank" rel="noopener">View repo ↗</a></div>
+            <div class="summary"><p>A mobility-aware content-caching policy for vehicular (V2X) named-data networks. It balances each item's spatial urgency against its temporal popularity under SUMO-style platoon traffic with GPS noise, making cache-eviction decisions in under 43 microseconds.</p></div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="fig"><img src="assets/pp2-arch.jpeg" alt="PP2 Architecture"></div>
+          <div class="body"><h4>Serverless Global CDN (PP2)</h4>
+            <div class="ptags"><span class="tag">AWS</span><span class="tag">CloudFront</span><span class="tag">Serverless</span></div>
+            <div class="rowbtns"><button class="sumbtn">Read summary ▾</button><a class="plink" href="https://github.com/adeliusa486/02-CE-02-serverless-global-cdn" target="_blank" rel="noopener">View repo ↗</a></div>
+            <div class="summary"><p>Designed a serverless global CDN architecture leveraging AWS CloudFront and edge locations to reduce latency and securely serve static and dynamic content globally.</p></div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="fig"><img src="assets/pp3-arch.jpeg" alt="PP3 Architecture"></div>
+          <div class="body"><h4>Event-Driven eCommerce Backend (PP3)</h4>
+            <div class="ptags"><span class="tag">Serverless</span><span class="tag">EventBridge</span><span class="tag">DynamoDB</span></div>
+            <div class="rowbtns"><button class="sumbtn">Read summary ▾</button><a class="plink" href="https://github.com/adeliusa486/PP3-CE-event-driven-ecommerce-backend" target="_blank" rel="noopener">View repo ↗</a></div>
+            <div class="summary"><p>Built an event-driven serverless eCommerce backend. Uses AWS Lambda, EventBridge, SQS, SNS, and DynamoDB for high scalability and loose coupling.</p></div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="fig"><img src="assets/smart-cane-real.jpeg" alt="Smart Cane Architecture"></div>
+          <div class="body"><h4>Smart Obstacle Cane</h4>
+            <div class="ptags"><span class="tag">Raspberry Pi</span><span class="tag">Computer Vision</span><span class="tag">AI</span></div>
+            <div class="rowbtns"><button class="sumbtn">Read summary ▾</button><a class="plink" href="https://github.com/adeliusa486/smart-obstacle-cane" target="_blank" rel="noopener">View repo ↗</a></div>
+            <div class="summary"><p>An offline Raspberry Pi-based smart cane for visually impaired individuals. Integrates computer vision and sensor fusion to detect obstacles and provide haptic/audio feedback in real time.</p></div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="fig"><img src="assets/green-hours.jpg" alt="Green Hours Architecture"></div>
+          <div class="body"><h4>Green Hours</h4>
+            <div class="ptags"><span class="tag">Multi-Agent RL</span><span class="tag">Mechanism Design</span><span class="tag">Datacenters</span></div>
+            <div class="rowbtns"><button class="sumbtn">Read summary ▾</button><a class="plink" href="https://github.com/adeliusa486/Green-Hours" target="_blank" rel="noopener">View repo ↗</a></div>
+            <div class="summary"><p>Investigated equilibrium inefficiency in multi-agent datacenter schedulers competing for green energy. Designed a novel mechanism (SHADE) to prevent carbon-aware algorithms from causing synchronized grid spikes.</p></div>
+          </div>
+        </div>
+      </div>
+      <h3 class="sub">All Repositories · live from GitHub</h3>
+      <div id="repos"><div class="loading">Loading repositories…</div></div>
+    </section>
+
+    <!-- EXPERIENCE + EDUCATION -->
+    <section class="panel" id="p-experience">
+      <p class="eyebrow">Experience &amp; Education</p>
+      <h2>Where I've worked &amp; studied</h2>
+      <h3 class="sub">Experience</h3>
+      <div class="list">
+        <div class="item exp-item">
+          <div class="exp-header"><b>Research Intern — AI Centre, IUM, Saudi Arabia</b><span class="yr">Jun 2026 – Aug 2026</span></div>
+          <p class="d">Conducted applied research in network security, federated learning, and intelligent systems, leading to multiple peer-reviewed publications.</p>
+        </div>
+        <div class="item exp-item">
+          <div class="exp-header"><b>Intern — Asaqefah Business Development, Madinah</b><span class="yr">Jun 2026 – Aug 2026</span></div>
+          <p class="d">Built an AWS-powered multilingual crowd-management MVP for Al-Masjid an-Nabawi with an operations dashboard; owned the full stack.</p>
+        </div>
+        <div class="item exp-item">
+          <div class="exp-header"><b>Developer — Team VisionBridge AI</b><span class="yr">2026</span></div>
+          <p class="d">King Salman Center AI Hackathon. Built an offline Raspberry Pi smart cane; selected into the hackathon acceleration phase.</p>
+        </div>
+      </div>
+      <h3 class="sub">Education</h3>
+      <div class="list">
+        <div class="item exp-item">
+          <div class="exp-header"><b>Bachelor of Information Technology — Islamic University of Madinah</b><span class="yr">2023 – Present</span></div>
+          <p class="d">Saudi Government-funded scholarship for academic excellence. <a href="assets/transcripts.pdf" target="_blank" rel="noopener">View Academic Transcript ↗</a></p>
+        </div>
+        <div class="item exp-item">
+          <div class="exp-header"><b>Higher Secondary — Punjab College of Commerce</b><span class="yr">2020</span></div>
+          <p class="d">Graduated with 92% marks.</p>
+        </div>
+        <div class="item exp-item">
+          <div class="exp-header"><b>Secondary — Govt. High School, Qila Didar Singh, Gujranwala</b><span class="yr">2017</span></div>
+          <p class="d">Graduated with 90% marks.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS + CERTIFICATIONS — icon style -->
+    <section class="panel" id="p-credentials">
+      <p class="eyebrow">Skills &amp; Certifications</p>
+      <h2>Tools &amp; credentials</h2>
+      <h3 class="sub">Technical Skills</h3>
+      <div class="tools-grid">
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"> Python</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"> Java</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL"> SQL</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Bash"> Bash</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch"> PyTorch</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy"> NumPy</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV"> OpenCV</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"> AWS</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"> Docker</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="Terraform"> Terraform</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg" alt="Ansible"> Ansible</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"> Linux</span>
+        <span class="tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"> Git</span>
+      </div>
+      <h3 class="sub">Networking &amp; Simulation</h3>
+      <div class="tools-grid">
+        <span class="tool-chip">🛡️ Cybersecurity</span>
+        <span class="tool-chip">📡 Networking (OSPF, BGP, EIGRP)</span>
+        <span class="tool-chip">🔧 GNS3 &amp; Packet Tracer</span>
+        <span class="tool-chip">🚗 SUMO Simulation</span>
+        <span class="tool-chip">🦈 Wireshark</span>
+      </div>
+      <h3 class="sub">Certifications</h3>
+      <div class="certs-grid">
+        <div class="cert">
+          <div class="clogo badgebox"><img src="assets/badge-ccnp-core.jpg" alt="CCNP Core"></div>
+          <div class="certtext"><h4>CCNP: Core Networking</h4><p>Cisco Networking Academy — L2, OSPF, eBGP, multicast, QoS, VPNs.</p></div>
+        </div>
+        <div class="cert">
+          <div class="clogo badgebox"><img src="assets/badge-ccnp-adv.jpg" alt="CCNP Adv"></div>
+          <div class="certtext"><h4>CCNP: Advanced Routing</h4><p>Cisco Networking Academy — route redistribution, path control, and VPN tech.</p></div>
+        </div>
+        <div class="cert">
+          <div class="clogo" style="background:transparent; border:none; box-shadow:none;"><img src="assets/badge-netsec.png" alt="NetSec"></div>
+          <div class="certtext"><h4>Cisco Network Security</h4><p>Threat defense, secure network design, and advanced monitoring.</p></div>
+        </div>
+        <div class="cert">
+          <div class="clogo" style="background:transparent; border:none; box-shadow:none;"><img src="assets/badge-aws-saa.png" alt="AWS"></div>
+          <div class="certtext"><h4>AWS Solutions Architect (SAA)</h4><p>Adrian Cantrill course — VPC, EC2, S3, IAM, RDS, CloudFormation, serverless.</p></div>
+        </div>
+        <div class="cert">
+          <div class="clogo"><img src="assets/logo-cisco.svg" alt="CCNA"></div>
+          <div class="certtext"><h4>Cisco CCNA</h4><p>Routing &amp; switching, OSPF/EIGRP, VLANs, ACLs.</p></div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- CV — themed, viewable in-page + separate download -->
+    <section class="panel" id="p-cv">
+      <p class="eyebrow">Curriculum Vitae</p>
+      <div class="cv-bar"><a class="btn primary" href="Adeel-Ahmad-CV.pdf" download>Download PDF ↓</a></div>
+      <div class="cv-doc">
+        <div class="cvhead">
+          <h3>Adeel Ahmad</h3>
+          <div class="t">Information Technology Student — Networking, Cloud &amp; AI</div>
+          <div class="c">Madinah, Saudi Arabia · <a href="mailto:443057803@stu.iu.edu.sa">443057803@stu.iu.edu.sa</a><br>
+          <a href="https://github.com/adeliusa486" target="_blank" rel="noopener">github.com/adeliusa486</a> · <a href="https://linkedin.com/in/adeel-ahmad-5a041b237" target="_blank" rel="noopener">linkedin.com/in/adeel-ahmad-5a041b237</a> · <a href="https://scholar.google.com/citations?user=EjQm_kcAAAAJ" target="_blank" rel="noopener">Google Scholar</a></div>
+        </div>
+        <div class="cv-sec"><h4>Summary</h4><p>Final-year Information Technology undergraduate at the Islamic University of Madinah with hands-on experience in networking, AWS cloud computing, and applied machine learning. Co-author of an IEEE conference paper and builder of full systems from hardware to dashboard.</p></div>
+        <div class="cv-sec"><h4>Education</h4>
+          <div class="row2"><span><b>Bachelor of Information Technology</b>, Islamic University of Madinah</span><span class="yr">2023 – Present</span></div>
+          <p>Saudi Government-funded scholarship for academic excellence.</p>
+          <div class="row2"><span><b>Higher Secondary Education</b>, Punjab College of Commerce</span><span class="yr">2020 (92%)</span></div>
+          <div class="row2"><span><b>Secondary Education</b>, Govt. High School, Qila Didar Singh, Gujranwala</span><span class="yr">2017 (90%)</span></div>
+        </div>
+        <div class="cv-sec"><h4>Technical Skills</h4>
+          <p><b>Programming:</b> Python, Java, SQL, Bash, MATLAB</p>
+          <p><b>AI &amp; Machine Learning:</b> PyTorch, scikit-learn, NumPy, OpenCV, SHAP</p>
+          <p><b>Networking:</b> CCNA, OSPF, RIP, EIGRP, VLANs, ACLs, Wireshark, Packet Tracer</p>
+          <p><b>Cloud &amp; DevOps:</b> AWS, CloudFormation, Terraform, Ansible, Docker, Linux</p>
+          <p><b>Simulation &amp; Tools:</b> GNS3, SUMO, Git, Raspberry Pi, Flutter</p>
+        </div>
+        <div class="cv-sec"><h4>Experience</h4>
+          <div class="row2"><span><b>Research Intern</b>, AI Centre, IUM — Madinah, Saudi Arabia</span><span class="yr">Jun 2026 – Aug 2026</span></div>
+          <ul><li>Conducted applied research in network security, federated learning, and intelligent systems, leading to multiple peer-reviewed publications.</li></ul>
+          <div class="row2"><span><b>Intern</b>, Asaqefah Business Development — Madinah</span><span class="yr">Jun 2026 – Aug 2026</span></div>
+          <ul><li>Built an AWS-powered, multilingual crowd-management MVP for Al-Masjid an-Nabawi with an operations dashboard.</li><li>Owned the full stack across real-time navigation, crowd analysis, and cloud architecture.</li></ul>
+          <div class="row2"><span><b>Developer, Team VisionBridge AI</b> — King Salman Center AI Hackathon</span><span class="yr">2026</span></div>
+          <ul><li>Built an offline Raspberry Pi smart cane; selected into the hackathon acceleration phase.</li></ul>
+        </div>
+        <div class="cv-sec"><h4>Publications</h4>
+          <ul>
+            <li><b>Published:</b> "XAI-SDN: An Explainable Entropy-Guided Machine Learning Framework for Real-Time DDoS Detection in Software Defined Networks", <a href="https://ieeexplore.ieee.org/document/11741196" target="_blank" rel="noopener"><b>IEEE Access</b></a>, 2026.</li>
+            <li><b>Accepted:</b> "Privacy Leakage in Federated Learning: Gradient-Based Client Identity Inference and Defense Analysis for Secure Vehicular Networks", IEEE VTC2026-Fall.</li>
+            <li><b>Under Review (2nd Round):</b> "Which Robust Aggregation Rule Should You Trust for Open-RAN?", Computer Networks, Elsevier.</li>
+            <li><b>In Peer Review:</b> "Balancing Spatial Urgency and Content Popularity for Edge Caching in Vehicular Networks", Springer Nature.</li>
+          </ul>
+        </div>
+        <div class="cv-sec"><h4>Activities &amp; Honours</h4>
+          <ul><li>Saudi Government-funded scholarship recipient, Islamic University of Madinah (Mar 2023).</li>
+          <li>Cisco NetAcad Network Security badge (completed); AWS Certified Solutions Architect – Associate (SAA-C03) course completed (Adrian Cantrill); preparing for CCNA.</li>
+          <li>Currently completing hands-on cybersecurity labs on TryHackMe.</li></ul>
+        </div>
+        <div class="cv-sec"><h4>Languages</h4><p>Urdu (Native), Punjabi (Native), English (B2), Arabic (Beginner)</p></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose" aria-label="Close">×</button>
+  <img id="lbImg" alt="Certificate">
+  <iframe id="lbIframe" style="display:none; width:90%; height:90%; max-width:1000px; border:none; border-radius:12px; box-shadow:0 20px 50px rgba(0,0,0,0.5); background:#fff;"></iframe>
+  <div class="lb-msg" id="lbMsg" style="display:none">This certificate will be viewable here soon.</div>
+</div>
+
+<script>
+  function showPanel(id){
+    document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='p-'+id));
+    document.querySelectorAll('[data-go]').forEach(a=>a.classList.toggle('navactive', a.dataset.go===id));
+    window.scrollTo({top:0});
+    const menu=document.getElementById('menu'); if(menu) menu.classList.remove('open');
+    if(id==='projects') loadRepos();
+  }
+  document.querySelectorAll('[data-go]').forEach(el=>el.addEventListener('click',e=>{ e.preventDefault(); showPanel(el.dataset.go); }));
+
+  // mobile menu
+  const mb=document.getElementById('mb');
+  if(mb) mb.addEventListener('click',()=>document.getElementById('menu').classList.toggle('open'));
+
+  // summary toggles (Projects)
+  document.addEventListener('click',e=>{ const b=e.target.closest('.sumbtn'); if(!b)return; const s=b.parentElement.parentElement.querySelector('.summary'); const open=s.classList.toggle('open'); b.textContent=open?'Hide summary ▴':'Read summary ▾'; });
+
+  // certificate lightbox — opens assets/cert-<id>.jpg or .pdf based on data-type
+  const lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg'), lbIframe=document.getElementById('lbIframe'), lbMsg=document.getElementById('lbMsg');
+  lbImg.onerror=()=>{ lbImg.style.display='none'; lbMsg.style.display='block'; };
+  document.addEventListener('click',e=>{
+    const v=e.target.closest('.viewcert') || e.target.closest('a.hcard[data-cert]');
+    if(v){ 
+      e.preventDefault(); 
+      lbMsg.style.display='none'; 
+      if (v.dataset.type === 'pdf') {
+         lbImg.style.display='none';
+         lbIframe.style.display='block';
+         lbIframe.src = 'assets/cert-'+v.dataset.cert+'.pdf';
+      } else {
+         lbIframe.style.display='none';
+         lbImg.style.display='block';
+         lbImg.src='assets/cert-'+v.dataset.cert+'.jpg'; 
+      }
+      lb.classList.add('open'); 
+      return; 
+    }
+    if(e.target===lb || e.target.id==='lbClose'){ 
+        lb.classList.remove('open'); 
+        setTimeout(()=>{ lbIframe.src = ''; }, 300); 
+    }
+  });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') { lb.classList.remove('open'); setTimeout(()=>{ lbIframe.src = ''; }, 300); } });
+
+  // live repositories (exclude portfolio + profile repos)
+  const EXCLUDE=['adeliusa486.github.io','adeliusa486'];
+  let reposLoaded=false;
+  function loadRepos(){
+    if(reposLoaded)return; reposLoaded=true;
+    const out=document.getElementById('repos');
+    const fmt=d=>new Date(d).toLocaleDateString(undefined,{year:'numeric',month:'short'});
+    fetch('https://api.github.com/users/adeliusa486/repos?sort=updated&per_page=100')
+      .then(r=>r.ok?r.json():Promise.reject())
+      .then(repos=>{ const list=repos.filter(r=>!r.fork&&!EXCLUDE.includes(r.name)).slice(0,12);
+        if(!list.length){ out.innerHTML='<div class="err">No public repositories yet.</div>'; return; }
+        out.innerHTML='<div class="cards">'+list.map(r=>`<a class="card" href="${r.html_url}" target="_blank" rel="noopener"><h4>${r.name}</h4><p>${r.description||'—'}</p><div class="repo-meta">${r.language?`<span class="lg">${r.language}</span>`:''}<span>★ ${r.stargazers_count}</span><span>${fmt(r.updated_at)}</span></div></a>`).join('')+'</div>'; })
+      .catch(()=>{ reposLoaded=false; out.innerHTML='<div class="err">Couldn\'t load repositories. See <a href="https://github.com/adeliusa486" target="_blank" rel="noopener">github.com/adeliusa486</a></div>'; });
+  }
+</script>

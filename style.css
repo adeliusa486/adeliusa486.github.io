@@ -253,7 +253,7 @@ a.hcard:hover, .item:hover, .pcard:hover, .card:hover, .cert:hover, .links a:hov
 }
 .badge.submitted { color: var(--st-submit); background: var(--st-submit-bg); border-color: rgba(192, 132, 252, 0.3); }
 .badge.review { color: var(--st-review); background: var(--st-review-bg); border-color: rgba(252, 211, 77, 0.3); }
-.badge.accepted, .badge.done { color: var(--st-accept); background: var(--st-accept-bg); border-color: rgba(52, 211, 153, 0.3); }
+.badge.published, .badge.accepted, .badge.done { color: var(--st-accept); background: var(--st-accept-bg); border-color: rgba(52, 211, 153, 0.3); }
 
 
 /* ---------- PROJECTS ---------- */
